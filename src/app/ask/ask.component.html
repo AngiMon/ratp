@@ -1,0 +1,82 @@
+<div class="col-sm-12">
+    <form>
+		<legend>
+			<h2 class="text-center">
+				Je propose d'échanger mon service
+			</h2>
+		</legend>
+      <div class="form-group">
+      	<div class="row">
+	      	<div class="col-lg-6 bottom">
+		        <input type="text"
+		        		placeholder="Nom*" 
+		        		id="name" 
+		        		class="form-control "
+		        		>
+	    	</div>
+	      	<div class=" col-lg-6 bottom">
+		        <input type="text" 
+		        		placeholder="Prénom*" 
+		        		id="firstname" 
+		        		class="form-control"
+		        		>
+	        </div>
+        </div>
+        <div class="row">
+	        <div class="col-lg-6 bottom">
+			        <input type="text" 
+			        		placeholder="Mail*" 
+			        		id="mail" 
+			        		class="form-control"
+			        		>
+		    </div>
+		    <div class="col-lg-6 bottom">
+			        <input type="text" 
+			        		placeholder="Mobile" 
+			        		id="telephon" 
+			        		class="form-control"
+			        		>
+		    </div>
+	    </div>
+        <div class="row">
+	        <div class="form-group col-md-3 col-lg-2">
+	        	<label>
+	        		N° d'équipe: 
+	        	</label>
+	        	<select class="form-control">
+	        		<option value=""
+            				hidden
+            				>
+            			-Choisir-
+            		</option>
+	        		<option *ngFor="let a of array; let i = index"
+	        				value="{{i+1}}">
+	        			{{ i+1 }}
+	        		</option>
+	        		<option value="301">301</option>
+	        		<option value="401">401</option>
+	        		<option value="402">402</option>
+	        		<option value="403">403</option>
+	        		<option value="404">404</option>
+	        	</select>
+	        </div>
+	        <div class="form-group col-md-3 col-lg-2">
+	        	<label>
+	        		Type de service: 
+	        	</label>
+	        	<select class="form-control">
+	        		<option value=""
+            				hidden
+            				>
+            			-Choisir-
+            		</option>
+	        		<option value="jour">Jour</option>
+	        		<option value="mixte">Mixte</option>
+	        		<option value="nuit">Nuit</option>
+	        	</select>
+	        </div>
+	    </div>
+      </div>
+	</form>
+</div>
+   
