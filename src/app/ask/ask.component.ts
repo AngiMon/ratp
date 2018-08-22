@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-ask',
@@ -7,10 +8,35 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AskComponent implements OnInit {
 
-  constructor() { }
+	askForm: FormGroup;
 
-  ngOnInit() {
+  constructor(private formBuilder: FormBuilder) { }
+
+  ngOnInit()
+  {
+	 this.askForm = this.formBuilder.group({
+	    	name: '',
+	    	firstname: '',
+	    	mail: '',
+	    	telephon: '',
+	    	teamNb: '',
+	    	type: '',
+	    	beginDay: '',
+	    	beginMonth: '',
+	    	beginYear: ''
+    	})
+
   }
-    array = new Array(25); 
 
+ 
+
+    array = new Array(25);
+    day = new Array(31);
+    month = new Array(12);
+    year = new Date().getFullYear(); 
+
+
+	
 }
+
+

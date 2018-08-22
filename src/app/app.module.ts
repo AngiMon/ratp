@@ -4,6 +4,8 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { RouterModule, Routes } from '@angular/router';
 import { AskComponent } from './ask/ask.component';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const appRoutes: Routes = [
   { path: 'nouvelle-demande', component: AskComponent }
@@ -12,9 +14,11 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    AskComponent
+    AskComponent,
   ],
   imports: [
+  	BrowserModule,
+  	ReactiveFormsModule,
   	RouterModule.forRoot(
       appRoutes,
       { enableTracing: true } // <-- debugging purposes only
