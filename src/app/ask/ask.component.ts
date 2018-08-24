@@ -7,17 +7,20 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   templateUrl: './ask.component.html',
   styleUrls: ['../app.component.css']
 })
-export class AskComponent implements OnInit {
+export class AskComponent implements OnInit
+{
 
 	askForm: FormGroup;
+	array = new Array(25);
+    day = new Array(31);
+    month = new Array(12);
+    year = new Date().getFullYear();
 
-  constructor(private formBuilder: FormBuilder) { }
+	constructor(private formBuilder: FormBuilder) { }
 
-  public ngOnInit()
-  {
-  	
-
-	 this.askForm = this.formBuilder.group({
+	public ngOnInit()
+	{
+	this.askForm = this.formBuilder.group({
 	    	name: '',
 	    	firstname: '',
 	    	mail: '',
@@ -26,16 +29,17 @@ export class AskComponent implements OnInit {
 	    	type: '',
 	    	start: '',
 	    	end: ''
-    	});
-  }
+		});
+	}
 
- 
+	Toto()
+	{
+	}
 
-    array = new Array(25);
-    day = new Array(31);
-    month = new Array(12);
-    year = new Date().getFullYear(); 
-
+	onSubmitForm()
+	{
+		
+	}
 
 	
 }

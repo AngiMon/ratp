@@ -1,4 +1,5 @@
-<form [formGroup]="askForm">
+<form [formGroup]="askForm"
+	  (ngSumit)="onSubmitForm()">
 	{{ askForm.value | json}}
 	<div class="col-sm-12">
 	<legend>
@@ -6,115 +7,121 @@
 			Je propose d'échanger mon service
 		</h2>
 	</legend>
-  <div class="form-group">
-  	<div class="row">
-      	<div class="col-lg-6 bottom">
-	        <input  type="text"
-	        		placeholder="Nom*" 
-	        		id="name" 
-	        		class="form-control"
-	        		formControlName="name" 
-	        		>
-    	</div>
-      	<div class=" col-lg-6 bottom">
-	        <input type="text" 
-	        		placeholder="Prénom*" 
-	        		id="firstname" 
-	        		class="form-control"
-	        		formControlName="firstname"
-	        		>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-lg-6 bottom">
-	        <input type="text" 
-	        		placeholder="Mail*" 
-	        		id="mail" 
-	        		class="form-control"
-	        		formControlName="mail" 
-	        		>
+	  <div class="form-group">
+	  	<div class="row">
+	      	<div class="col-lg-6 bottom">
+		        <input  type="text"
+		        		placeholder="Nom*" 
+		        		id="name" 
+		        		class="form-control"
+		        		formControlName="name" 
+		        		>
+	    	</div>
+	      	<div class=" col-lg-6 bottom">
+		        <input type="text" 
+		        		placeholder="Prénom*" 
+		        		id="firstname" 
+		        		class="form-control"
+		        		formControlName="firstname"
+		        		>
+	        </div>
 	    </div>
-	    <div class="col-lg-6 bottom">
-	        <input type="text" 
-	        		placeholder="Mobile" 
-	        		id="telephon" 
-	        		class="form-control"
-	        		formControlName="telephon" 
-	        		>
+	    <div class="row">
+	        <div class="col-lg-6 bottom">
+		        <input type="text" 
+		        		placeholder="Mail*" 
+		        		id="mail" 
+		        		class="form-control"
+		        		formControlName="mail" 
+		        		>
+		    </div>
+		    <div class="col-lg-6 bottom">
+		        <input type="text" 
+		        		placeholder="Mobile" 
+		        		id="telephon" 
+		        		class="form-control"
+		        		formControlName="telephon" 
+		        		>
+		    </div>
 	    </div>
-    </div>
-    <div class="row">
-        <div class="form-group col-md-3 col-lg-2">
-        	<label>
-        		N° d'équipe: 
-        	</label>
-        	<select class="form-control"
-        			formControlName="teamNb">
-        		<option value=""
-        				hidden
-        				>
-        			-Choisir-
-        		</option>
-        		<option *ngFor="let a of array; let i = index"
-        				value="{{i+1}}">
-        			{{ i+1 }}
-        		</option>
-        		<option value="301">301</option>
-        		<option value="401">401</option>
-        		<option value="402">402</option>
-        		<option value="403">403</option>
-        		<option value="404">404</option>
-        	</select>
-        </div>
-        <div class="form-group col-md-3 col-lg-2">
-        	<label>
-        		Type de service: 
-        	</label>
-        	<select class="form-control"
-        			formControlName="type">
-        		<option value=""
-        				hidden
-        				>
-        			-Choisir-
-        		</option>
-        		<option value="jour">Jour</option>
-        		<option value="mixte">Mixte</option>
-        		<option value="nuit">Nuit</option>
-        	</select>
-        </div>
-        <div class="col-lg-8">
-        	<label>
-        		Sur la période:
-        	</label>
-	        <div class="input-daterange input-group" id="datepicker">
-	        	<span class="input-group-addon">
-			    	de
-			    </span>
-			    <div class="input-group date col-md-3" id="sandbox-container" data-provide="datepicker">
-				    <input type="text" 
-				    	   class="datepicker form-control"
-				    	   formControlName="start">
-				    <div class="input-group-addon">
-				        <span class="glyphicon glyphicon-th"></span>
-				    </div>
-				</div>
-			    <span class="input-group-addon">
-			    	à
-			    </span>
-				<div class="input-group date col-md-3" data-provide="datepicker">
-				    <input type="text" 
-				    	   class="datepicker form-control"
-				    	   formControlName="end">
-				    <div class="input-group-addon">
-				        <span class="glyphicon glyphicon-th"></span>
-				    </div>
+	    <div class="row">
+	        <div class="form-group col-md-3 col-lg-2">
+	        	<label>
+	        		N° d'équipe: 
+	        	</label>
+	        	<select class="form-control"
+	        			formControlName="teamNb">
+	        		<option value=""
+	        				hidden
+	        				>
+	        			-Choisir-
+	        		</option>
+	        		<option *ngFor="let a of array; let i = index"
+	        				value="{{i+1}}">
+	        			{{ i+1 }}
+	        		</option>
+	        		<option value="301">301</option>
+	        		<option value="401">401</option>
+	        		<option value="402">402</option>
+	        		<option value="403">403</option>
+	        		<option value="404">404</option>
+	        	</select>
+	        </div>
+	        <div class="form-group col-md-3 col-lg-2">
+	        	<label>
+	        		Type de service: 
+	        	</label>
+	        	<select class="form-control"
+	        			formControlName="type">
+	        		<option value=""
+	        				hidden
+	        				>
+	        			-Choisir-
+	        		</option>
+	        		<option value="jour">Jour</option>
+	        		<option value="mixte">Mixte</option>
+	        		<option value="nuit">Nuit</option>
+	        	</select>
+	        </div>
+	        <div class="col-lg-8">
+	        	<label>
+	        		Sur la période:
+	        	</label>
+		        <div class="input-daterange input-group">
+		        	<span class="input-group-addon">
+				    	de
+				    </span>
+				    <div class="input-group date col-md-3"
+				    	 data-provide="datepicker">
+					    <input type="text" id='toto'
+					    	   class="datepicker form-control"
+					    	   formControlName="start"
+					    	   placeholder="jj/mm/aaaa" 
+					    	   (clic)='Toto()'>
+					    <div class="input-group-addon">
+					        <span class="glyphicon glyphicon-th"></span>
+					    </div>
+					</div>
+				    <span class="input-group-addon">
+				    	à
+				    </span>
+					<div class="input-group date col-md-3" data-provide="datepicker">
+					    <input type="text" 
+					    	   class="datepicker form-control"
+					    	   placeholder="jj/mm/aaaa" 
+					    	   formControlName="end">
+					    <div class="input-group-addon">
+					        <span class="glyphicon glyphicon-th"></span>
+					    </div>
+					</div>
 				</div>
 			</div>
-		</div>
-    </div>
-
-  </div>
-  <button class="btn btn-success">Valider</button>
+	    </div>
+	</div>
+    <button class="btn btn-success"
+		  type="submit">
+		Valider
+	</button>
   </div>
 </form>
 

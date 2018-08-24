@@ -1,0 +1,30 @@
+<nav>
+	<a class="btn btn-primary space"
+		routerLink="/nouvelle-demande" 
+		routerLinkActive="active">
+		Faire une nouvelle demande
+	</a>
+	<a class="btn btn-primary space" 
+		href="#">
+		Voir les demandes en cours
+	</a>
+	<a class="btn btn-info space"
+	   routerLink="auth/signup"
+	   routerLinkActive="active"
+	   *ngIf="!isAuth">
+	   	M'inscrire
+    </a>
+    <a class="btn btn-info space"
+       routerLink="auth/signin"
+       routerLinkActive="active"
+       *ngIf="!isAuth">
+       	Me connecter
+   	</a>
+   	<a class="btn btn-danger"
+   	   routerLink='/'
+   	   *ngIf="isAuth"
+   	   (click)="onSignOut()">
+   		Déconnexion
+   	</a>
+</nav>
+<router-outlet></router-outlet>
