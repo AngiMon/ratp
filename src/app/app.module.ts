@@ -10,26 +10,36 @@ import { AuthComponent } from './auth/auth.component';
 import { SignupComponent } from './signup/signup.component';
 import { AuthService } from './services/auth.service';
 import { AuthGuardService } from './services/authGuard.service';
+import { AskService } from './services/ask.service';
+import { UserService } from './services/user.service';
 import { HttpClientModule } from '@angular/common/http';
 import { Http, HttpModule } from '@angular/http';
 import { SigninComponent } from './signin/signin.component';
 import { HeaderComponent } from './header/header.component';
+import { UserListComponent } from './user-list/user-list.component';
+import { AsksListComponent } from './asks-list/asks-list.component';
+import { SingleAskComponent } from './single-ask/single-ask.component';
+import { AskFormComponent } from './asks-list/ask-form/ask-form.component';
 
 const appRoutes: Routes = [
   { path: 'auth/signup', component: SignupComponent},
   { path: 'auth/signin', component: SigninComponent},
   { path: 'nouvelle-demande', canActivate: [AuthGuardService], component: AskComponent },
-
+  { path: 'demandes-en-cours', component: AsksListComponent}
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
     AskComponent,
+    AsksListComponent,
+    SingleAskComponent,
     AuthComponent,
     SignupComponent,
     SigninComponent,
     HeaderComponent,
+    UserListComponent,
+    AskFormComponent,
   ],
   imports: [
   	BrowserModule,
@@ -43,7 +53,7 @@ const appRoutes: Routes = [
   ,
     BrowserModule
   ],
-  providers: [AuthService, AuthGuardService],
+  providers: [AuthService, AuthGuardService, UserService, AskService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,84 @@
+<form [formGroup]="askForm" (ngSubmit)="onSaveAsk()">
+	<div class="col-sm-12">
+	  <div class="form-group">
+	    <div class="row">
+	    	<div class="col-lg-5">
+	        	<label>
+	        		Sur la période:
+	        	</label>
+		        <div class="input-daterange input-group col-lg-12">
+		        	<span class="input-group-addon">
+				    	de
+				    </span>
+				    <div class="input-group date col-xs-3 col-sm-4 col-md-5 col-lg-5"
+				    	 data-provide="datepicker">
+					    <input type="text" id='toto'
+					    	   class="datepicker form-control"
+					    	   formControlName="start"
+					    	   placeholder="jj/mm/aaaa" 
+					    	   (clic)='Toto()'>
+					    <div class="input-group-addon">
+					        <span class="glyphicon glyphicon-th"></span>
+					    </div>
+					</div>
+				    <span class="input-group-addon">
+				    	à
+				    </span>
+					<div class="input-group date col-xs-3 col-sm-4 col-md-5 col-lg-5 " data-provide="datepicker">
+					    <input type="text" 
+					    	   class="datepicker form-control"
+					    	   placeholder="jj/mm/aaaa" 
+					    	   formControlName="end">
+					    <div class="input-group-addon">
+					        <span class="glyphicon glyphicon-th"></span>
+					    </div>
+					</div>
+				</div>
+			</div>
+	        <div class="form-group col-md-3 col-lg-2">
+	        	<label>
+	        		N° d'équipe: 
+	        	</label>
+	        	<select class="form-control"
+	        			formControlName="teamNb">
+	        		<option value=""
+	        				hidden
+	        				>
+	        			-Choisir-
+	        		</option>
+	        		<option *ngFor="let a of array; let i = index"
+	        				value="{{i+1}}">
+	        			{{ i+1 }}
+	        		</option>
+	        		<option value="301">301</option>
+	        		<option value="401">401</option>
+	        		<option value="402">402</option>
+	        		<option value="403">403</option>
+	        		<option value="404">404</option>
+	        	</select>
+	        </div>
+	        <div class="form-group col-md-3 col-lg-2">
+	        	<label>
+	        		Type de service: 
+	        	</label>
+	        	<select class="form-control"
+	        			formControlName="type">
+	        		<option value=""
+	        				hidden
+	        				>
+	        			-Choisir-
+	        		</option>
+	        		<option value="jour">Jour</option>
+	        		<option value="mixte">Mixte</option>
+	        		<option value="nuit">Nuit</option>
+	        	</select>
+	        </div>
+	        
+	    </div>
+	</div>
+    <button class="btn btn-success"
+		    type="submit">
+		Valider
+	</button>
+  </div>
+</form>
