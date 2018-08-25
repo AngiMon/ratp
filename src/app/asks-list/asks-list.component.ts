@@ -1,8 +1,13 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { HeaderComponent } from '../header/header.component';
+
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 import { AskService } from '../services/ask.service';
+import { AuthService } from '../services/auth.service';
+
 import { Ask } from '../models/Ask.model'; 
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-asks-list',
@@ -13,8 +18,13 @@ export class AsksListComponent implements OnInit, OnDestroy
 {
 	asks: Ask[];
 	asksSubscription: Subscription;
+  authdata = null;
+  isAuth;
 
-	constructor(private asksService: AskService, private router: Router)
+	constructor(
+    private asksService: AskService, 
+    private router: Router,
+    private authService: AuthService)
 	{}
 
 	 ngOnInit()
@@ -24,6 +34,8 @@ export class AsksListComponent implements OnInit, OnDestroy
         this.asks = asks;
       }
     );
+    this.authService.getAuthData(this);
+    
     this.asksService.emitAsks();
   }
 

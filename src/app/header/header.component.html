@@ -33,5 +33,6 @@
    	   (click)="onSignOut()">
    		Déconnexion
    	</a>
+   	{{ (authdata != null) ? authdata.email : ''}}
 </nav>
 <router-outlet></router-outlet>

@@ -8,16 +8,37 @@ export class AuthService
 	createNewUser(email: string, password: string)
 	{
 		return new Promise(
-				(resolve, reject) => {
+			(resolve, reject) => {
 				firebase.auth().createUserWithEmailAndPassword(email, password).then(
 					() => {
 						resolve();
 					},
 					(error) => {
 						reject(error);
-					})
+					}
+				)
 			}
 		)
+	}
+
+	getAuthData(a)
+	{
+		firebase.auth().onAuthStateChanged(
+			(user) => {
+				if(user)
+				{
+					a.authdata = user;
+					a.isAuth = true;
+					//return 'toto';
+				}
+				else
+				{
+					a.authdata = null;
+					a.isAuth = false;
+					//return 'snif';
+				}
+			}
+		);
 	}
 
 	signInUser(email: string, password: string)
@@ -30,8 +51,10 @@ export class AuthService
 					},
 					(error) => {
 						reject(error);
-					})
-			})
+					}
+				)
+			}
+		)
 	}
 
 	signOutUser()

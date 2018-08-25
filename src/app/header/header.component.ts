@@ -10,6 +10,8 @@ import * as firebase from 'firebase';
 })
 export class HeaderComponent implements OnInit
 {
+	authdata = null;
+	
 	isAuth:boolean;
 	constructor(private authService: AuthService)
 	{
@@ -18,19 +20,28 @@ export class HeaderComponent implements OnInit
 
 	ngOnInit()
 	{
+		this.authService.getAuthData(this);
+	}
+
+	/*getAuthData(a)
+	{
 		firebase.auth().onAuthStateChanged(
 			(user) => {
 				if(user)
 				{
+					this.authdata = user;
 					this.isAuth = true;
+					return 'toto';
 				}
 				else
 				{
+					this.authdata = null;
 					this.isAuth = false;
+					return 'snif';
 				}
 			}
 		);
-	}
+	}*/
 
 	onSignOut()
 	{
