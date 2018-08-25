@@ -1,3 +1,27 @@
-<p>
-  single-ask works!
-</p>
+<div class="row">
+  <div class="col-xs-12 ">
+    <h2>Demandes de permutations de <!--{{ ask.firstname }} {{ ask.name }} --></h2>
+    <table>
+      <thead>
+        <tr class="border-bottom">
+          <th class="pb-2"> Service proposé </th>
+          <th class="pb-2"> Début </th>
+          <th class="pb-2"> Fin </th>
+          <th class="pb-2"> Action </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="border-bottom">
+          <td> {{ ask.type }} </td>
+          <td> {{ ask.start }} </td>
+          <td> {{ ask.end }} </td>
+          <td> 
+            <button class="btn btn-success"> 
+              <i class="fas fa-handshake"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

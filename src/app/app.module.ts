@@ -25,7 +25,9 @@ const appRoutes: Routes = [
   { path: 'auth/signup', component: SignupComponent},
   { path: 'auth/signin', component: SigninComponent},
   { path: 'nouvelle-demande', canActivate: [AuthGuardService], component: AskComponent },
-  { path: 'demandes-en-cours', component: AsksListComponent}
+  { path: 'demandes-en-cours', component: AsksListComponent},
+  { path: 'demandes-en-cours/:id', component: SingleAskComponent}
+
 ];
 
 @NgModule({

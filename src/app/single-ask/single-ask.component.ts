@@ -1,8 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { Router } from '@angular/router';
 import { AskService } from '../services/ask.service';
 import { Ask } from '../models/Ask.model'; 
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 @Component({
@@ -12,9 +12,22 @@ import { Ask } from '../models/Ask.model';
 })
 export class SingleAskComponent implements OnInit {
 
-  constructor() { }
+  ask: Ask;
+
+  constructor(private route: ActivatedRoute, private asksService: AskService,
+              private router: Router) {}
 
   ngOnInit() {
+    this.ask = new Ask( '', '', '', '');
+    const id = this.route.snapshot.params['id'];
+    this.asksService.getSingleAsk(+id).then(
+      (ask: Ask) => {
+        this.ask = ask;
+      }
+    );
   }
 
+  onBack() {
+    this.router.navigate(['/demandes-en-cours']);
+  }
 }

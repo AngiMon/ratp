@@ -1,13 +1,19 @@
-<nav>
+<nav class="col-md-12">
 	<a class="btn btn-primary space"
 		routerLink="/nouvelle-demande" 
 		routerLinkActive="active">
-		Faire une nouvelle demande
+		Nouvelle demande
 	</a>
 	<a class="btn btn-primary space" 
 	   routerLink="/demandes-en-cours"
 	   routerLinkActive="active">
-		Voir les demandes en cours
+		Demandes en cours
+	</a>
+	<a class="btn btn-primary space" 
+	   routerLink="/"
+	   *ngIf="isAuth"
+	   routerLinkActive="">
+		Mes demandes
 	</a>
 	<a class="btn btn-info space"
 	   routerLink="auth/signup"
@@ -21,7 +27,7 @@
        *ngIf="!isAuth">
        	Me connecter
    	</a>
-   	<a class="btn btn-danger"
+   	<a class="btn btn-danger offset-1"
    	   routerLink='/'
    	   *ngIf="isAuth"
    	   (click)="onSignOut()">

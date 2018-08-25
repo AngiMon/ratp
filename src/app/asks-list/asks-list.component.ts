@@ -36,7 +36,7 @@ export class AsksListComponent implements OnInit, OnDestroy
   }
 
   onViewAsk(id: number) {
-    this.router.navigate(['/demandes-en-cours', 'view', id]);
+    this.router.navigate(['/demandes-en-cours', id]);
   }
   
   ngOnDestroy() {
