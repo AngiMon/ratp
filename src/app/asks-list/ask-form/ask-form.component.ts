@@ -31,8 +31,12 @@ export class AskFormComponent implements OnInit
   }
   
   onSaveAsk() {
+    var startIni = document.getElementById('start').value;
+    var endIni = document.getElementById('end').value;
     const start = this.askForm.get('start').value;
+    start = startIni;
     const end = this.askForm.get('end').value;
+    end = endIni;
     const type = this.askForm.get('type').value;
     const teamNb = this.askForm.get('teamNb').value;
 
@@ -40,5 +44,4 @@ export class AskFormComponent implements OnInit
     this.asksService.createNewAsk(newAsk);
     this.router.navigate(['/demandes-en-cours']);
   }
-
 }

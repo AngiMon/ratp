@@ -28,9 +28,7 @@ export class AskService
 
 	saveAsks()
 	{
-		firebase.database().ref('/').set(this.asks);
-		console.log(this.asks);
-
+		firebase.database().ref('/demandes-en-cours').set(this.asks);
 	}
 
 	getAsks()
