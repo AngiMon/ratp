@@ -1,21 +1,24 @@
-<div class="row">
+<div class="row container">
   <div class="col-xs-12 ">
-    <h2>Demandes de permutations de <!--{{ ask.firstname }} {{ ask.name }} --></h2>
+    <h2>
+      {{ask.user.firstname}} {{ ask.user.name }}
+       souhaite permuter
+      </h2>
     <table>
       <thead>
         <tr class="border-bottom">
-          <th class="pb-2"> Service proposé </th>
-          <th class="pb-2"> Début </th>
-          <th class="pb-2"> Fin </th>
-          <th class="pb-2"> Action </th>
+          <th class="pb-2 pl-4"> Service proposé </th>
+          <th class="pb-2 pl-4"> Début </th>
+          <th class="pb-2 pl-4"> Fin </th>
+          <th class="pb-2 pl-4"> Action </th>
         </tr>
       </thead>
       <tbody>
         <tr class="border-bottom">
-          <td> {{ ask.type }} </td>
-          <td> {{ ask.start }} </td>
-          <td> {{ ask.end }} </td>
-          <td> 
+          <td class="pl-4"> {{ ask.type }} </td>
+          <td class="pl-4"> {{ ask.start }} </td>
+          <td class="pl-4"> {{ ask.end }} </td>
+          <td class="pl-4"> 
             <button class="btn btn-success"> 
               <i class="fas fa-handshake"></i>
             </button>
@@ -23,5 +26,9 @@
         </tr>
       </tbody>
     </table>
-  </div>
+    <button
+      class="btn btn-secondary mt-3"
+      (click)="onBack()">
+        Retour
+  </button>
 </div>

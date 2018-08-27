@@ -9,6 +9,11 @@ export class UserService
 	users: User[] = [];
 	userSubject = new Subject<User[]>();
 
+	constructor()
+	{
+		this.getUsers();
+	}
+
 	emitUsers()
 	{
 		this.userSubject.next(this.users.slice());
@@ -30,5 +35,14 @@ export class UserService
 	saveUsers()
 	{
 		firebase.database().ref('auth').set(this.users);
+	}
+
+	getUsers()
+	{
+		firebase.database().ref('/auth/')
+		.on('value', (data: DataSnapshot) => {
+				this.users = data.val() ? data.val() : [];
+				this.emitUsers();
+			})
 	}
 }

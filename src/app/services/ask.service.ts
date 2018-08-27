@@ -23,7 +23,6 @@ export class AskService
 	{
 		this.asks.push(ask);
 		this.emitAsks();
-		console.log(this.asks);
 	}
 
 	saveAsks()

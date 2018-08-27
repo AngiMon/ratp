@@ -6,6 +6,7 @@ export class Ask
 	    		 public end: Date,
 	    		 public teamNb: number,
 	    		 public type: string,
+	    		 public user: Object
 	    		 )
 	{
 

@@ -13,12 +13,15 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class SingleAskComponent implements OnInit {
 
   ask: Ask;
+  user;
 
-  constructor(private route: ActivatedRoute, private asksService: AskService,
-              private router: Router) {}
+  constructor(
+    private route: ActivatedRoute,
+    private asksService: AskService,
+    private router: Router) {}
 
   ngOnInit() {
-    this.ask = new Ask( '', '', '', '');
+    this.ask = new Ask( '', '', '', '', '');
     const id = this.route.snapshot.params['id'];
     this.asksService.getSingleAsk(+id).then(
       (ask: Ask) => {

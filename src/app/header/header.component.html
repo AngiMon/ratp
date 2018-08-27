@@ -1,38 +1,41 @@
-<nav class="col-md-12">
-	<a class="btn btn-primary space"
+<nav class="col-md-12 p-0">
+	<a class="btn btn-primary mr-2 mt-1"
 		routerLink="/nouvelle-demande" 
 		routerLinkActive="active">
 		Nouvelle demande
 	</a>
-	<a class="btn btn-primary space" 
+	<a class="btn btn-primary mr-2 mt-1" 
 	   routerLink="/demandes-en-cours"
 	   routerLinkActive="active">
 		Demandes en cours
 	</a>
-	<a class="btn btn-primary space" 
+	<a class="btn btn-primary mr-2 mt-1" 
 	   routerLink="/"
 	   *ngIf="isAuth"
 	   routerLinkActive="">
 		Mes demandes
 	</a>
-	<a class="btn btn-info space"
+	<a class="btn btn-info mr-2 mt-1"
 	   routerLink="auth/signup"
 	   routerLinkActive="active"
 	   *ngIf="!isAuth">
 	   	M'inscrire
     </a>
-    <a class="btn btn-info space"
+    <a class="btn btn-info mr-2 mt-1"
        routerLink="auth/signin"
        routerLinkActive="active"
        *ngIf="!isAuth">
        	Me connecter
    	</a>
-   	<a class="btn btn-danger offset-1"
-   	   routerLink='/'
-   	   *ngIf="isAuth"
-   	   (click)="onSignOut()">
-   		Déconnexion
-   	</a>
-   	{{ (authdata != null) ? authdata.email : ''}}
+   	<div class="mt-2">
+	   	<a class="btn btn-danger "
+	   	   routerLink='/'
+	   	   *ngIf="isAuth"
+	   	   (click)="onSignOut()">
+	   		Déconnexion
+	   	</a>
+	   	{{ (authdata != null) ? user.firstname + " " + user.name : ''}}
+   </div>
+
 </nav>
 <router-outlet></router-outlet>

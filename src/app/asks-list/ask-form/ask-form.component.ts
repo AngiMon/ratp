@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Ask } from '../../models/Ask.model';
 import { AskService} from '../../services/ask.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-ask-form',
@@ -11,13 +12,18 @@ import { AskService} from '../../services/ask.service';
 })
 export class AskFormComponent implements OnInit
 {
+  user;
 	array = new Array(25);
 	askForm: FormGroup;
-   constructor(private formBuilder: FormBuilder, private asksService: AskService,
-              private router: Router) { }
+   constructor(
+     private formBuilder: FormBuilder, 
+     private asksService: AskService,
+     private router: Router,
+     private authService: AuthService) { }
               
   ngOnInit() {
     this.initForm();
+    this.authService.getAuthData(this);
   }
   
   initForm() {
@@ -39,8 +45,9 @@ export class AskFormComponent implements OnInit
     end = endIni;
     const type = this.askForm.get('type').value;
     const teamNb = this.askForm.get('teamNb').value;
-
-    const newAsk = new Ask(start, end, teamNb, type);
+    
+    const user = this.user;
+    const newAsk = new Ask(start, end, teamNb, type, user);
     this.asksService.createNewAsk(newAsk);
     this.router.navigate(['/demandes-en-cours']);
   }

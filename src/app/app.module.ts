@@ -20,6 +20,7 @@ import { UserListComponent } from './user-list/user-list.component';
 import { AsksListComponent } from './asks-list/asks-list.component';
 import { SingleAskComponent } from './single-ask/single-ask.component';
 import { AskFormComponent } from './asks-list/ask-form/ask-form.component';
+import { UserAsksComponent } from './user-asks/user-asks.component';
 
 const appRoutes: Routes = [
   { path: 'auth/signup', component: SignupComponent},
@@ -42,6 +43,7 @@ const appRoutes: Routes = [
     HeaderComponent,
     UserListComponent,
     AskFormComponent,
+    UserAsksComponent,
   ],
   imports: [
   	BrowserModule,
