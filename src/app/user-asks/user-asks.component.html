@@ -8,6 +8,7 @@
       <thead>
         <tr class="border-bottom">
           <th class="pb-2 pl-4"> Service proposé </th>
+          <th class="pb-2 pl-4"> Equipe </th>
           <th class="pb-2 pl-4"> Début </th>
           <th class="pb-2 pl-4"> Fin </th>
           <th class="pb-2 pl-4"> Action </th>
@@ -18,6 +19,7 @@
         	class="border-bottom"
         	*ngIf='ask.user.email == user.email'>
           <td class="pl-4"> {{ ask.type }} </td>
+          <td class="pl-4"> {{ ask.teamNb }} </td>
           <td class="pl-4"> {{ ask.start }} </td>
           <td class="pl-4"> {{ ask.end }} </td>
           <td class="pl-4"> 
