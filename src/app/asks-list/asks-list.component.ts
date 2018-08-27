@@ -29,11 +29,11 @@ export class AsksListComponent implements OnInit, OnDestroy
 
 	 ngOnInit()
 	 {
-    	this.asksSubscription = this.asksService.askSubject.subscribe(
-      (asks: Ask[]) => {
-        this.asks = asks;
-      }
-    );
+      this.asksSubscription = this.asksService.askSubject.subscribe(
+        (asks: Ask[]) => {
+          this.asks = asks;
+        }
+      );
     this.authService.getAuthData(this);
     
     this.asksService.emitAsks();

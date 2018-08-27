@@ -6,6 +6,12 @@ import { DataSnapshot } from 'firebase/database';
 
 export class AuthService
 {
+	user;
+	constructor(){}
+	ngOnInit()
+	{
+		
+	}
 	createNewUser(email: string, password: string)
 	{
 		return new Promise(

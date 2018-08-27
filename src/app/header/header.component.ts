@@ -13,7 +13,6 @@ import * as firebase from 'firebase';
 export class HeaderComponent implements OnInit
 {
 	authdata = null;
-	name;
 	isAuth:boolean;
 	user: User;
 	constructor(
@@ -25,11 +24,6 @@ export class HeaderComponent implements OnInit
 	{
 		this.user = new User('', '', '');
 		this.authService.getAuthData(this);
-		/*this.authService.getUser(this).then(
-	      (user: User) => {
-	        this.user = user;
-	      }
-	    );*/
 	}
 
 	onSignOut()

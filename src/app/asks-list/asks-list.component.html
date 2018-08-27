@@ -1,32 +1,34 @@
 <div class="row container">
-  <div class="col-xs-12 ">
-    <h2>Dernières demandes de permutations</h2>
-    <table>
-      <thead>
-        <tr class="border-bottom">
-          <th class="pb-2 pl-4"> Service proposé </th>
-          <th class="pb-2 pl-4"> Début </th>
-          <th class="pb-2 pl-4"> Fin </th>
-          <th class="pb-2 pl-4"> Action </th>
-        </tr>
-      </thead>
-      <tbody *ngFor="let ask of asks; let i = index">
-        <tr class="border-bottom">
-          <td class="pl-4"> {{ ask.type }} </td>
-          <td class="pl-4"> {{ ask.start }} </td>
-          <td class="pl-4"> {{ ask.end }} </td>
-          <td class="pl-4"> 
-            <button class="btn btn-success"> 
-              <i class="fas fa-handshake"></i>
-            </button>
-            <button
-              class="btn btn-info ml-1"
-              (click)="onViewAsk(i)"> 
-              <i class="fas fa-search"></i>
-            </button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+  <h2>Dernières demandes de permutations</h2>
+  <p *ngIf='asks === undefined'
+    class="row col-12 btn-info disabled">
+    Il n'y a pas encore de demandes de permutation
+  </p>
+  <table class="col-12">
+    <thead>
+      <tr class="border-bottom">
+        <th class="pb-2 pl-4"> Service proposé </th>
+        <th class="pb-2 pl-4"> Début </th>
+        <th class="pb-2 pl-4"> Fin </th>
+        <th class="pb-2 pl-4"> Action </th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let ask of asks; let i = index">
+      <tr class="border-bottom">
+        <td class="pl-4"> {{ ask.type }} </td>
+        <td class="pl-4"> {{ ask.start }} </td>
+        <td class="pl-4"> {{ ask.end }} </td>
+        <td class="pl-4"> 
+          <button class="btn btn-success"> 
+            <i class="fas fa-handshake"></i>
+          </button>
+          <button
+            class="btn btn-info ml-1"
+            (click)="onViewAsk(i)"> 
+            <i class="fas fa-search"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
