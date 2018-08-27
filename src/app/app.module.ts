@@ -27,7 +27,7 @@ const appRoutes: Routes = [
   { path: 'auth/signin', component: SigninComponent},
   { path: 'nouvelle-demande', canActivate: [AuthGuardService], component: AskComponent },
   { path: 'demandes-en-cours', component: AsksListComponent},
-  { path: 'demandes-en-cours/:id', component: SingleAskComponent}
+  { path: 'demandes-en-cours/:id', component: SingleAskComponent},
   { path: 'mes-demandes', component: UserAsksComponent}
 
 ];
