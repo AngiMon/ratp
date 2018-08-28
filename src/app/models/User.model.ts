@@ -5,7 +5,5 @@ export class User
     public firstname: string,
     public name: string
   )
-  {
-  	
-  }
+  {}
 }

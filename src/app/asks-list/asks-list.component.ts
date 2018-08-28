@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, PipeTransform, Pipe, Injectable } from '@angular/core';
 import { HeaderComponent } from '../header/header.component';
 
 import { Subscription } from 'rxjs';
@@ -14,12 +14,14 @@ import * as firebase from 'firebase';
   templateUrl: './asks-list.component.html',
   styleUrls: ['./asks-list.component.scss']
 })
+
 export class AsksListComponent implements OnInit, OnDestroy
 {
-	asks: Ask[];
+  asks: Ask[];
 	asksSubscription: Subscription;
   authdata = null;
   isAuth;
+  objectKeys = Object.keys;
 
 	constructor(
     private asksService: AskService, 

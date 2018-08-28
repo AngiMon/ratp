@@ -12,6 +12,14 @@ import { AuthService } from '../../services/auth.service';
 })
 export class AskFormComponent implements OnInit
 {
+
+  typeVs = {
+            types:[
+              {name: 'Jour',  selected: false, id: 1},
+              {name: 'Mixte', selected: false, id: 2},
+              {name: 'Nuit',  selected: false, id: 3}
+            ]
+          };
   user;
 	array = new Array(25);
 	askForm: FormGroup;
@@ -32,6 +40,9 @@ export class AskFormComponent implements OnInit
       end: ['', Validators.required],
       teamNb: ['', Validators.required],
       type: ['', Validators.required],
+      Jour: ['', Validators.required],
+      Mixte: ['', Validators.required],
+      Nuit: ['', Validators.required],
       
     });
   }
@@ -44,11 +55,24 @@ export class AskFormComponent implements OnInit
     const end = this.askForm.get('end').value;
     end = endIni;
     const type = this.askForm.get('type').value;
+
+    const jour = this.askForm.get('Jour').value;
+    const mixte = this.askForm.get('Mixte').value;
+    const nuit = this.askForm.get('Nuit').value;
+
+    const typeVs = {jour : jour, mixte : mixte, nuit : nuit};
+    
+    console.log(mixte);
     const teamNb = this.askForm.get('teamNb').value;
     
     const user = this.user;
-    const newAsk = new Ask(start, end, teamNb, type, user);
+    const newAsk = new Ask(start, end, teamNb, type, typeVs, user);
     this.asksService.createNewAsk(newAsk);
     this.router.navigate(['/demandes-en-cours']);
+  }
+
+  Click(a)
+  {
+    console.log(a);
   }
 }

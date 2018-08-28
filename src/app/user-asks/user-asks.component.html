@@ -1,4 +1,4 @@
-<div class="row container">
+<div class="row container  mb-5">
 	<h2>
 		Demandes de <strong>{{ user.firstname }} {{ user.name }}</strong>
 	</h2>
@@ -8,8 +8,9 @@
       <thead>
         <tr class="border-bottom">
           <th class="pb-2 pl-4"> Service proposé </th>
-          <th class="pb-2 pl-4"> Equipe </th>
-          <th class="pb-2 pl-4"> Début </th>
+        <th class="pb-2 pl-4"> Souhaité </th>
+         <th class="pb-2 pl-4"> Equipe </th>
+         <th class="pb-2 pl-4"> Début </th>
           <th class="pb-2 pl-4"> Fin </th>
           <th class="pb-2 pl-4"> Action </th>
         </tr>
@@ -18,28 +19,34 @@
         <tr 
         	class="border-bottom"
         	*ngIf='ask.user.email == user.email'>
-          <td class="pl-4"> {{ ask.type }} </td>
-          <td class="pl-4"> {{ ask.teamNb }} </td>
-          <td class="pl-4"> {{ ask.start }} </td>
-          <td class="pl-4"> {{ ask.end }} </td>
-          <td class="pl-4"> 
-            <button
-              class="btn btn-info ml-1 mr-1"
-              routerLink="/demandes-en-cours/{{i}}"> 
-              <i class="fas fa-search"></i>
-            </button>
-            <button class="btn btn-danger">
-            	<i 
-            		class="fas fa-times"
-            		title="Supprimer" 
-            		(click)="onDeleteAsk(ask)"></i>
-            </button>
-          </td>
+		    <td class="pl-4"> {{ ask.type }} </td>
+			<td class="pl-4"> 
+		    	{{ ask.typeVs.nuit == true ? "Nuit" : '' }} 
+		    	{{ ask.typeVs.jour == true ? "Jour" : '' }}   
+		    	{{ ask.typeVs.mixte == true ? "Mixte" : '' }}   
+
+		    </td>
+		    <td class="pl-4"> {{ ask.teamNb }} </td>
+		    <td class="pl-4"> {{ ask.start }} </td>
+		    <td class="pl-4"> {{ ask.end }} </td>
+		    <td class="pl-4"> 
+	            <button
+	              class="btn btn-info ml-1 mr-1"
+	              routerLink="/demandes-en-cours/{{i}}"> 
+	              <i class="fas fa-search"></i>
+	            </button>
+	            <button class="btn btn-danger">
+	            	<i 
+	            		class="fas fa-times"
+	            		title="Supprimer" 
+	            		(click)="onDeleteAsk(ask)"></i>
+	            </button>
+	        </td>
         </tr>
       </tbody>
     </table>
 
-    <p *ngIf='asks === undefined'
+    <p *ngIf='asks === undefined || asks == []'
     	class="row col-12 btn-info disabled">
     	Vous n'avez pas encore fait de demandes de permutation
     </p>

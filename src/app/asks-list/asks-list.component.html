@@ -1,4 +1,4 @@
-<div class="row container">
+<div class="row container  mb-5">
   <h2>Dernières demandes de permutations</h2>
   <p *ngIf='asks === undefined'
     class="row col-12 btn-info disabled">
@@ -7,8 +7,9 @@
   <table class="col-12">
     <thead>
       <tr class="border-bottom">
-        <th class="pb-2 pl-4"> Service proposé </th>
-          <th class="pb-2 pl-4"> Equipe </th>
+        <th class="pb-2 pl-4"> Proposé </th>
+        <th class="pb-2 pl-4"> Souhaité </th>
+        <th class="pb-2 pl-4"> Equipe </th>
         <th class="pb-2 pl-4"> Début </th>
         <th class="pb-2 pl-4"> Fin </th>
         <th class="pb-2 pl-4"> Action </th>
@@ -17,6 +18,11 @@
     <tbody *ngFor="let ask of asks; let i = index">
       <tr class="border-bottom">
         <td class="pl-4"> {{ ask.type }} </td>
+        <td class="pl-4"> 
+          {{ ask.typeVs.nuit == true ? "Nuit" : '' }} 
+          {{ ask.typeVs.jour == true ? "Jour" : '' }}   
+          {{ ask.typeVs.mixte == true ? "Mixte" : '' }}   
+        </td>
         <td class="pl-4"> {{ ask.teamNb }} </td>
         <td class="pl-4"> {{ ask.start }} </td>
         <td class="pl-4"> {{ ask.end }} </td>
