@@ -10,11 +10,12 @@ import { Subscription } from 'rxjs';
   templateUrl: './user-asks.component.html',
   styleUrls: ['./user-asks.component.scss']
 })
-export class UserAsksComponent implements OnInit {
-	isAuth: boolean;
+export class UserAsksComponent implements OnInit
+{
 	asksSubscription: Subscription;
 	asks : Ask[];
-	authdata;
+	authdata = null;
+	isAuth: boolean;
 	user: User;
 
 	constructor(
@@ -23,6 +24,7 @@ export class UserAsksComponent implements OnInit {
 
 	ngOnInit()
 	{
+		this.user = new User('', '', '');
 		this.authService.getAuthData(this);
 		this.asksSubscription = this.asksService.askSubject.subscribe(
         (asks: Ask[]) => {
