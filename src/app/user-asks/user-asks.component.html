@@ -1,12 +1,16 @@
 <div class="row container  mb-5">
 	<h2>
-		Demandes de <strong>{{ user.firstname }} {{ user.name }}</strong>
+		Demandes de 
+		<strong>
+			{{ user.firstname }} {{ user.name }}
+		</strong>
 	</h2>
 	<table 
 		*ngIf='asks !== undefined && asks != []'
 		class="col-12">
       <thead>
         <tr class="border-bottom">
+        <th class="pb-2 pl-4"> Repos </th>
           <th class="pb-2 pl-4"> Service proposé </th>
         <th class="pb-2 pl-4"> Souhaité </th>
          <th class="pb-2 pl-4"> Equipe </th>
@@ -19,12 +23,12 @@
         <tr 
         	class="border-bottom"
         	*ngIf='ask.user.email == user.email'>
+		    <td class="pl-4"> {{ ask.rest }} </td>
 		    <td class="pl-4"> {{ ask.type }} </td>
 			<td class="pl-4"> 
 		    	{{ ask.typeVs.nuit == true ? "Nuit" : '' }} 
 		    	{{ ask.typeVs.jour == true ? "Jour" : '' }}   
 		    	{{ ask.typeVs.mixte == true ? "Mixte" : '' }}   
-
 		    </td>
 		    <td class="pl-4"> {{ ask.teamNb }} </td>
 		    <td class="pl-4"> {{ ask.start }} </td>

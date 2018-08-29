@@ -22,6 +22,7 @@ export class AskFormComponent implements OnInit
           };
   user;
 	array = new Array(25);
+  repos = new Array(5);
 	askForm: FormGroup;
    constructor(
      private formBuilder: FormBuilder, 
@@ -43,6 +44,7 @@ export class AskFormComponent implements OnInit
       Jour: ['', Validators.required],
       Mixte: ['', Validators.required],
       Nuit: ['', Validators.required],
+      rest: ['', Validators.required],
       
     });
   }
@@ -59,6 +61,7 @@ export class AskFormComponent implements OnInit
     const jour = this.askForm.get('Jour').value;
     const mixte = this.askForm.get('Mixte').value;
     const nuit = this.askForm.get('Nuit').value;
+    const rest = this.askForm.get('rest').value;
 
     const typeVs = {jour : jour, mixte : mixte, nuit : nuit};
     
@@ -66,7 +69,7 @@ export class AskFormComponent implements OnInit
     const teamNb = this.askForm.get('teamNb').value;
     
     const user = this.user;
-    const newAsk = new Ask(start, end, teamNb, type, typeVs, user);
+    const newAsk = new Ask(start, end, rest, teamNb, type, typeVs, user);
     this.asksService.createNewAsk(newAsk);
     this.router.navigate(['/demandes-en-cours']);
   }

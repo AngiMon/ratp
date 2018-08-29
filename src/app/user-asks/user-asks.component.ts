@@ -5,8 +5,6 @@ import { User } from "../models/User.model";
 import { Ask } from "../models/Ask.model";
 import { Subscription } from 'rxjs';
 
-
-
 @Component({
   selector: 'app-user-asks',
   templateUrl: './user-asks.component.html',
@@ -25,18 +23,17 @@ export class UserAsksComponent implements OnInit {
 
 	ngOnInit()
 	{
+		this.authService.getAuthData(this);
 		this.asksSubscription = this.asksService.askSubject.subscribe(
         (asks: Ask[]) => {
-          this.asks = asks;
-        }
-      );
-		this.authService.getAuthData(this);
+          	this.asks = asks;
+        	}
+      	);
 		this.asksService.emitAsks();
 	}
 
-	 onDeleteAsk(ask: Ask) {
-    this.asksService.removeAsk(ask);
-  }
-
-
+	onDeleteAsk(ask: Ask)
+	{
+    	this.asksService.removeAsk(ask);
+	}
 }
