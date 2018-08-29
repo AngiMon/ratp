@@ -22,7 +22,7 @@ export class AskFormComponent implements OnInit
           };
   user;
 	array = new Array(25);
-  repos = new Array(5);
+  repos = new Array(6);
 	askForm: FormGroup;
    constructor(
      private formBuilder: FormBuilder, 
