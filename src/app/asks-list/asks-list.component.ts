@@ -48,11 +48,11 @@ export class AsksListComponent implements OnInit, OnDestroy
   }
   initForm() {
     this.offerForm = this.formBuilder.group({
-      recipient: ['', Validators.required],
-      text: ['', Validators.required],
+      rest: ['', Validators.required],
+      type: ['', Validators.required],
+      phone: ['', Validators.required],
+      message: ['', Validators.required],
 
-     
-      
     });
   }
   
