@@ -12,6 +12,7 @@ import { AuthService } from './services/auth.service';
 import { AuthGuardService } from './services/authGuard.service';
 import { AskService } from './services/ask.service';
 import { UserService } from './services/user.service';
+import { OfferService } from './services/offer.service';
 import { HttpClientModule } from '@angular/common/http';
 import { Http, HttpModule } from '@angular/http';
 import { SigninComponent } from './signin/signin.component';
@@ -21,6 +22,7 @@ import { AsksListComponent } from './asks-list/asks-list.component';
 import { SingleAskComponent } from './single-ask/single-ask.component';
 import { AskFormComponent } from './asks-list/ask-form/ask-form.component';
 import { UserAsksComponent } from './user-asks/user-asks.component';
+
 //import { OfferComponent } from './offer/offer.component';
 
 const appRoutes: Routes = [
@@ -60,7 +62,7 @@ const appRoutes: Routes = [
   ,
     BrowserModule
   ],
-  providers: [AuthService, AuthGuardService, UserService, AskService],
+  providers: [AuthService, AuthGuardService, UserService, AskService, OfferService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

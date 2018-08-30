@@ -1,8 +1,11 @@
-export class Type
+export class Offer
 {
 	constructor(
-		public jour: boolean,
-		public mixte: boolean,
-		public nuit: boolean)
+		public repos: number,
+		public type: string,
+		public phone: string,
+		public message: string,
+		public askRef: Object,
+		public user: Object)
 	{}
 }

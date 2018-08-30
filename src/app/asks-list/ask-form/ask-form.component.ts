@@ -12,7 +12,6 @@ import { AuthService } from '../../services/auth.service';
 })
 export class AskFormComponent implements OnInit
 {
-
   typeVs = {
             types:[
               {name: 'Jour',  selected: false, id: 1},
@@ -45,7 +44,6 @@ export class AskFormComponent implements OnInit
       Mixte: ['', Validators.required],
       Nuit: ['', Validators.required],
       rest: ['', Validators.required],
-      
     });
   }
   
@@ -65,7 +63,6 @@ export class AskFormComponent implements OnInit
 
     const typeVs = {jour : jour, mixte : mixte, nuit : nuit};
     
-    console.log(mixte);
     const teamNb = this.askForm.get('teamNb').value;
     
     const user = this.user;

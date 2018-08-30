@@ -70,7 +70,9 @@
               <h5 class="modal-title">
                   Contre mon service :
               </h5>
-              <form [formGroup]="offerForm">
+              <form 
+                [formGroup]="offerForm"
+                (ngSubmit)="onSaveOffer()">
                 <div class="form-group">
                   <div class="form-group">
                     <label>
@@ -99,7 +101,6 @@
                       <option *ngIf="ask.typeVs.jour == true" value="Jour">Jour</option>
                       <option *ngIf="ask.typeVs.mixte == true" value="Mixte">Mixte</option>
                       <option *ngIf="ask.typeVs.nuit == true" value="Nuit">Nuit</option>
-
                     </select>
                   </div>
                 </div>
@@ -126,15 +127,18 @@
                     Ce message sera envoyé par mail au conducteur {{ ask.user.firstname }} {{ ask.user.name }}. 
                   </small>
                 </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                    Annuler
+                  </button>
+                  <button 
+                    (click)="onSaveOffer(i)"
+                    data-dismiss="modal"
+                    class="btn btn-primary">
+                    Envoyer
+                  </button>
+                </div>
               </form>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">
-                Annuler
-              </button>
-              <button type="button" class="btn btn-primary">
-                Envoyer
-              </button>
             </div>
           </div>
         </div>
