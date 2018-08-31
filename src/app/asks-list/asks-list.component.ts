@@ -28,6 +28,8 @@ export class AsksListComponent implements OnInit, OnDestroy
   isAuth;
   objectKeys = Object.keys;
   user: User;
+  array = Array(24);
+  rest = Array(6);
 
 	constructor(
     private asksService: AskService, 
@@ -56,6 +58,7 @@ export class AsksListComponent implements OnInit, OnDestroy
     this.offerForm = this.formBuilder.group({
       rest: ['', Validators.required],
       type: ['', Validators.required],
+      teamNb: ['', Validators.required],
       phone: ['', Validators.required],
       message: ['', Validators.required],
 
@@ -67,23 +70,24 @@ export class AsksListComponent implements OnInit, OnDestroy
     console.log('save!');
     const rest = this.offerForm.get('rest').value;
     const type = this.offerForm.get('type').value;
+    const teamNb = this.offerForm.get('teamNb').value;
     const phone = this.offerForm.get('phone').value;
     const message = this.offerForm.get('message').value;
-    this.getAsk(i, rest, type, phone, message);   
+    this.getAsk(i, rest, type, teamNb, phone, message);   
   }
 
-  getAsk(i, rest, type, phone, message)
+  getAsk(i, rest, type, teamNb, phone, message)
   {
     this.asksService.getSingleAsk(i).then(
       (ask: Ask) => {
         this.ask = ask;
-        const offer = new Offer(rest, type, phone, message, this.ask, this.user);
+        const offer = new Offer(rest, type, teamNb, phone, message, this.ask, this.user);
     this.offerService.createNewOffer(offer);
     this.router.navigate(['/']);    
       }
     );
   }
-  
+
   onNewAsk() {
     this.router.navigate(['/demandes-en-cours', 'new']);
   }
