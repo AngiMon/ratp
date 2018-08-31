@@ -8,6 +8,7 @@ import { AuthService } from '../services/auth.service';
 import { OfferService } from '../services/offer.service';
 import { User } from '../models/User.model';
 import { Offer } from '../models/Offer.model';
+import * as emailjs from 'emailjs-com';
 
 import { Ask } from '../models/Ask.model'; 
 import * as firebase from 'firebase';
@@ -73,7 +74,9 @@ export class AsksListComponent implements OnInit, OnDestroy
     const teamNb = this.offerForm.get('teamNb').value;
     const phone = this.offerForm.get('phone').value;
     const message = this.offerForm.get('message').value;
-    this.getAsk(i, rest, type, teamNb, phone, message);   
+    this.getAsk(i, rest, type, teamNb, phone, message);
+
+
   }
 
   getAsk(i, rest, type, teamNb, phone, message)
@@ -82,7 +85,24 @@ export class AsksListComponent implements OnInit, OnDestroy
       (ask: Ask) => {
         this.ask = ask;
         const offer = new Offer(rest, type, teamNb, phone, message, this.ask, this.user);
-    this.offerService.createNewOffer(offer);
+    //this.offerService.createNewOffer(offer);
+        var templateParams = 
+        {
+          name: this.user.firstname + "" + this.user.name,
+          notes: 'où es titi ??',
+          email: this.ask.user.email,
+          ask: this.ask,
+          note: message
+        };
+
+    emailjs.init("user_Usc4NFXBOwanzq1ziU15b");
+ 
+    emailjs.send('gmail', 'template_4qbcMMOk', templateParams)
+    .then(function(response) {
+       console.log('SUCCESS!', response.status, response.text);
+    }, function(error) {
+       console.log('FAILED...', error);
+    });
     this.router.navigate(['/']);    
       }
     );

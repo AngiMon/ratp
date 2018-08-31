@@ -21,6 +21,7 @@
     "@angular/platform-browser-dynamic": "^6.0.3",
     "@angular/router": "^6.0.3",
     "core-js": "^2.5.4",
+    "emailjs-com": "^2.2.4",
     "firebase": "^5.4.0",
     "firebase-tools": "^4.2.1",
     "jquery": "^3.3.1",
