@@ -22,11 +22,18 @@
         <td class="pl-4"> {{ ask.start }} </td>
         <td class="pl-4"> {{ ask.end }} </td>
         <td class="pl-4"> 
-          <button class="btn btn-success"> 
+          <button 
+            class="btn btn-success"
+            *ngIf='ask.user.email !== user.email'
+            data-toggle="modal"
+            [attr.data-target]="'#' + 0"
+            data-whatever="@mdo"
+            > 
             <i class="fas fa-handshake" title="Proposer un accord"></i>
           </button>
         </td>
       </tr>
+      <app-offer [ask]="ask" [i]="0" [user]="user"></app-offer>
     </tbody>
   </table>
   <button
