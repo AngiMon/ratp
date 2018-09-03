@@ -23,8 +23,7 @@ import { SingleAskComponent } from './single-ask/single-ask.component';
 import { AskFormComponent } from './asks-list/ask-form/ask-form.component';
 import { UserAsksComponent } from './user-asks/user-asks.component';
 import { ForgetComponent } from './forget/forget.component';
-
-//import { OfferComponent } from './offer/offer.component';
+import { OfferComponent } from './offer/offer.component';
 
 const appRoutes: Routes = [
   { path: 'auth/signup', component: SignupComponent},
@@ -51,7 +50,7 @@ const appRoutes: Routes = [
     AskFormComponent,
     UserAsksComponent,
     ForgetComponent,
-   // OfferComponent,
+    OfferComponent,
   ],
   imports: [
   	BrowserModule,

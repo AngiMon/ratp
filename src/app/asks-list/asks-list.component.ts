@@ -85,13 +85,14 @@ export class AsksListComponent implements OnInit, OnDestroy
       (ask: Ask) => {
         this.ask = ask;
         const offer = new Offer(rest, type, teamNb, phone, message, this.ask, this.user);
-    //this.offerService.createNewOffer(offer);
+        //this.offerService.createNewOffer(offer);
         var templateParams = 
         {
           name: this.user.firstname + " " + this.user.name + " ",
           email: this.ask.user.email,
+          phone: this.getPhone(phone),
           ask: this.ask,
-          note: message
+          note: this.getNote(message)
         };
 
     emailjs.init("user_Usc4NFXBOwanzq1ziU15b");
@@ -105,6 +106,29 @@ export class AsksListComponent implements OnInit, OnDestroy
     this.router.navigate(['/']);    
       }
     );
+  }
+
+  getNote(m)
+  {
+    if(m != "")
+    {
+      var note = "Son message : " + '"' + m + '"';
+      return note;
+    }
+    else{
+      return "";
+    }
+  }
+
+  getPhone(p)
+  {
+    if(p != "")
+    {
+      var phone = "téléphone ou sms : " + p;
+      return phone;
+    }
+    else
+      return "";
   }
 
   onNewAsk() {

@@ -26,7 +26,7 @@ export class ForgetComponent implements OnInit
 	{
 		this.forgetForm = this.formBuilder.group(
 		{
-			email : ['', [Validators.required]]
+			email : ['', [Validators.required, Validators.email]]
 		})
 	}
 
