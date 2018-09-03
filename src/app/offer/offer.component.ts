@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AsksListComponent } from '../asks-list/asks-list.component';
 
 
 @Component({

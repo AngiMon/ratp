@@ -1,3 +1,131 @@
-<p>
-  offer works!
-</p>
+<div class="modal fade" id="{{i}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+        	<div class="modal-header">
+	        	<div>
+	          		<h5 class="modal-title" id="exampleModalLabel">
+	                  J'accèpte de permuter avec {{ask.user.firstname}} {{ask.user.name}} :
+	                </h5>
+	                
+	                 <p class="mb-0 mt-2"> 
+	                    Pour le service en repos <strong>{{ ask.rest }}</strong>, équipe <strong>{{ ask.teamNb }} </strong> en <strong> {{ ask.type }}</strong>
+	                    <br>
+	                    sur la période du <strong>{{ ask.start }}</strong> au <strong>{{ ask.end }}</strong>
+	                  </p> 
+	            </div>
+            	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                	<span aria-hidden="true">&times;</span>
+            	</button>
+            </div>
+            <div class="modal-body">
+            	<h5 class="modal-title">
+                  Contre mon service :
+            	</h5>
+              <form 
+                [formGroup]="offerForm"
+                (ngSubmit)="onSaveOffer()">
+                <div class="form-group">
+                  <div class="form-group">
+                    <label>
+                      Repos* : 
+                    </label>
+                    <select 
+                      class="form-control"
+                      formControlName="rest">
+                      <option
+                        value=""
+                        hidden
+                        >
+                        -Choisir-
+                      </option>
+                      <option 
+                        *ngFor="let r of rest; let y = index"
+                        value="{{y}}"
+                        selected = "selected"
+                          >
+                        {{ y }}
+                      </option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label>
+                      Type de service* : 
+                    </label>
+                    <select 
+                      class="form-control"
+                      formControlName="type">
+                      <option value=""
+                          hidden
+                          >
+                        -Choisir-
+                      </option>
+                      <option *ngIf="ask.typeVs.jour == true" value="Jour">Jour</option>
+                      <option *ngIf="ask.typeVs.mixte == true" value="Mixte">Mixte</option>
+                      <option *ngIf="ask.typeVs.nuit == true" value="Nuit">Nuit</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+	              <label>
+	               &Eacute;quipe: 
+	              </label>
+	              <select 
+	                class="form-control"
+	                formControlName="teamNb">
+	                <option value=""
+	                    hidden
+	                    >
+	                  -Choisir-
+	                </option>
+	                <option *ngFor="let a of array; let i = index"
+	                    value="{{i+1}}">
+	                  {{ i+1 }}
+	                </option>
+	                <option value="301">301</option>
+	                <option value="401">401</option>
+	                <option value="402">402</option>
+	                <option value="403">403</option>
+	                <option value="404">404</option>
+	              </select>
+	            </div>
+	            <div class="form-group">
+	              <label for="message-text" class="col-form-label">
+	                Téléphone <small> (optionnel) </small>:
+	              </label>
+	              <input 
+	                class="form-control"
+	                formControlName="phone">
+	                <small class="form-text text-muted">
+	                  Partager votre numéro vous permettra d'être contacté directement par téléphone ou sms.
+	              </small>
+	            </div>
+	            <div class="form-group">
+	              <label for="message-text" class="col-form-label">
+	                Message <small> (optionnel) </small>:
+	              </label>
+	              <textarea 
+	                class="form-control"
+	                formControlName="message">
+	              </textarea>
+	              <small class="form-text text-muted">
+	                Ce message sera envoyé par mail au conducteur {{ ask.user.firstname }} {{ ask.user.name }}. 
+	              </small>
+	            </div>
+	            <div class="modal-footer">
+	              <button 
+	                type="button" 
+	                class="btn btn-secondary" 
+	                data-dismiss="modal">
+	                Annuler
+	              </button>
+	              <button 
+	                (click)="onSaveOffer(i)"
+	                data-dismiss="modal"
+	                class="btn btn-primary">
+	                Envoyer
+	              </button>
+	            </div>
+            </form>
+        </div>
+    </div>
+</div>
