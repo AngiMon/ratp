@@ -16,6 +16,13 @@
                class="form-control"
                formControlName="password">
       </div>
+      <div  class="row">
+        <span class="w-100 text-right">
+          <a routerLink="/auth/reset" class="pr-3">
+            J'ai oublié mon mot de passe
+          </a>
+        </span>
+      </div>
       <button class="btn btn-primary"
               type="submit"
               [disabled]="signupForm.invalid">Connexion</button>

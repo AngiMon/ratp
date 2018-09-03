@@ -22,6 +22,7 @@ import { AsksListComponent } from './asks-list/asks-list.component';
 import { SingleAskComponent } from './single-ask/single-ask.component';
 import { AskFormComponent } from './asks-list/ask-form/ask-form.component';
 import { UserAsksComponent } from './user-asks/user-asks.component';
+import { ForgetComponent } from './forget/forget.component';
 
 //import { OfferComponent } from './offer/offer.component';
 
@@ -31,7 +32,8 @@ const appRoutes: Routes = [
   { path: 'nouvelle-demande', canActivate: [AuthGuardService], component: AskComponent },
   { path: 'demandes-en-cours', component: AsksListComponent},
   { path: 'demandes-en-cours/:id', component: SingleAskComponent},
-  { path: 'mes-demandes', component: UserAsksComponent}
+  { path: 'mes-demandes', component: UserAsksComponent},
+  { path: 'auth/reset', component: ForgetComponent}
 
 ];
 
@@ -48,6 +50,7 @@ const appRoutes: Routes = [
     UserListComponent,
     AskFormComponent,
     UserAsksComponent,
+    ForgetComponent,
    // OfferComponent,
   ],
   imports: [

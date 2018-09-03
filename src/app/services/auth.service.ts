@@ -49,6 +49,11 @@ export class AuthService
 		firebase.auth().signOut();
 	}
 
+	reset(email)
+	{
+		firebase.auth().sendPasswordResetEmail(email);
+	}
+
 	getAuthData(a)
 	{
 		firebase.auth().onAuthStateChanged(
