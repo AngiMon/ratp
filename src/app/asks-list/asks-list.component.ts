@@ -88,8 +88,7 @@ export class AsksListComponent implements OnInit, OnDestroy
     //this.offerService.createNewOffer(offer);
         var templateParams = 
         {
-          name: this.user.firstname + "" + this.user.name,
-          notes: 'où es titi ??',
+          name: this.user.firstname + " " + this.user.name + " ",
           email: this.ask.user.email,
           ask: this.ask,
           note: message
