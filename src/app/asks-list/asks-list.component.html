@@ -17,9 +17,7 @@
       </tr>
     </thead>
     <tbody *ngFor="let ask of asks; let i = index">
-      <tr 
-        
-        [ngStyle]="{ 'background-color' : getColor(ask) }">
+      <tr [ngStyle]="{ 'background-color' : getColor(ask) }">
         <td class="pl-4"> {{ ask.rest }} </td>
         <td class="pl-4"> {{ ask.type }} </td>
         <td class="pl-4"> 

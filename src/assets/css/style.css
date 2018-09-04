@@ -13,3 +13,7 @@ h2{
 .head{
 	background-color:#E2E2E2;
 }
+.tablediv{
+	width:100%;
+	overflow-x:auto;
+}
