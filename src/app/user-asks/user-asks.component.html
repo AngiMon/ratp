@@ -20,7 +20,6 @@
 			<th class="pb-2 pl-4"> Début </th>
 			<th class="pb-2 pl-4"> Fin </th>
 			<th class="pb-2 pl-4"> Action </th>
-			<th class="pb-2 pl-4"> Réponse </th>
         </tr>
       </thead>
       <tbody *ngFor="let ask of asks; let i = index">
@@ -50,10 +49,48 @@
 	            	title="Supprimer">
 	            	<i class="fas fa-times"></i>
 	            </button>
-	        </td>
-		    <td class="pl-4"> 0 </td>	        
+	        </td>     
         </tr>
       </tbody>
+    </table>
+    <h3 class="col-12 mb-4 mt-5">
+    	Réponses à mes demandes 
+    </h3>
+    <table class="col-12">
+    	<thead class="border-bottom">
+    		<tr>
+				<th class="pb-2 pl-4"> Acceptée par </th>
+				<th class="pb-2 pl-4"> Matricule </th>
+				<th class="pb-2 pl-4"> Pour le service </th>
+				<th class="pb-2 pl-4"> Début </th>
+				<th class="pb-2 pl-4"> Fin </th>
+				<th class="pb-2 pl-4"> Action </th>
+    		</tr>
+    	</thead>
+    	<tbody *ngFor="let offer of offers; let y = index">
+    		<tr 
+    			class="border-bottom"
+    			*ngIf="offer.askRef.user.email == user.email">
+		    	<td class="pl-4"> 
+		    		{{ offer.user.firstname }} {{offer.user.name}}
+		    	</td>
+		    	<td class="pl-4">Matricule</td>
+			    <td class="pl-4">
+			    	{{ offer.askRef.type }} 
+			    	
+			    </td>
+			    <td class="pl-4"> {{offer.askRef.start}} </td>
+			    <td class="pl-4"> {{offer.askRef.end}} </td>
+			    <td class="pl-4"> 
+		            <button 
+		            	class="btn btn-danger"
+		            	(click)="onDeleteOffer(offer)"
+		            	title="Supprimer">
+		            	<i class="fas fa-times"></i>
+		            </button>
+	        	</td>
+    		</tr>
+    	</tbody>
     </table>
     <h3 class="col-12 mb-4 mt-5">
     	Mes propositions d'accord
@@ -61,7 +98,7 @@
     <table class="col-12">
     	<thead class="border-bottom">
     		<tr>
-				<th class="pb-2 pl-4"> Envoyé à </th>
+				<th class="pb-2 pl-4"> Envoyée à </th>
 				<th class="pb-2 pl-4"> Pour le service </th>
 				<th class="pb-2 pl-4"> Début </th>
 				<th class="pb-2 pl-4"> Fin </th>
@@ -75,7 +112,10 @@
 		    	<td class="pl-4"> 
 		    		{{ offer.askRef.user.firstname }} {{offer.askRef.user.name}}
 		    	</td>
-			    <td class="pl-4">  </td>
+			    <td class="pl-4">
+			    	{{ offer.askRef.type }} 
+			    	
+			    </td>
 			    <td class="pl-4"> {{offer.askRef.start}} </td>
 			    <td class="pl-4"> {{offer.askRef.end}} </td>
 			    <td class="pl-4"> 
