@@ -37,12 +37,14 @@
             data-toggle="modal"
             [attr.data-target]="'#' + i"
             data-whatever="@mdo"
+            title="Proposer un accord"
             > 
-            <i class="fas fa-handshake" title="Proposer un accord"></i>
+            <i class="fas fa-handshake"></i>
           </button>
           <button
             class="btn btn-info ml-1"
-            (click)="onViewAsk(i)"> 
+            (click)="onViewAsk(i)"
+            title="Voir"> 
             <i class="fas fa-search"></i>
           </button>
         </td>

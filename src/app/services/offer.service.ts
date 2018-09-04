@@ -62,7 +62,7 @@ export class OfferService
 		this.emitOffers();
 	}
 
-	removeoffer(offer: Offer)
+	removeOffer(offer: Offer)
 	{
 		const offerIndexToRemove = this.offers.findIndex(
 			(offerE1) => {

@@ -66,8 +66,6 @@ initForm()
     const phone = this.offerForm.get('phone').value;
     const message = this.offerForm.get('message').value;
     this.getAsk(i, rest, type, teamNb, phone, message);
-
-
   }
 
   getAsk(i, rest, type, teamNb, phone, message)
@@ -76,7 +74,7 @@ initForm()
       (ask: Ask) => {
         this.ask = ask;
         const offer = new Offer(rest, type, teamNb, phone, message, this.ask, this.user);
-        //this.offerService.createNewOffer(offer);
+        this.offerService.createNewOffer(offer);
         var templateParams = 
         {
           name: this.user.firstname + " " + this.user.name + " ",
