@@ -10,11 +10,11 @@
 	</h3>
 	<table 
 		*ngIf='asks !== undefined && asks != []'
-		class="col-12">
-      <thead>
-        <tr class="border-bottom">
+		class="table table-hover">
+      <thead class="head">
+        <tr>
         	<th class="pb-2 pl-4"> Repos </th>
-			<th class="pb-2 pl-4"> Service proposé </th>
+			<th class="pb-2 pl-4"> Proposé </th>
 			<th class="pb-2 pl-4"> Souhaité </th>
 			<th class="pb-2 pl-4"> Equipe </th>
 			<th class="pb-2 pl-4"> Début </th>
@@ -23,9 +23,7 @@
         </tr>
       </thead>
       <tbody *ngFor="let ask of asks; let i = index">
-        <tr 
-        	class="border-bottom"
-        	*ngIf="ask.user.email == user.email">
+        <tr *ngIf="ask.user.email == user.email">
 		    <td class="pl-4"> {{ ask.rest }} </td>
 		    <td class="pl-4"> {{ ask.type }} </td>
 			<td class="pl-4"> 
@@ -39,7 +37,7 @@
 		    <td class="pl-4"> 
 	            <button
 	            	title="Voir"
-	            	class="btn btn-info ml-1 mr-1"
+	            	class="btn btn-info mr-1"
 	            	routerLink="/demandes-en-cours/{{i}}"> 
 	              <i class="fas fa-search"></i>
 	            </button>
@@ -56,8 +54,8 @@
     <h3 class="col-12 mb-4 mt-5">
     	Réponses à mes demandes 
     </h3>
-    <table class="col-12">
-    	<thead class="border-bottom">
+    <table class="table table-hover">
+    	<thead class="head">
     		<tr>
 				<th class="pb-2 pl-4"> Acceptée par </th>
 				<th class="pb-2 pl-4"> Matricule </th>
@@ -81,7 +79,21 @@
 			    </td>
 			    <td class="pl-4"> {{offer.askRef.start}} </td>
 			    <td class="pl-4"> {{offer.askRef.end}} </td>
-			    <td class="pl-4"> 
+			    <td class="pl-4">
+			    	<button
+			    		class="btn btn-success mr-1"
+			    		title="Voir les coordonnées"
+			    		data-toggle="modal"
+            			[attr.data-target]="'#' + y"
+            			data-whatever="@mdo">
+			    		<i class="fas fa-user-tag"></i>
+			    	</button>
+					<button
+						title="Voir"
+						class="btn btn-info mr-1"
+						> 
+						<i class="fas fa-search"></i>
+					</button>
 		            <button 
 		            	class="btn btn-danger"
 		            	(click)="onDeleteOffer(offer)"
@@ -90,13 +102,48 @@
 		            </button>
 	        	</td>
     		</tr>
+    		<div 
+				class="modal fade" 
+				id="{{y}}" 
+				tabindex="-1" role="dialog" 
+				aria-labelledby="exampleModalLabel" 
+				aria-hidden="true">
+			    <div class="modal-dialog" role="document">
+			        <div class="modal-content">
+			        	<div class="modal-header">
+				        	<div>
+				          		<h5 class="modal-title" id="exampleModalLabel">
+				          			<i class="fas fa-user"></i>
+				          			 {{ offer.user.firstname }} {{offer.user.name}}
+				          		</h5>
+				                 <p class="mb-0 mt-2"></p> 
+				            </div>
+			            	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			                	<span aria-hidden="true">&times;</span>
+			            	</button>
+			            </div>
+			            <div class="modal-body">
+			            	<h5 class="modal-title"></h5>
+			            	<p>
+			            		<i class="far fa-envelope mr-1"></i>
+			            		 <a href="mailto:{{ offer.user.email }}">{{ offer.user.email }}</a>
+			            	</p>
+			            	<p *ngIf="offer.phone != '' ">
+			            		<i class="fas fa-phone fa-rotate-90 mr-1"></i>
+			            		<a href="tel:{{ offer.phone }}">{{ offer.phone }}</a>
+			            	</p>
+			        	</div>
+			    	</div>
+				</div>
+			</div>
+			<script src='assets/modal.js'></script>
     	</tbody>
     </table>
     <h3 class="col-12 mb-4 mt-5">
     	Mes propositions d'accord
     </h3>
-    <table class="col-12">
-    	<thead class="border-bottom">
+    <table class="table table-hover">
+    	<thead class="head">
     		<tr>
 				<th class="pb-2 pl-4"> Envoyée à </th>
 				<th class="pb-2 pl-4"> Pour le service </th>
@@ -118,7 +165,7 @@
 			    </td>
 			    <td class="pl-4"> {{offer.askRef.start}} </td>
 			    <td class="pl-4"> {{offer.askRef.end}} </td>
-			    <td class="pl-4"> 
+			    <td class="pl-4">
 		            <button 
 		            	class="btn btn-danger"
 		            	(click)="onDeleteOffer(offer)"
@@ -138,6 +185,7 @@
       routerLink="/">
         Retour
   </button>
-
-
 </div>
+
+
+

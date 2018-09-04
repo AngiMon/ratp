@@ -4,9 +4,9 @@
     class="row col-12 btn-info disabled">
     Il n'y a pas encore de demandes de permutation
   </p>
-  <table class="col-12">
-    <thead>
-      <tr class="border-bottom">
+  <table class="table table-hover">
+    <thead class="head">
+      <tr>
         <th class="pb-2 pl-4"> Repos </th>
         <th class="pb-2 pl-4"> Proposé </th>
         <th class="pb-2 pl-4"> Souhaité </th>
@@ -18,7 +18,7 @@
     </thead>
     <tbody *ngFor="let ask of asks; let i = index">
       <tr 
-        class="border-bottom"
+        
         [ngStyle]="{ 'background-color' : getColor(ask) }">
         <td class="pl-4"> {{ ask.rest }} </td>
         <td class="pl-4"> {{ ask.type }} </td>

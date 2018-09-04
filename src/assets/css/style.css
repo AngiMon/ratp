@@ -5,8 +5,11 @@ h2{
 	margin: 50px 0 ;
 }
 .space{
-	margin: 5px
+	margin: 5px;
 }
 .bottom{
 	margin-bottom: 10px;
+}
+.head{
+	background-color:#E2E2E2;
 }

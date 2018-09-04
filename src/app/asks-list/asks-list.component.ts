@@ -75,7 +75,7 @@ export class AsksListComponent implements OnInit, OnDestroy
   { 
     if(a.user.email == this.user.email)
     {
-      return '#FDE966';
+      return '#FFF8CD';
     }
   }
 }
