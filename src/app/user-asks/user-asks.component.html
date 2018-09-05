@@ -1,14 +1,54 @@
 <div class="row container  mb-5">
-	<h2>
+	<h2 class="mb-2">
 		Requêtes de 
 		<strong>
 			{{ user.firstname }} {{ user.name }}
 		</strong>
 	</h2>
-	<h3 class="col-12 mb-4">
-		Mes demandes de permutations 
-	</h3>
-	<div class="tablediv">
+	<nav>
+	  	<div 
+		class="nav nav-tabs"
+		id="nav-tab" role="tablist">
+		    <a 
+	    	class=" navButton nav-item nav-link active"
+	    	id="nav-ask-tab"
+	    	data-toggle="tab"
+	    	href="#nav-ask"
+	    	role="tab"
+	    	aria-controls="nav-ask"
+	    	aria-selected="true">
+				Mes demandes de permutations 
+		    </a>
+		    <a 
+	    	class=" navButton nav-item nav-link" 
+	    	id="nav-answer-tab" 
+	    	data-toggle="tab" 
+	    	href="#nav-answer" 
+	    	role="tab" 
+	    	aria-controls="nav-answer"
+	    	aria-selected="false">
+		    	Réponses à mes demandes 
+		    </a>
+		    <a 
+		    class=" navButton nav-item nav-link" 
+		    id="nav-proposition-tab" 
+		    data-toggle="tab" 
+		    href="#nav-proposition" 
+		    role="tab" 
+		    aria-controls="nav-proposition" 
+		    aria-selected="false">
+		    	Mes propositions d'accord
+		    </a>
+		</div>
+	</nav>
+	<div 
+	class="p-0 col-12 tab-content" 
+	id="nav-tabContent ">
+	  <div 
+	  class="p-0 tab-pane fade show active tablediv" 
+	  id="nav-ask" 
+	  role="tabpanel" 
+	  aria-labelledby="nav-ask-tab">
 		<table 
 			*ngIf='asks !== undefined && asks != []'
 			class="table table-hover">
@@ -52,11 +92,12 @@
 	        </tr>
 	      </tbody>
 	    </table>
-	</div>
-    <h3 class="col-12 mb-4 mt-5">
-    	Réponses à mes demandes 
-    </h3>
-    <div class="tablediv">
+	</div> 
+	<div 
+	class="tab-pane fade" 
+	id="nav-answer" 
+	role="tabpanel" 
+	aria-labelledby="nav-answer-tab tablediv">
 	    <table class="table table-hover">
 	    	<thead class="head">
 	    		<tr>
@@ -141,10 +182,11 @@
 	    	</tbody>
 	    </table>
 	</div>
-    <h3 class="col-12 mb-4 mt-5">
-    	Mes propositions d'accord
-    </h3>
-    <div class="tablediv">
+	<div 
+	class="tab-pane fade" 
+	id="nav-proposition" 
+	role="tabpanel" 
+	aria-labelledby="nav-proposition-tab tablediv">
 	    <table class="table table-hover">
 	    	<thead class="head">
 	    		<tr>
@@ -177,16 +219,17 @@
 	    		</tr>
 	    	</tbody>
 	    </table>
+	  </div>
 	</div>
     <p *ngIf="asks === undefined || asks == []"
     	class="row col-12 btn-info disabled">
     	Vous n'avez pas encore fait de demandes de permutation
     </p>
     <button
-      class=" btn btn-secondary mt-5"
+      class="btn btn-secondary mt-5"
       routerLink="/">
         Retour
-  </button>
+  	</button>
 </div>
 
 
