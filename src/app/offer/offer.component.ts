@@ -77,7 +77,7 @@ initForm()
         this.offerService.createNewOffer(offer);
         var templateParams = 
         {
-          name: this.user.firstname + " " + this.user.name + " ",
+          user: this.user,
           email: this.ask.user.email,
           phone: this.getPhone(phone),
           ask: this.ask,
