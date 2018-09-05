@@ -10,8 +10,8 @@ body{
 header{
 	background-image: url('../img/brique.jpg');
 	background-repeat: repeat;
-	background-size: 30%;
-	border-bottom: 1px solid #35CD9D;
+	background-size: 500px;
+	border-bottom: 2px solid #35CD9D;
 }
 #logo{
 	margin: 0 auto;
