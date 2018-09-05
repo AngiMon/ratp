@@ -6,13 +6,15 @@ body{
 	box-sizing: border-box;
 	font-size: 1.6em;
 	font-family: 'Open Sans', sans-serif;
-	background-image: url('../img/metro.jpg')
 }
 header{
-	/*background-image: url('../img/metro.jpg');
-	background-size: cover;*/
-	background-color: #0ABEC7;
-	border-bottom: 1px solid #35CD9D ;
+	background-image: url('../img/brique.jpg');
+	background-repeat: repeat;
+	background-size: 30%;
+	border-bottom: 1px solid #35CD9D;
+}
+#logo{
+	margin: 0 auto;
 }
 h1{
 	font-size: 2.2em;
@@ -29,9 +31,12 @@ header nav{
 	
 }
 header nav a{
- color: rgba(0,0,0,0.5) ;
+ color: #fff ;
  text-transform: uppercase;
- padding: 10px 0;
+ background-color: #35CD9D;
+ padding: 10px 22px;
+ border-radius: 10px 0;
+
 }
 header a:hover{
 	text-decoration: none;
