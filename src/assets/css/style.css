@@ -1,3 +1,6 @@
+* {
+	margin: 0;
+}
 html{
 	font-size: 62.5%
 }
@@ -7,21 +10,30 @@ body{
 	font-size: 1.6em;
 	font-family: 'Open Sans', sans-serif;
 }
-header, footer{
-	background-image: url('../img/briques.jpg');
-	background-repeat: repeat;
-	background-size: 500px;
-	
+img{
+	max-width: 100%;
+}
+body, main{
+	background-color: #f7f7f7;
 }
 header{
-	border-bottom: 2px solid #35CD9D;
+	background-image: url('../img/briques.jpg');
+	background-repeat: repeat;
+	background-size: 450px;
+	
 }
+/*header{
+	border-bottom: 2px solid #35CD9D;
+}*/
 ul{
 	padding: 0;
 	margin:0;
 }
 #logo{
-	margin: 0 auto;
+	margin: 10px auto;
+}
+#request{
+	padding-bottom: 40px;
 }
 h1{
 	font-size: 2.2em;
@@ -33,59 +45,69 @@ header h1, header h2{
 	color: #fff;
 }
 header nav{
-	display: flex;
-	justify-content: space-around;
+	/*display: flex;
+	justify-content: space-around;*/
+	padding:10px 0;
+	background-color: #35CD9D
 	
 }
 header nav a{
  color: #fff ;
  text-transform: uppercase;
- background-color: #35CD9D;
  padding: 10px 22px;
- border-radius: 10px 0;
+ /*border-radius: 10px 0;*/
 
 }
 header nav a:hover{
 	text-decoration: none;
 	color: #fff;
- 	-webkit-transform: translateY(-8px);
+	/*background-color:#76E5C3 ;*/
+
+ 	/*-webkit-transform: translateY(-8px);
     transform: translateY(-8px);
     -webkit-box-shadow: 2px 10px 5px 0px rgba(0,0,0,0.75);
 	-moz-box-shadow: 2px 10px 5px 0px rgba(0,0,0,0.75);
-	box-shadow: 2px 10px 5px 0px rgba(0,0,0,0.75);
+	box-shadow: 2px 10px 5px 0px rgba(0,0,0,0.75);*/
     transition: 0.5s;
 }
 .navButton{
 	font-family: 'Source Sans Pro', sans-serif;
 }
-
 h1{
 	margin: 0 ;
-}
-nav{
-	margin: 30px 0 0;
 }
 h2{
 	margin: 50px 0 ;
 }
-main .container{
-	background-color:  #fff;
-	height: 100%
+h5{
+	font-size: 1.2em;
 }
-.ok{
+.ok, .sub{
 	background-color: #34C436;
-
 }
 .view{
 	background-color: #38D3B2 ;
 }
-.view, .ok{
+.valid{
+	background-color: #0072ff;
+}
+.sub{
+	background-color: #28a745;
+}
+.back{
+	background-color: grey;
+}
+.del{
+	background-color: #f34e4e;
+}
+.view, .ok, .valid, .sub, .back, .del{
 	color: #fff;
 	border:0;
-	padding: 6px 10px 5px;
+	padding: 8px 12px 7px;
 	cursor: pointer;
+	border-radius: 5px;
 }
-.view:hover, .ok:hover{
+.view:hover, .ok:hover, .del:hover{
 	 transform: scale(1.5);
 	 transition: 0.5s;
 }
@@ -102,35 +124,50 @@ main .container{
 	width:100%;
 	overflow-x:auto;
 }
-footer{
-	border-top: 2px solid #35CD9D;
-	margin-top: 100px;
-	color: #fff;
+.nav-link{
+	color: #000;
 }
-footer h3{
-	
+.nav-item{
+	color: grey;
+	padding-top: 15px;
+	padding-bottom: 15px;
+
+}
+input[type=text], input[type=password], .form-control{
+	font-size: 1em;
+}
+footer{
+	border-top: 1px solid #35CD9D;
+	border-bottom: 1px solid #35CD9D;
+	margin-top: 50px;
+	color: #000;
 }
 footer h5{
 	padding-top: 20px;
 }
 footer .container{
-	padding: 20px 0;
-	background-color: #0f1857;
-	border: 10px solid #919197;
+	padding: 20px 0 ;
 }
+
 footer .div{
-	display: flex;
-	justify-content: space-around;
+
+	width: 50%;
+	display: inline-block;
+	vertical-align: top;
 }
+
 footer a{
-	color: #fff;
+	color: #000;
 	text-decoration: underline; ;
 }
 footer a:hover{
-	color: #fff;
+	color: #000;
 }
 
 footer ul{
+
+	
+
 	text-align: center;
 	list-style: none;
 }

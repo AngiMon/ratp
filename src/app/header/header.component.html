@@ -9,50 +9,46 @@
 		<!--<h2 class="text-center mt-1">
 			Ligne 10 (Austerlitz)
 		</h2>-->
-		<nav class="col-md-12 p-0 nav">
-			<a class=" navButton  mt-1"
-				routerLink="/nouvelle-demande" 
-				routerLinkActive="active">
-				Nouvelle demande
-			</a>
-			<a class=" navButton  mt-1" 
-			   routerLink="/demandes-en-cours"
-			   routerLinkActive="active">
-				Demandes en cours
-			</a>
-			<a class=" navButton  mt-1" 
-			   routerLink="/"
-			   *ngIf="isAuth"
-			   routerLink="mes-demandes"
-			   routerLinkActive="">
-				Mes requêtes
-			</a>
-			<a class=" navButton mt-1"
-			   routerLink="auth/signup"
-			   routerLinkActive="active"
-			   *ngIf="!isAuth">
-			   	M'inscrire
-		    </a>
-		    <a class=" navButton mt-1"
-		       routerLink="auth/signin"
-		       routerLinkActive="active"
-		       *ngIf="!isAuth">
-		       	Me connecter
-		   	</a>
-		   	
-			   	<a class=" navButton  mt-1 "
-			   	   routerLink='/'
-			   	   *ngIf="isAuth"
-			   	   (click)="onSignOut()">
-			   		Déconnexion
-			   	</a>
-			   	{{ (authdata != null) ? user.firstname + " " + user.name : ''}}
-		   
-		</nav>
 	</div>
+		<nav class="col-md-12  nav">
+			<div class="container">
+				<a class=" navButton  mt-1"
+					routerLink="/nouvelle-demande" 
+					routerLinkActive="active">
+					Nouvelle demande
+				</a>
+				<a class=" navButton  mt-1" 
+				   routerLink="/demandes-en-cours"
+				   routerLinkActive="active">
+					Demandes en cours
+				</a>
+				<a class=" navButton  mt-1" 
+				   routerLink="/"
+				   *ngIf="isAuth"
+				   routerLink="mes-demandes"
+				   routerLinkActive="">
+					Mes requêtes
+				</a>
+				<a class=" navButton mt-1"
+				   routerLink="auth/signup"
+				   routerLinkActive="active"
+				   *ngIf="!isAuth">
+				   	M'inscrire
+			    </a>
+			    <a class=" navButton mt-1"
+			       routerLink="auth/signin"
+			       routerLinkActive="active"
+			       *ngIf="!isAuth">
+			       	Me connecter
+			   	</a>
+			   	
+				   	<a class=" navButton  mt-1 "
+				   	   routerLink='/'
+				   	   *ngIf="isAuth"
+				   	   (click)="onSignOut()">
+				   		Déconnexion
+				   	</a>
+			   	<!--{{ (authdata != null) ? user.firstname + " " + user.name : ''}}-->
+		   </div>
+		</nav>
 </header>
-<main>
-<div class="container">
-	<router-outlet></router-outlet>
-</div>
-</main>
