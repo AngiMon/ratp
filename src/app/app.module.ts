@@ -24,6 +24,7 @@ import { AskFormComponent } from './asks-list/ask-form/ask-form.component';
 import { UserAsksComponent } from './user-asks/user-asks.component';
 import { ForgetComponent } from './forget/forget.component';
 import { OfferComponent } from './offer/offer.component';
+import { FooterComponent } from './footer/footer.component';
 
 const appRoutes: Routes = [
   { path: 'auth/signup', component: SignupComponent},
@@ -51,6 +52,7 @@ const appRoutes: Routes = [
     UserAsksComponent,
     ForgetComponent,
     OfferComponent,
+    FooterComponent,
   ],
   imports: [
   	BrowserModule,

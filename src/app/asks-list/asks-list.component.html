@@ -30,7 +30,7 @@
         <td class="pl-4"> {{ ask.end }} </td>
         <td class="pl-4"> 
           <button 
-            class="btn btn-success"
+            class="ok"
             *ngIf='ask.user.email !== user.email'
             data-toggle="modal"
             [attr.data-target]="'#' + i"
@@ -40,7 +40,7 @@
             <i class="fas fa-handshake"></i>
           </button>
           <button
-            class="btn btn-info ml-1"
+            class=" view ml-1"
             (click)="onViewAsk(i)"
             title="Voir"> 
             <i class="fas fa-search"></i>

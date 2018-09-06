@@ -59,7 +59,6 @@ initForm()
 
   onSaveOffer(i)
   {
-    console.log('save!');
     const rest = this.offerForm.get('rest').value;
     const type = this.offerForm.get('type').value;
     const teamNb = this.offerForm.get('teamNb').value;
