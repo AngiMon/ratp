@@ -8,6 +8,7 @@ var heightWin, height, header, footer, main;
 
 function Footer()
 {
+	console.log('height');
 	heightWin = window.innerHeight;
 	main = document.getElementById("main");
 	header = document.getElementById("header");

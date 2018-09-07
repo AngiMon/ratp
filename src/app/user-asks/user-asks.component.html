@@ -114,7 +114,7 @@
 			    	<td class="pl-4"> 
 			    		{{ offer.user.firstname }} {{offer.user.name}}
 			    	</td>
-			    	<td class="pl-4">Matricule</td>
+			    	<td class="pl-4">{{offer.user.registrationNumber}}</td>
 				    <td class="pl-4">
 				    	{{ offer.askRef.type }} 
 				    	
@@ -191,6 +191,7 @@
 	    	<thead class="head">
 	    		<tr>
 					<th class="pb-2 pl-4"> Envoyée à </th>
+					<th class="pb-2 pl-4"> Matricule </th>
 					<th class="pb-2 pl-4"> Pour le service </th>
 					<th class="pb-2 pl-4"> Début </th>
 					<th class="pb-2 pl-4"> Fin </th>
@@ -201,6 +202,9 @@
 	    		<tr *ngIf="offer.user.email == user.email">
 			    	<td class="pl-4"> 
 			    		{{ offer.askRef.user.firstname }} {{offer.askRef.user.name}}
+			    	</td>
+			    	<td class="pl-4">
+			    		{{ offer.askRef.user.registrationNumber }}
 			    	</td>
 				    <td class="pl-4">
 				    	{{ offer.askRef.type }} 

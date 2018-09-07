@@ -21,9 +21,7 @@ export class SignupComponent implements OnInit
 				private authService: AuthService,
 				private userService: UserService,
 				private router: Router)
-	{
-
-	}
+	{}
 
 	ngOnInit()
 	{
@@ -37,7 +35,8 @@ export class SignupComponent implements OnInit
 			email: ['', [Validators.required, Validators.email]],
 			password: ['', [Validators.required, Validators.pattern(/[0-9a-zA-Z]{6,}/)]],
 			name: ['', [Validators.required]],
-			firstname: ['', [Validators.required]]
+			firstname: ['', [Validators.required]],
+			registrationNumber: ['', [Validators.required]]
 		});
 	}
 
@@ -47,7 +46,8 @@ export class SignupComponent implements OnInit
 		const password = this.signupForm.get('password').value;
 		const firstname = this.signupForm.get('firstname').value;
 		const name = this.signupForm.get('name').value;
-		const newUser = new User( email, firstname, name );
+		const registrationNumber = this.signupForm.get('registrationNumber').value;
+		const newUser = new User( email, firstname, name, registrationNumber );
 
 		this.userService.createNewUser(newUser);
 		this.authService.createNewUser(email, password).then(
