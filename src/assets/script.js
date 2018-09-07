@@ -1,3 +1,4 @@
+// datepicker
 var off = document.getElementById('off');
 
 $.fn.datepicker.defaults.format = "dd/mm/yyyy";
@@ -8,7 +9,6 @@ var heightWin, height, header, footer, main;
 
 function Footer()
 {
-	console.log('height');
 	heightWin = window.innerHeight;
 	main = document.getElementById("main");
 	header = document.getElementById("header");

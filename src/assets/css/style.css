@@ -32,6 +32,9 @@ ul{
 #logo{
 	margin: 10px auto;
 }
+#start, #end{
+	background-color: #fff;
+}
 .request{
 	padding-bottom: 40px;
 }
@@ -138,6 +141,13 @@ h5{
 	color: grey;
 	padding-top: 15px;
 	padding-bottom: 15px;
+}
+.datepicker-dropdown{
+	font-size: 1em;
+	padding: 6px 10px;
+}
+.error{
+	color: red;
 }
 input[type=text], input[type=password], .form-control{
 	font-size: 1em;

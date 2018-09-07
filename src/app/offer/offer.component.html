@@ -51,6 +51,9 @@
                         {{ y }}
                       </option>
                     </select>
+                    <div class="error" disabled *ngIf="errors.rest != undefined">
+						{{ errors.rest }}
+					</div>
                   </div>
                   <div class="form-group">
                     <label>
@@ -118,14 +121,15 @@
 	            </div>
 	            <div class="modal-footer">
 	              <button 
-	                type="button" 
+	                type="button"
+	                id="close"
 	                class="back" 
 	                data-dismiss="modal">
 	                Annuler
 	              </button>
 	              <button 
 	                (click)="onSaveOffer(i)"
-	                data-dismiss="modal"
+	                
 	                class="sub">
 	                Envoyer
 	              </button>

@@ -23,6 +23,8 @@ export class AskFormComponent implements OnInit
 	array = new Array(25);
   repos = new Array(6);
 	askForm: FormGroup;
+  errors = new Object();
+
    constructor(
      private formBuilder: FormBuilder, 
      private asksService: AskService,
@@ -47,28 +49,56 @@ export class AskFormComponent implements OnInit
     });
   }
   
-  onSaveAsk() {
+  onSaveAsk() 
+  {
+    this.errors = new Object();
+
+//CONTRAINSTS OF VALIDATION
     var startIni = document.getElementById('start').value;
     var endIni = document.getElementById('end').value;
-    const start = this.askForm.get('start').value;
-    start = startIni;
-    const end = this.askForm.get('end').value;
-    end = endIni;
+    if(startIni != "" && endIni != "")
+    {
+      const start = this.askForm.get('start').value;
+      start = startIni;
+      const end = this.askForm.get('end').value;
+      end = endIni;
+    }
+    else
+    {
+      this.errors.date = "Indiquez la date de début et de fin de votre service"
+    }
+
     const type = this.askForm.get('type').value;
+    type == '' ? this.errors.type = 'le type est requis' : '';
+
+    const rest = this.askForm.get('rest').value;
+    rest == '' ? this.errors.rest = 'Indiquez votre repos' : '';
 
     const jour = this.askForm.get('Jour').value;
     const mixte = this.askForm.get('Mixte').value;
     const nuit = this.askForm.get('Nuit').value;
-    const rest = this.askForm.get('rest').value;
-
     const typeVs = {jour : jour, mixte : mixte, nuit : nuit};
-    
+    typeVs.jour | typeVs.mixte | typeVs.nuit ? '' : this.errors.choice = "Précisez le(s) service(s) souhaité(s) en échange du vôtre";
+
     const teamNb = this.askForm.get('teamNb').value;
+    teamNb == '' ? this.errors.team = "Indiquez votre numéro d'équipe" : '';
+
+//VALIDATION OF THE FORM
+    if(  this.errors.date == undefined 
+      && this.errors.type == undefined 
+      && this.errors.rest == undefined
+      && this.errors.team == undefined)
+    {
+      const user = this.user;
+      const newAsk = new Ask(start, end, rest, teamNb, type, typeVs, user);
+      this.asksService.createNewAsk(newAsk);
+      this.router.navigate(['/demandes-en-cours']);
+    }    
     
-    const user = this.user;
-    const newAsk = new Ask(start, end, rest, teamNb, type, typeVs, user);
-    this.asksService.createNewAsk(newAsk);
-    this.router.navigate(['/demandes-en-cours']);
+
+    
+
+    
   }
 
   Click(a)

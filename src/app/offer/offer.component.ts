@@ -30,6 +30,7 @@ export class OfferComponent implements OnInit
 	offerForm : FormGroup;
 	array = Array(24);
 	rest = Array(6);
+  errors = new Object();
 
 
   constructor(
@@ -57,14 +58,30 @@ initForm()
     });
   }
 
-  onSaveOffer(i)
+  onSaveOffer(i, t)
   {
+    this.errors = new Object();
+
     const rest = this.offerForm.get('rest').value;
     const type = this.offerForm.get('type').value;
     const teamNb = this.offerForm.get('teamNb').value;
     const phone = this.offerForm.get('phone').value;
     const message = this.offerForm.get('message').value;
-    this.getAsk(i, rest, type, teamNb, phone, message);
+
+    rest = '' ? this.errors.rest = 'Indiquez votre repos' : '';
+    type = '' ? this.errors.type = 'Indiquez votre type de service' : '';
+    teamNb = '' ? this.errors.team = 'Indiquez votre numéro d\'équipe' : '';
+
+
+    if(this.errors.type == undefined 
+      && this.errors.rest == undefined
+      && this.errors.team == undefined)
+    {
+      console.log("all ok");
+     document.getElementById("close").click();
+     // this.getAsk(i, rest, type, teamNb, phone, message);
+    }
+
   }
 
   getAsk(i, rest, type, teamNb, phone, message)
