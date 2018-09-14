@@ -52,13 +52,13 @@ initForm()
       rest: ['', Validators.required],
       type: ['', Validators.required],
       teamNb: ['', Validators.required],
-      phone: ['', Validators.required],
-      message: ['', Validators.required],
+      phone: ['', Validators.min(10)],
+      message: [''],
 
     });
   }
 
-  onSaveOffer(i, t)
+  onSaveOffer(i)
   {
     this.errors = new Object();
 
@@ -68,9 +68,9 @@ initForm()
     const phone = this.offerForm.get('phone').value;
     const message = this.offerForm.get('message').value;
 
-    rest = '' ? this.errors.rest = 'Indiquez votre repos' : '';
-    type = '' ? this.errors.type = 'Indiquez votre type de service' : '';
-    teamNb = '' ? this.errors.team = 'Indiquez votre numéro d\'équipe' : '';
+    rest == '' ? this.errors.rest = 'Indiquez votre repos' : '';
+    type == '' ? this.errors.type = 'Indiquez votre type de service' : '';
+    teamNb == '' ? this.errors.team = 'Indiquez votre numéro d\'équipe' : '';
 
 
     if(this.errors.type == undefined 
@@ -78,10 +78,15 @@ initForm()
       && this.errors.team == undefined)
     {
       console.log("all ok");
-     document.getElementById("close").click();
-     // this.getAsk(i, rest, type, teamNb, phone, message);
+      this.getAsk(i, rest, type, teamNb, phone, message);
     }
-
+    /*else
+    {
+      console.log('error!');
+      var close = document.getElementById("close");
+      console.log(close);
+      close.click();
+    }*/
   }
 
   getAsk(i, rest, type, teamNb, phone, message)

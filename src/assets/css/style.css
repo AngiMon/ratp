@@ -20,11 +20,7 @@ header{
 	background-image: url('../img/briques.jpg');
 	background-repeat: repeat;
 	background-size: 450px;
-	
 }
-/*header{
-	border-bottom: 2px solid #35CD9D;
-}*/
 ul{
 	padding: 0;
 	margin:0;
@@ -182,4 +178,8 @@ footer ul{
 }
 footer .int:before, .ext:before{
 	content: "|";
+}
+
+.sub:disabled {
+    background: #9FD799;
 }
