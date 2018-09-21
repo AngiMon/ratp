@@ -14,7 +14,7 @@ export class OfferService
 		this.getOffers();
 	}
 	emitOffers()
-	{
+	{	
 		this.offerSubject.next(this.offers.slice());
 	}
 	addoffers(offer: Offer)

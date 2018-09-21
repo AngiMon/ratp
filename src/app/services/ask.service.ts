@@ -39,20 +39,50 @@ export class AskService
 			})
 	}
 
-	getSingleAsk(id : number)
+	getSingleAsk(id : number = null, ask = null)
 	{
-		return new Promise(
+		if(id !== null)
+		{
+			return new Promise(
 			(resolve, reject) => {
 				firebase.database().ref('/demandes-en-cours/' + id).once('value').then(
 					(data: DataSnapshot) => {
-						resolve(data.val());
-					},
-					(error) => {
-						reject(error);
-					}
-				);
+							resolve(data.val());
+						},
+						(error) => {
+							reject(error);
+						}
+					);
+				}
+			);
+		}
+		else
+		{
+			
+			for(var i = 0; i < this.asks.length; i++)
+			{ 
+				if(JSON.stringify(this.asks[i]) == JSON.stringify(ask) )
+				{
+					return new Promise(
+					(resolve, reject) => {
+						firebase.database().ref('/demandes-en-cours/' + i).once('value').then(
+							(data: DataSnapshot) => {
+									resolve(data.val());
+								},
+								(error) => {
+									reject(error);
+								}
+							);
+						}
+					);
+				}
+				else
+				{
+					console.log("no match");
+				}
 			}
-		);
+			
+		}
 	}
 
 	createNewAsk(newAsk: Ask)

@@ -122,7 +122,21 @@
 				    </td>
 				    <td class="pl-4"> {{offer.askRef.start}} </td>
 				    <td class="pl-4"> {{offer.askRef.end}} </td>
-				    <td class="pl-4"> Non traité </td>
+				    <td 
+				    class="pl-4"
+				    *ngIf="offer.response">
+			    		Acceptée
+				    </td>
+				     <td 
+				     class="pl-4"
+				     *ngIf="offer.response == false">
+			    		Refusée
+				    </td>
+				     <td 
+				     class="pl-4"
+				     *ngIf="offer.response === undefined">
+			    		Non-traitée
+				    </td>
 				    <td class="pl-4">
 				    	<button
 				    		class="ok mr-1"
@@ -216,7 +230,25 @@
 				    </td>
 				    <td class="pl-4"> {{offer.askRef.start}} </td>
 				    <td class="pl-4"> {{offer.askRef.end}} </td>
-				    <td class="pl-4"> En attente </td>
+				    
+				    <td 
+				    class="pl-4"
+				    *ngIf="offer.response">
+			    		Acceptée
+				    </td>
+				     <td 
+				     class="pl-4"
+				     *ngIf="offer.response == false">
+			    		Refusée
+			    		{{ offer.response|json }}
+				    </td>
+				     <td 
+				     class="pl-4"
+				     *ngIf="offer.response === undefined">
+			    		En attente...
+			    		{{ offer.response|json}}
+				    </td>
+				    
 				    <td class="pl-4">
 			            <button 
 			            	class="del"

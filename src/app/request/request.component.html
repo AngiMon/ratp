@@ -1,4 +1,3 @@
-{{ offer|json}}
 <div class="row container ">
 	<section>
 		<h2 class="mb-4">
@@ -14,7 +13,7 @@
 		</article>
 
 
-		<div>
+		<div *ngIf="offer.response === undefined">
 			<button
 			class="ok"
 			(click)="Accepted(offer)" >
