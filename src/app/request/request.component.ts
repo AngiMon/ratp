@@ -51,8 +51,10 @@ export class RequestComponent implements OnInit
 	      (ask: Ask) => {
 	      	this.ask = ask;
 	        this.askService.removeAsk(this.ask);
-	      }
-    );
+	      });
+      	
+      	this.router.navigate(['mes-requetes']);
+    
 
 	}
 
