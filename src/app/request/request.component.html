@@ -1,30 +1,58 @@
 <div class="row container ">
 	<section>
-		<h2 class="mb-4">
-	  		<strong>{{ offer.user.firstname }} {{ offer.user.name}} </strong> attend votre réponse pour échanger avec vous.
+		<h2 class="mb-2">
+	  		<strong>{{ offer.user.firstname }} {{ offer.user.name}} </strong> attend votre réponse pour échanger avec vous sur la période :
 		</h2>
-		<article class="bloc pl-2" *ngIf='offer.message !== "" '>
-			<h3>
+		<h3>
+			{{ offer.askRef.start }} - {{ offer.askRef.end }}
+		</h3>
+		<article class="bloc" *ngIf='offer.message !== "" '>
+			<h4>
 				Vous avez reçu un message de sa part :
-			</h3>
+			</h4>
 			<p class="quote">
 				{{ offer.message }}
 			</p>
 		</article>
-
+		<article>
+			<h4>
+				Faite-lui savoir si son service vous convient
+			</h4>
+			<table class="table table-hover">
+			    <thead class="head">
+			      <tr>
+			        <th class="pb-2 pl-4"> Repos </th>
+			        <th class="pb-2 pl-4"> type </th>
+			        <th class="pb-2 pl-4"> Equipe </th>
+			      </tr>
+			    </thead>
+			    <tbody>
+					<tr>
+				        <td class="pl-4"> {{ offer.rest }} </td>
+				        <td class="pl-4"> {{ offer.type }} </td>
+				        <td class="pl-4"> {{ offer.teamNb }} </td>
+		    		</tr>
+				</tbody>
+			</table>
+		</article>
 
 		<div *ngIf="offer.response === undefined">
 			<button
-			class="ok"
+			class="ok mr-3"
 			(click)="Accepted(offer)" >
 				Accepter
 			</button>
 			<button 
-			class="del ml-3"
+			class="del"
 			(click)="Refused(offer)">
 				Refuser
 			</button>
 		</div>
+		<button 
+			class="back mt-5 mb-3 mr-3"
+			routerLink="/mes-requetes">
+				Retour
+			</button>
 	</section>
 </div>
 

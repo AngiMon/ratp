@@ -1,7 +1,8 @@
 <div class="row">
   <h2>Toutes les dernières demandes de permutations</h2>
-  <p *ngIf='asks === undefined'
-    class="row col-12 btn-info disabled">
+  <p 
+  *ngIf='asks === undefined'
+  class="row col-12 btn-info disabled">
     Il n'y a pas encore de demandes de permutation
   </p>
   <table class="table table-hover">
@@ -30,19 +31,19 @@
         <td class="pl-4"> {{ ask.end }} </td>
         <td class="pl-4">
           <button
-            class=" view"
-            (click)="onViewAsk(i)"
-            title="Voir"> 
+          class=" view"
+          (click)="onViewAsk(i)"
+          title="Voir"> 
             <i class="fas fa-search"></i>
           </button>
           <button 
-            class="ok ml-1"
-            *ngIf='ask.user.email !== user.email'
-            data-toggle="modal"
-            [attr.data-target]="'#' + i"
-            data-whatever="@mdo"
-            title="Proposer un accord"
-            > 
+          class="ok ml-1"
+          *ngIf='ask.user.email !== user.email'
+          data-toggle="modal"
+          [attr.data-target]="'#' + i"
+          data-whatever="@mdo"
+          title="Proposer un accord"
+          > 
             <i class="fas fa-handshake"></i>
           </button>
         </td>
