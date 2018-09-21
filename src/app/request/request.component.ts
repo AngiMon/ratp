@@ -54,14 +54,13 @@ export class RequestComponent implements OnInit
 	      });
       	
       	this.router.navigate(['mes-requetes']);
-    
-
 	}
 
 	Refused(offer)
 	{
 		this.offer = new Offer( offer.rest, offer.type, offer.teamNb, offer.phone, offer.message, offer.askRef, offer.user, false);
 		this.offerService.editOffer(this.offer, this.id);
+		this.router.navigate(['mes-requetes']);
 	}
 
 }
