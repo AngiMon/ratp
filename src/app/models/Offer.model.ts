@@ -1,7 +1,7 @@
 export class Offer
 {
 	constructor(
-		public repos: number,
+		public rest: number,
 		public type: string,
 		public teamNb: number,
 		public phone: string,

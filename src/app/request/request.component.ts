@@ -27,7 +27,7 @@ export class RequestComponent implements OnInit
 	ngOnInit()
 	{
 		this.user = new User(" "," ", " ", " ");
-		this.offer = new Offer(" ", " ", " ", " ", " ", " ", " ")
+		this.offer = new Offer(" ", " ", " ", " ", " ", " ", " ", " ")
 		this.authService.getAuthData(this);
 		this.id = this.route.snapshot.params['id'];
 		this.offerService.getSingleOffer(+this.id).then(
@@ -40,8 +40,8 @@ export class RequestComponent implements OnInit
 	Accepted(offer)
 	{
 		console.log(offer);
-		console.log(this.id);
-		this.offer = new Offer(parseInt(offer.rest), offer.type, offer.teamNb, offer.phone, offer.message, offer.askRef, offer.user, true);
+		console.log(offer.rest);
+		this.offer = new Offer( offer.rest, offer.type, offer.teamNb, offer.phone, offer.message, offer.askRef, offer.user, true);
 		this.offerService.editOffer(this.offer, this.id);
 	}
 
