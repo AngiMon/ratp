@@ -94,7 +94,7 @@ initForm()
     this.asksService.getSingleAsk(i).then(
       (ask: Ask) => {
         this.ask = ask;
-        const offer = new Offer(rest, type, teamNb, phone, message, this.ask, this.user);
+        const offer = new Offer(rest, type, teamNb, phone, message, this.ask, this.user, null);
         this.offerService.createNewOffer(offer);
         var templateParams = 
         {

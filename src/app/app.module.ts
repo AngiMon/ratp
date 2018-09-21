@@ -25,6 +25,7 @@ import { UserAsksComponent } from './user-asks/user-asks.component';
 import { ForgetComponent } from './forget/forget.component';
 import { OfferComponent } from './offer/offer.component';
 import { FooterComponent } from './footer/footer.component';
+import { RequestComponent } from './request/request.component';
 
 const appRoutes: Routes = [
   { path: 'auth/signup', component: SignupComponent},
@@ -32,8 +33,9 @@ const appRoutes: Routes = [
   { path: 'nouvelle-demande', canActivate: [AuthGuardService], component: AskComponent },
   { path: 'demandes-en-cours', component: AsksListComponent},
   { path: 'demandes-en-cours/:id', component: SingleAskComponent},
-  { path: 'mes-demandes', component: UserAsksComponent},
-  { path: 'auth/reset', component: ForgetComponent}
+  { path: 'mes-requetes', component: UserAsksComponent},
+  { path: 'auth/reset', component: ForgetComponent},
+  { path: 'mes-requetes/requete/:id', component: RequestComponent}
 
 ];
 
@@ -53,6 +55,7 @@ const appRoutes: Routes = [
     ForgetComponent,
     OfferComponent,
     FooterComponent,
+    RequestComponent,
   ],
   imports: [
   	BrowserModule,

@@ -7,6 +7,7 @@ export class Offer
 		public phone: string,
 		public message: string,
 		public askRef: Object,
-		public user: Object)
+		public user: Object,
+		public response: boolean)
 	{}
 }

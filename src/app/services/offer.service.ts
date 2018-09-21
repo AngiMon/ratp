@@ -13,23 +13,19 @@ export class OfferService
 	{
 		this.getOffers();
 	}
-
 	emitOffers()
 	{
 		this.offerSubject.next(this.offers.slice());
 	}
-
 	addoffers(offer: Offer)
 	{
 		this.offers.push(offer);
 		this.emitOffers();
 	}
-
 	saveOffers()
 	{
 		firebase.database().ref('/offer').set(this.offers);
 	}
-
 	getOffers()
 	{
 		firebase.database().ref('/offer/')
@@ -38,7 +34,6 @@ export class OfferService
 				this.emitOffers();
 			})
 	}
-
 	getSingleOffer(id : number)
 	{
 		return new Promise(
@@ -54,14 +49,19 @@ export class OfferService
 			}
 		);
 	}
-
 	createNewOffer(newOffer: Offer)
 	{
 		this.offers.push(newOffer);
 		this.saveOffers();
 		this.emitOffers();
 	}
-
+	editOffer(Offer: Offer, id)
+	{
+		this.offers[id] = Offer;
+		console.log(this.offers[id]);
+		this.saveOffers();
+		this.emitOffers();
+	}
 	removeOffer(offer: Offer)
 	{
 		const offerIndexToRemove = this.offers.findIndex(
@@ -76,6 +76,4 @@ export class OfferService
 		this.saveOffers();
 		this.emitOffers();
 	}
-
-
 }

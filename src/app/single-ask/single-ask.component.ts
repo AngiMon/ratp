@@ -24,7 +24,7 @@ export class SingleAskComponent implements OnInit
     private router: Router) {}
 
   ngOnInit() {
-    this.user = new User('', '', '');
+    this.user = new User('', '', '',' ');
     this.ask = new Ask('', '', '', '', '', '', '');
     this.authService.getAuthData(this);
     const id = this.route.snapshot.params['id'];

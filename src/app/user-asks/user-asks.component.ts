@@ -6,6 +6,7 @@ import { User } from "../models/User.model";
 import { Ask } from "../models/Ask.model";
 import { Offer } from "../models/Offer.model";
 import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-asks',
@@ -25,7 +26,8 @@ export class UserAsksComponent implements OnInit
 	constructor(
 		private authService: AuthService,
 		private asksService: AskService,
-		private offerService: OfferService) { }
+		private offerService: OfferService,
+		private router: Router) { }
 
 	ngOnInit()
 	{
@@ -54,4 +56,8 @@ export class UserAsksComponent implements OnInit
 	{
     	this.offerService.removeOffer(offer);
 	}
+	onViewRequest(id: number)
+  {
+    this.router.navigate(['mes-requetes/requete', id ]);
+  }
 }

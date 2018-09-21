@@ -1,0 +1,31 @@
+{{ offer|json}}
+<div class="row container ">
+	<section>
+		<h2 class="mb-4">
+	  		<strong>{{ offer.user.firstname }} {{ offer.user.name}} </strong> attend votre réponse pour échanger avec vous.
+		</h2>
+		<article class="bloc pl-2" *ngIf='offer.message !== "" '>
+			<h3>
+				Vous avez reçu un message de sa part :
+			</h3>
+			<p class="quote">
+				{{ offer.message }}
+			</p>
+		</article>
+
+
+		<div>
+			<button
+			class="ok"
+			(click)="Accepted(offer)" >
+				Accepter
+			</button>
+			<button 
+			class="del ml-3"
+			(click)="Refused(offer)">
+				Refuser
+			</button>
+		</div>
+	</section>
+</div>
+
