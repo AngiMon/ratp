@@ -5,6 +5,7 @@
 			{{ user.firstname }} {{ user.name }}
 		</strong>
 	</h2>
+	{{ myAsk }}
 	<nav>
 	  	<div 
 		class="nav nav-tabs"
@@ -17,17 +18,7 @@
 	    	role="tab"
 	    	aria-controls="nav-ask"
 	    	aria-selected="true">
-				Mes demandes de permutations 
-		    </a>
-		    <a 
-	    	class=" navButton nav-item nav-link" 
-	    	id="nav-answer-tab" 
-	    	data-toggle="tab" 
-	    	href="#nav-answer" 
-	    	role="tab" 
-	    	aria-controls="nav-answer"
-	    	aria-selected="false">
-		    	Réponses à mes demandes 
+				Mes demandes de permutation 
 		    </a>
 		    <a 
 		    class=" navButton nav-item nav-link" 
@@ -37,8 +28,18 @@
 		    role="tab" 
 		    aria-controls="nav-proposition" 
 		    aria-selected="false">
-		    	Mes propositions d'accord
+		    	Mes envois
 		    </a>
+		    <a 
+	    	class=" navButton nav-item nav-link" 
+	    	id="nav-answer-tab" 
+	    	data-toggle="tab" 
+	    	href="#nav-answer" 
+	    	role="tab" 
+	    	aria-controls="nav-answer"
+	    	aria-selected="false">
+		    	Réponses reçues 
+		    </a>	    
 		</div>
 	</nav>
 	<div 
@@ -50,8 +51,8 @@
 	  role="tabpanel" 
 	  aria-labelledby="nav-ask-tab">
 		<table 
-			*ngIf='asks !== undefined && asks != []'
-			class="table table-hover">
+		*ngIf='myAsk == true'
+		class="table table-hover">
 	      <thead class="head">
 	        <tr>
 	        	<th class="pb-2 pl-4"> Repos </th>
@@ -92,13 +93,89 @@
 	        </tr>
 	      </tbody>
 	    </table>
+	    <p 
+	    class="empty" 
+	    *ngIf="!myAsk">
+	    	Vous n'avez effectué aucune demande de permutation.
+	    	<br>
+	    	Rendez-vous dans la rubrique "Nouvelle demande" pour demander à échanger votre service avec un autre conducteur.
+	    </p>
 	</div> 
+	<div 
+	class="tab-pane fade" 
+	id="nav-proposition" 
+	role="tabpanel" 
+	aria-labelledby="nav-proposition-tab tablediv">
+	    <table
+	    *ngIf="offers.length != 0" 
+	    class="table table-hover">
+	    	<thead class="head">
+	    		<tr>
+					<th class="pb-2 pl-4"> Envoyée à </th>
+					<th class="pb-2 pl-4"> Matricule </th>
+					<th class="pb-2 pl-4"> Pour le service </th>
+					<th class="pb-2 pl-4"> Début </th>
+					<th class="pb-2 pl-4"> Fin </th>
+					<th class="pb-2 pl-4"> Statut </th>
+					<th class="pb-2 pl-4"> Action </th>
+	    		</tr>
+	    	</thead>
+	    	<tbody *ngFor="let offer of offers; let y = index">
+	    		<tr *ngIf="offer.user.email == user.email">
+			    	<td class="pl-4"> 
+			    		{{ offer.askRef.user.firstname }} {{offer.askRef.user.name}}
+			    	</td>
+			    	<td class="pl-4">
+			    		{{ offer.askRef.user.registrationNumber }}
+			    	</td>
+				    <td class="pl-4">
+				    	{{ offer.askRef.type }} 
+				    	
+				    </td>
+				    <td class="pl-4"> {{offer.askRef.start}} </td>
+				    <td class="pl-4"> {{offer.askRef.end}} </td>
+				    
+				    <td 
+				    class="pl-4"
+				    *ngIf="offer.response">
+			    		Acceptée
+				    </td>
+				     <td 
+				     class="pl-4"
+				     *ngIf="offer.response == false">
+			    		Refusée
+				    </td>
+				     <td 
+				     class="pl-4"
+				     *ngIf="offer.response === undefined">
+			    		En attente...
+				    </td>
+				    
+				    <td class="pl-4">
+			            <button 
+			            	class="del"
+			            	(click)="onDeleteOffer(offer)"
+			            	title="Supprimer">
+			            	<i class="fas fa-times"></i>
+			            </button>
+		        	</td>
+	    		</tr>
+	    	</tbody>
+	    </table>
+	    <p class="empty" *ngIf="offers.length == 0">
+	    	Vous n'avez encore répondu à aucune demande de permutation.
+	    	<br>
+	    	Rendez-vous dans la rubrique "Demandes en cours" pour répondre à une demande.
+	    </p>
+	</div>
 	<div 
 	class="tab-pane fade" 
 	id="nav-answer" 
 	role="tabpanel" 
 	aria-labelledby="nav-answer-tab tablediv">
-	    <table class="table table-hover">
+	    <table 
+	    *ngIf="myAnswer"
+	    class="table table-hover">
 	    	<thead class="head">
 	    		<tr>
 					<th class="pb-2 pl-4"> Acceptée par </th>
@@ -198,67 +275,12 @@
 				<script src='assets/modal.js'></script>
 	    	</tbody>
 	    </table>
+	    <p
+	    *ngIf="!myAnswer"
+	    class="empty">
+	    	Vous n'avez reçu aucune réponse à vos demandes de permutation pour le moment.
+	    </p>
 	</div>
-	<div 
-	class="tab-pane fade" 
-	id="nav-proposition" 
-	role="tabpanel" 
-	aria-labelledby="nav-proposition-tab tablediv">
-	    <table class="table table-hover">
-	    	<thead class="head">
-	    		<tr>
-					<th class="pb-2 pl-4"> Envoyée à </th>
-					<th class="pb-2 pl-4"> Matricule </th>
-					<th class="pb-2 pl-4"> Pour le service </th>
-					<th class="pb-2 pl-4"> Début </th>
-					<th class="pb-2 pl-4"> Fin </th>
-					<th class="pb-2 pl-4"> Statut </th>
-					<th class="pb-2 pl-4"> Action </th>
-	    		</tr>
-	    	</thead>
-	    	<tbody *ngFor="let offer of offers; let y = index">
-	    		<tr *ngIf="offer.user.email == user.email">
-			    	<td class="pl-4"> 
-			    		{{ offer.askRef.user.firstname }} {{offer.askRef.user.name}}
-			    	</td>
-			    	<td class="pl-4">
-			    		{{ offer.askRef.user.registrationNumber }}
-			    	</td>
-				    <td class="pl-4">
-				    	{{ offer.askRef.type }} 
-				    	
-				    </td>
-				    <td class="pl-4"> {{offer.askRef.start}} </td>
-				    <td class="pl-4"> {{offer.askRef.end}} </td>
-				    
-				    <td 
-				    class="pl-4"
-				    *ngIf="offer.response">
-			    		Acceptée
-				    </td>
-				     <td 
-				     class="pl-4"
-				     *ngIf="offer.response == false">
-			    		Refusée
-				    </td>
-				     <td 
-				     class="pl-4"
-				     *ngIf="offer.response === undefined">
-			    		En attente...
-				    </td>
-				    
-				    <td class="pl-4">
-			            <button 
-			            	class="del"
-			            	(click)="onDeleteOffer(offer)"
-			            	title="Supprimer">
-			            	<i class="fas fa-times"></i>
-			            </button>
-		        	</td>
-	    		</tr>
-	    	</tbody>
-	    </table>
-	  </div>
 	</div>
     <p *ngIf="asks === undefined || asks == []"
     	class="row col-12 btn-info disabled">

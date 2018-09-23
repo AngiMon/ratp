@@ -44,6 +44,10 @@ ul{
 	background-color: #EDECEC;
 	padding: 15px 20px;
 }
+.empty{
+	background-color: #F7F3CF;
+	padding: 15px 20px;
+}
 h1{
 	font-size: 2.2em;
 }
@@ -70,6 +74,10 @@ header nav a{
  padding: 10px 22px;
  /*border-radius: 10px 0;*/
 
+}
+header nav a:active
+{
+	color: blue;
 }
 header nav a:hover{
 	text-decoration: none;
@@ -156,6 +164,9 @@ h5{
 .error{
 	color: red;
 }
+main{
+	padding-bottom: 20px;
+}
 input[type=text], input[type=password], .form-control{
 	font-size: 1em;
 }
@@ -171,11 +182,6 @@ footer{
 footer .container{
 	padding: 10px 0 ;
 }
-/*footer .div{
-	width: 50%;
-	display: inline-block;
-	vertical-align: top;
-}*/
 footer a{
 	color: #000;
 	text-decoration: underline; ;

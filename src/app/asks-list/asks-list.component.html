@@ -9,6 +9,7 @@
     <thead class="head">
       <tr>
         <th class="pb-2 pl-4"> Repos </th>
+        <th class="pb-2 pl-4"> Matricule </th>
         <th class="pb-2 pl-4"> Proposé </th>
         <th class="pb-2 pl-4"> Souhaité </th>
         <th class="pb-2 pl-4"> Equipe </th>
@@ -20,6 +21,7 @@
     <tbody *ngFor="let ask of asks; let i = index">
       <tr [ngStyle]="{ 'background-color' : getColor(ask) }">
         <td class="pl-4"> {{ ask.rest }} </td>
+        <td class="pl-4"> {{ ask.user.registrationNumber }} </td>
         <td class="pl-4"> {{ ask.type }} </td>
         <td class="pl-4"> 
           {{ ask.typeVs.nuit == true ? "Nuit" : '' }} 

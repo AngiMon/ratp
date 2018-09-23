@@ -22,6 +22,8 @@ export class UserAsksComponent implements OnInit
 	authdata = null;
 	isAuth: boolean;
 	user: User;
+	myAsk: boolean;
+	myAnswer: boolean;
 
 	constructor(
 		private authService: AuthService,
@@ -31,17 +33,39 @@ export class UserAsksComponent implements OnInit
 
 	ngOnInit()
 	{
+		console.log('init');
 		this.user = new User('', '', '');
 		this.authService.getAuthData(this);
 		this.asksSubscription = this.asksService.askSubject.subscribe(
         (asks: Ask[]) => {
           	this.asks = asks;
+          	for(var i = 0; i < asks.length; i++)
+	      		{	
+	      			if(asks[i] != undefined)
+	      			{
+	      				if(asks[i].user.email == this.user.email)
+	      				{
+	      					this.myAsk = true;
+	      					console.log('true');
+	      				}
+	      			}	
+	      		}
         	}
       	);
 		this.asksService.emitAsks();
 		this.offersSubscription = this.offerService.offerSubject.subscribe(
         (offers: Offer[]) => {
           	this.offers = offers;
+	          	for(var i = 0; i < offers.length; i++)
+	      		{	
+	      			if(offers[i] != undefined)
+	      			{
+	      				if(offers[i].user.email == this.user.email)
+	      				{
+	      					this.myAnswer = true;
+	      				}	
+	      			}
+	      		}
         	}
       	);
       	this.offerService.emitOffers();
@@ -50,6 +74,7 @@ export class UserAsksComponent implements OnInit
 	onDeleteAsk(ask: Ask)
 	{
     	this.asksService.removeAsk(ask);
+    	new UserAsksComponent();
 	}
 
 	onDeleteOffer(offer: Offer)
