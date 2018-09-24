@@ -5,7 +5,6 @@
 			{{ user.firstname }} {{ user.name }}
 		</strong>
 	</h2>
-	{{ myAsk }}
 	<nav>
 	  	<div 
 		class="nav nav-tabs"
@@ -51,7 +50,7 @@
 	  role="tabpanel" 
 	  aria-labelledby="nav-ask-tab">
 		<table 
-		*ngIf='myAsk == true'
+		*ngIf='myAsk'
 		class="table table-hover">
 	      <thead class="head">
 	        <tr>
@@ -107,7 +106,7 @@
 	role="tabpanel" 
 	aria-labelledby="nav-proposition-tab tablediv">
 	    <table
-	    *ngIf="offers.length != 0" 
+	    *ngIf="mySend"
 	    class="table table-hover">
 	    	<thead class="head">
 	    		<tr>
@@ -162,7 +161,9 @@
 	    		</tr>
 	    	</tbody>
 	    </table>
-	    <p class="empty" *ngIf="offers.length == 0">
+	    <p 
+	    class="empty" 
+	    *ngIf="!mySend">
 	    	Vous n'avez encore répondu à aucune demande de permutation.
 	    	<br>
 	    	Rendez-vous dans la rubrique "Demandes en cours" pour répondre à une demande.

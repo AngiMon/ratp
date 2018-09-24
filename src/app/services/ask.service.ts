@@ -39,7 +39,7 @@ export class AskService
 			})
 	}
 
-	getSingleAsk(id : number = null, ask = null)
+	getSingleAsk(id : number = null, ask = null, request = null)
 	{
 		if(id !== null)
 		{
@@ -58,7 +58,6 @@ export class AskService
 		}
 		else
 		{
-			
 			for(var i = 0; i < this.asks.length; i++)
 			{ 
 				if(JSON.stringify(this.asks[i]) == JSON.stringify(ask) )
@@ -68,6 +67,7 @@ export class AskService
 						firebase.database().ref('/demandes-en-cours/' + i).once('value').then(
 							(data: DataSnapshot) => {
 									resolve(data.val());
+									request.askId = i;
 								},
 								(error) => {
 									reject(error);
@@ -92,17 +92,26 @@ export class AskService
 		this.emitAsks();
 	}
 
-	removeAsk(ask: Ask)
+	removeAsk(ask: Ask, id = null)
 	{
-		const askIndexToRemove = this.asks.findIndex(
+		if(id != null)
+		{
+			this.asks.splice(id, 1);
+		}
+		else
+		{
+			const askIndexToRemove = this.asks.findIndex(
 			(askE1) => {
-				if(askE1 === ask)
-				{
-					return true;
+					if(askE1 === ask)
+					{
+						return true;
+					}
 				}
-			}
-		);
-		this.asks.splice(askIndexToRemove, 1);
+			);
+			console.log('askIndexToRemove' + askIndexToRemove);
+			this.asks.splice(askIndexToRemove, 1);
+		}
+		
 		this.saveAsks();
 		this.emitAsks();
 	}

@@ -24,6 +24,7 @@ export class UserAsksComponent implements OnInit
 	user: User;
 	myAsk: boolean;
 	myAnswer: boolean;
+	mySend : boolean;
 
 	constructor(
 		private authService: AuthService,
@@ -31,12 +32,12 @@ export class UserAsksComponent implements OnInit
 		private offerService: OfferService,
 		private router: Router) { }
 
-	ngOnInit()
+	async ngOnInit()
 	{
 		console.log('init');
-		this.user = new User('', '', '');
+		this.user = new User('', '', '', '');
 		this.authService.getAuthData(this);
-		this.asksSubscription = this.asksService.askSubject.subscribe(
+		this.asksSubscription = await this.asksService.askSubject.subscribe(
         (asks: Ask[]) => {
           	this.asks = asks;
           	for(var i = 0; i < asks.length; i++)
@@ -46,14 +47,14 @@ export class UserAsksComponent implements OnInit
 	      				if(asks[i].user.email == this.user.email)
 	      				{
 	      					this.myAsk = true;
-	      					console.log('true');
+	      					console.log( 'myAsk = ' + 'true');
 	      				}
 	      			}	
 	      		}
         	}
       	);
 		this.asksService.emitAsks();
-		this.offersSubscription = this.offerService.offerSubject.subscribe(
+		this.offersSubscription = await this.offerService.offerSubject.subscribe(
         (offers: Offer[]) => {
           	this.offers = offers;
 	          	for(var i = 0; i < offers.length; i++)
@@ -62,9 +63,16 @@ export class UserAsksComponent implements OnInit
 	      			{
 	      				if(offers[i].user.email == this.user.email)
 	      				{
-	      					this.myAnswer = true;
-	      				}	
+	      					this.mySend = true;
+	      					console.log( 'mySend =' + 'true');
+	      				}
+	      				if(offers[i].askRef.user.email == this.user.email)
+		      			{
+		      				this.myAnswer = true;
+		      				console.log( 'myAnswer =' + 'true');
+		      			}
 	      			}
+
 	      		}
         	}
       	);
@@ -74,12 +82,21 @@ export class UserAsksComponent implements OnInit
 	onDeleteAsk(ask: Ask)
 	{
     	this.asksService.removeAsk(ask);
-    	new UserAsksComponent();
+    	this.myAsk = false;
+    	this.mySend = false;
+    	this.myAnswer = false;
+
+    	this.ngOnInit();
 	}
 
 	onDeleteOffer(offer: Offer)
 	{
     	this.offerService.removeOffer(offer);
+    	this.mySend = false;
+		this.myAsk = false;
+		this.myAnswer = false;
+
+    	this.ngOnInit();
 	}
 	onViewRequest(id: number)
   {

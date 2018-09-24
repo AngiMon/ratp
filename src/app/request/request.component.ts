@@ -21,6 +21,7 @@ export class RequestComponent implements OnInit
  	id: number;
 	user: User;
 	ask: Ask;
+	askId: number;
 
 	constructor(
 		private router: Router,
@@ -47,10 +48,11 @@ export class RequestComponent implements OnInit
 		this.offer = new Offer( offer.rest, offer.type, offer.teamNb, offer.phone, offer.message, offer.askRef, offer.user, true);
 		this.offerService.editOffer(this.offer, this.id);
 
-		this.askService.getSingleAsk(null, this.offer.askRef).then(
+		this.askService.getSingleAsk(null, this.offer.askRef, this).then(
 	      (ask: Ask) => {
 	      	this.ask = ask;
-	        this.askService.removeAsk(this.ask);
+
+	        this.askService.removeAsk(ask, this.askId);
 	      });
       	
       	this.router.navigate(['mes-requetes']);
