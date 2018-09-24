@@ -135,27 +135,37 @@
 				    <td class="pl-4"> {{offer.askRef.end}} </td>
 				    
 				    <td 
-				    class="pl-4"
+				    class="pl-4 accepted"
 				    *ngIf="offer.response">
 			    		Acceptée
 				    </td>
 				     <td 
-				     class="pl-4"
+				     class="pl-4 refused"
 				     *ngIf="offer.response == false">
 			    		Refusée
 				    </td>
 				     <td 
-				     class="pl-4"
+				     class="pl-4 wait"
 				     *ngIf="offer.response === undefined">
 			    		En attente...
 				    </td>
-				    
-				    <td class="pl-4">
+				    <td
+				    *ngIf="offer.response != true" 
+				    class="pl-4">
 			            <button 
 			            	class="del"
 			            	(click)="onDeleteOffer(offer)"
 			            	title="Supprimer">
 			            	<i class="fas fa-times"></i>
+			            </button>
+		        	</td>
+		        	<td
+				    *ngIf="offer.response == true" 
+				    class="pl-4">
+			            <button 
+			            	class="doc"
+			            	title="Télécharger la feuille de permutation">
+			            	<i class="fas fa-file-alt"></i>
 			            </button>
 		        	</td>
 	    		</tr>
@@ -201,29 +211,21 @@
 				    <td class="pl-4"> {{offer.askRef.start}} </td>
 				    <td class="pl-4"> {{offer.askRef.end}} </td>
 				    <td 
-				    class="pl-4"
+				    class="pl-4 accepted"
 				    *ngIf="offer.response">
 			    		Acceptée
 				    </td>
 				     <td 
-				     class="pl-4"
+				     class="pl-4 refused"
 				     *ngIf="offer.response == false">
 			    		Refusée
 				    </td>
 				     <td 
-				     class="pl-4"
+				     class="pl-4 wait"
 				     *ngIf="offer.response === undefined">
 			    		Non-traitée
 				    </td>
 				    <td class="pl-4">
-				    	<button
-				    		class="ok mr-1"
-				    		title="Voir les coordonnées"
-				    		data-toggle="modal"
-	            			[attr.data-target]="'#' + y"
-	            			data-whatever="@mdo">
-				    		<i class="fas fa-user-tag"></i>
-				    	</button>
 						<button
 							title="Voir"
 							class="view mr-1"
@@ -231,12 +233,28 @@
 							> 
 							<i class="fas fa-search"></i>
 						</button>
-			            <button 
-			            	class="del"
-			            	(click)="onDeleteOffer(offer)"
-			            	title="Supprimer">
+						<button
+				    		class="ok mr-1"
+				    		title="Voir les coordonnées"
+				    		data-toggle="modal"
+	            			[attr.data-target]="'#' + y"
+	            			data-whatever="@mdo">
+				    		<i class="fas fa-user-tag"></i>
+				    	</button>
+			            <button
+			            *ngIf="offer.response != true" 
+		            	class="del"
+		            	(click)="onDeleteOffer(offer)"
+		            	title="Supprimer">
 			            	<i class="fas fa-times"></i>
 			            </button>
+			            <button 
+			            *ngIf="offer.response == true"
+		            	class="doc"
+		            	title="Télécharger la feuille de permutation">
+			            	<i class="fas fa-file-alt"></i>
+			            </button>
+		        	
 		        	</td>
 	    		</tr>
 	    		<div 

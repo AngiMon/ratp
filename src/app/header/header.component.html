@@ -14,30 +14,30 @@
 			<div class="container">
 				<a class=" navButton  mt-1"
 					routerLink="/nouvelle-demande" 
-					routerLinkActive="active">
+					routerLinkActive="link">
 					Nouvelle demande
 				</a>
 				<a class=" navButton  mt-1" 
 				   routerLink="/demandes-en-cours"
-				   routerLinkActive="active">
+				   routerLinkActive="link">
 					Demandes en cours
 				</a>
 				<a class=" navButton  mt-1" 
 				   routerLink="/"
 				   *ngIf="isAuth"
 				   routerLink="mes-requetes"
-				   routerLinkActive="">
+				   routerLinkActive="link">
 					Mes requêtes
 				</a>
 				<a class=" navButton mt-1"
 				   routerLink="auth/signup"
-				   routerLinkActive="active"
+				   routerLinkActive="link"
 				   *ngIf="!isAuth">
 				   	M'inscrire
 			    </a>
 			    <a class=" navButton mt-1"
 			       routerLink="auth/signin"
-			       routerLinkActive="active"
+			       routerLinkActive="link"
 			       *ngIf="!isAuth">
 			       	Me connecter
 			   	</a>

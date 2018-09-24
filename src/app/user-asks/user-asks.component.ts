@@ -34,7 +34,6 @@ export class UserAsksComponent implements OnInit
 
 	async ngOnInit()
 	{
-		console.log('init');
 		this.user = new User('', '', '', '');
 		this.authService.getAuthData(this);
 		this.asksSubscription = await this.asksService.askSubject.subscribe(
@@ -47,7 +46,6 @@ export class UserAsksComponent implements OnInit
 	      				if(asks[i].user.email == this.user.email)
 	      				{
 	      					this.myAsk = true;
-	      					console.log( 'myAsk = ' + 'true');
 	      				}
 	      			}	
 	      		}
@@ -64,12 +62,10 @@ export class UserAsksComponent implements OnInit
 	      				if(offers[i].user.email == this.user.email)
 	      				{
 	      					this.mySend = true;
-	      					console.log( 'mySend =' + 'true');
 	      				}
 	      				if(offers[i].askRef.user.email == this.user.email)
 		      			{
 		      				this.myAnswer = true;
-		      				console.log( 'myAnswer =' + 'true');
 		      			}
 	      			}
 

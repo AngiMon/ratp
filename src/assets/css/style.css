@@ -62,37 +62,25 @@ header h1, header h2{
 	color: #fff;
 }
 header nav{
-	/*display: flex;
-	justify-content: space-around;*/
 	padding:10px 0;
 	background-color: #35CD9D
-	
 }
 header nav a{
- color: #fff ;
- text-transform: uppercase;
+ color: #fff ; 
  padding: 10px 22px;
- /*border-radius: 10px 0;*/
-
 }
 header nav a:active
 {
 	color: blue;
 }
-header nav a:hover{
+a:hover{
 	text-decoration: none;
 	color: #fff;
-	/*background-color:#76E5C3 ;*/
-
- 	/*-webkit-transform: translateY(-8px);
-    transform: translateY(-8px);
-    -webkit-box-shadow: 2px 10px 5px 0px rgba(0,0,0,0.75);
-	-moz-box-shadow: 2px 10px 5px 0px rgba(0,0,0,0.75);
-	box-shadow: 2px 10px 5px 0px rgba(0,0,0,0.75);*/
     transition: 0.5s;
 }
 .navButton{
 	font-family: 'Source Sans Pro', sans-serif;
+	text-transform: uppercase;
 }
 h1, h2, h3, h4, h5{
 	width: 100%;
@@ -124,7 +112,17 @@ h5{
 .del{
 	background-color: #f34e4e;
 }
-.view, .ok, .valid, .sub, .back, .del{
+.doc{
+	background-color: #323232;
+}
+.link{
+	background-color: #294296;
+	border: 2px solid #919396;
+}
+.link:hover{
+	color: #fff;
+}
+.view, .ok, .valid, .sub, .back, .del, .doc{
 	color: #fff;
 	border:0;
 	padding: 8px 12px 7px;
@@ -132,7 +130,7 @@ h5{
 	border-radius: 5px;
 	transition: 0.5s;
 }
-.view:hover, .ok:hover, .del:hover{
+.view:hover, .ok:hover, .del:hover, .doc:hover{
 	 transform: scale(1.5);
 	 transition: 0.5s;
 }
@@ -153,9 +151,20 @@ h5{
 	color: #000;
 }
 .nav-item{
-	color: grey;
+	color: #fff;
 	padding-top: 15px;
 	padding-bottom: 15px;
+}
+.nav-link.active{
+	color: #fff !important;
+	background-color: #294296 !important;
+	border: 2px solid #919396 !important;
+}
+.nav-tabs .nav-link:hover, .nav-tabs .nav-link{
+	border: none;
+}
+.nav-tabs .nav-link:hover, header nav a:hover{
+	color: #294296;
 }
 .datepicker-dropdown{
 	font-size: 1em;
@@ -163,6 +172,22 @@ h5{
 }
 .error{
 	color: red;
+}
+.accepted, .refused, .wait{
+	color: #fff;
+	font-size: 1.1em;
+}
+.accepted{
+	background-color: #6BCE7A;	
+}
+.refused{
+	background-color: #FF9393;
+}
+.wait{
+	background-color: #F7B64A;
+}
+#nav-tab{
+	background-color: #35CD9D;
 }
 main{
 	padding-bottom: 20px;

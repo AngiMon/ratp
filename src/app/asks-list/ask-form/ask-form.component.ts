@@ -24,6 +24,7 @@ export class AskFormComponent implements OnInit
   repos = new Array(6);
 	askForm: FormGroup;
   errors = new Object();
+  alphabet = 'abcdefgh'.split('');
 
    constructor(
      private formBuilder: FormBuilder, 

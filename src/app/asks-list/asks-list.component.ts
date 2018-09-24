@@ -22,11 +22,14 @@ export class AsksListComponent implements OnInit, OnDestroy
 {
 
   asks: Ask[];
+  offers: Offer[];
   ask: Ask;
 	asksSubscription: Subscription;
+  offersSubscription: Subscription
   authdata = null;
   isAuth;
   user: User;
+  myOffers = Array();
 
 	constructor(
     private asksService: AskService, 
@@ -36,20 +39,49 @@ export class AsksListComponent implements OnInit, OnDestroy
      )
 	{}
 
-	 ngOnInit()
+	 async ngOnInit()
 	 {
-      this.asksSubscription = this.asksService.askSubject.subscribe(
+      this.user = new User('', '', '', '');
+      this.authService.getAuthData(this);
+      
+      this.asksSubscription = await this.asksService.askSubject.subscribe(
         (asks: Ask[]) => {
           this.asks = asks;
+          this.offersSubscription =  this.offerService.offerSubject.subscribe(
+          (offers: Offer[]) => {
+            this.offers = offers;
+            this.Checked();
+            }
+          )  
         }
       );
-      this.user = new User('', '', '');
-      this.authService.getAuthData(this);
+
+      this.offerService.emitOffers();
       this.asksService.emitAsks();
-      
   }
 
-  
+  Checked()
+  {
+    this.myOffers = [];
+    if(JSON.stringify(this.asks) !== JSON.stringify([]) )
+    {
+      for(var i = 0; i < this.asks.length; i++)
+      {
+        for(var y = 0; y < this.offers.length; y++)
+        {
+          if(JSON.stringify(this.asks[i]) == JSON.stringify(this.offers[y].askRef) && JSON.stringify(this.user.email) == JSON.stringify(this.offers[y].user.email))
+          {
+            this.myOffers.push(this.asks[i]);
+          }
+        }
+      }
+
+    }
+    else{
+        console.log('no match');
+    }
+    
+  }
 
   onNewAsk()
   {

@@ -1,5 +1,6 @@
 <div class="row">
   <h2>Toutes les dernières demandes de permutations</h2>
+      {{myOffers|json}}
   <p 
   *ngIf='asks === undefined'
   class="row col-12 btn-info disabled">
@@ -19,37 +20,38 @@
       </tr>
     </thead>
     <tbody *ngFor="let ask of asks; let i = index">
-      <tr [ngStyle]="{ 'background-color' : getColor(ask) }">
-        <td class="pl-4"> {{ ask.rest }} </td>
-        <td class="pl-4"> {{ ask.user.registrationNumber }} </td>
-        <td class="pl-4"> {{ ask.type }} </td>
-        <td class="pl-4"> 
-          {{ ask.typeVs.nuit == true ? "Nuit" : '' }} 
-          {{ ask.typeVs.jour == true ? "Jour" : '' }}   
-          {{ ask.typeVs.mixte == true ? "Mixte" : '' }}   
-        </td>
-        <td class="pl-4"> {{ ask.teamNb }} </td>
-        <td class="pl-4"> {{ ask.start }} </td>
-        <td class="pl-4"> {{ ask.end }} </td>
-        <td class="pl-4">
-          <button
-          class=" view"
-          (click)="onViewAsk(i)"
-          title="Voir"> 
-            <i class="fas fa-search"></i>
-          </button>
-          <button 
-          class="ok ml-1"
-          *ngIf='ask.user.email !== user.email'
-          data-toggle="modal"
-          [attr.data-target]="'#' + i"
-          data-whatever="@mdo"
-          title="Proposer un accord"
-          > 
-            <i class="fas fa-handshake"></i>
-          </button>
-        </td>
-      </tr>
+        <tr
+        [ngStyle]="{ 'background-color' : getColor(ask) }">
+          <td class="pl-4"> {{ ask.rest }} </td>
+          <td class="pl-4"> {{ ask.user.registrationNumber }} </td>
+          <td class="pl-4"> {{ ask.type }} </td>
+          <td class="pl-4"> 
+            {{ ask.typeVs.nuit == true ? "Nuit" : '' }} 
+            {{ ask.typeVs.jour == true ? "Jour" : '' }}   
+            {{ ask.typeVs.mixte == true ? "Mixte" : '' }}   
+          </td>
+          <td class="pl-4"> {{ ask.teamNb }} </td>
+          <td class="pl-4"> {{ ask.start }} </td>
+          <td class="pl-4"> {{ ask.end }} </td>
+          <td class="pl-4">
+            <button
+            class=" view"
+            (click)="onViewAsk(i)"
+            title="Voir"> 
+              <i class="fas fa-search"></i>
+            </button>
+            <button 
+            class="ok ml-1"
+            *ngIf='ask.user.email !== user.email'
+            data-toggle="modal"
+            [attr.data-target]="'#' + i"
+            data-whatever="@mdo"
+            title="Proposer un accord"
+            > 
+              <i class="fas fa-handshake"></i>
+            </button>
+          </td>
+        </tr>
       <app-offer [ask]="ask" [i]="i" [user]="user"></app-offer>
       <script src='assets/modal.js'></script>
     </tbody>
