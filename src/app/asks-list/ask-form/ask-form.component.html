@@ -30,12 +30,13 @@
 					    	à
 					    </span>
 						<div class="input-group date p-0 col-xs-3 col-sm-4 col-md-5 col-lg-5 " data-provide="datepicker">
-						    <input type="text"
-						    	   id="end"
-						    	   class="datepicker form-control"
-						    	   placeholder="jj/mm/aaaa" 
-						    	   formControlName="end"
-						    	   readonly>
+						    <input 
+						    type="text"
+							id="end"
+							class="datepicker form-control"
+							placeholder="jj/mm/aaaa" 
+							formControlName="end"
+							readonly>
 						    <div class="input-group-addon">
 						        <span class="glyphicon glyphicon-th"></span>
 						    </div>
@@ -89,17 +90,21 @@
 		        		Type de service: 
 		        	</label>
 		        	<select class="form-control"
-		        			formControlName="type">
+		        			formControlName="type"
+		        			(change)="getSelect($event)">
 		        		<option value=""
 		        				hidden
 		        				>
 		        			-Choisir-
 		        		</option>
-		        		<option value="Jour">Jour</option>
+		        		<option  value="Jour">Jour</option>
 		        		<option value="Mixte">Mixte</option>
 		        		<option value="Nuit">Nuit</option>
 		        	</select>
-		        	<div class="error" disabled *ngIf="errors.type != undefined">
+		        	<div
+		        	class="error" 
+		        	disabled 
+		        	*ngIf="errors.type != undefined">
 						{{ errors.type }}
 					</div>
 		        </div>
@@ -133,12 +138,16 @@
 					class="form-check form-check-inline"
 					*ngFor="let typeVs of typeVs.types; let i=index">
 			        <input
-			        	class="form-check-input" 
-			        	type="checkbox" 
-			        	formControlName="{{typeVs.name}}"
-			           	checked
-			           	selected="typeVs.selected" />
-			        <label class="form-check-label" for="{{typeVs.name}}">
+			        *ngIf="typeSelected != typeVs.name"     
+		        	class="form-check-input" 
+		        	type="checkbox" 
+		        	formControlName="{{typeVs.name}}"
+		           	checked
+		           	selected="typeVs.selected" />
+			        <label 
+			        class="form-check-label"
+			        for="{{typeVs.name}}"
+			        *ngIf="typeSelected != typeVs.name">
 			        	{{typeVs.name}}
 			        </label>
 			    </div>
@@ -158,4 +167,5 @@
       routerLink="/">
         Retour
   	</button>
+  	
 </form>

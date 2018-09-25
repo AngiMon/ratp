@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Ask } from '../../models/Ask.model';
@@ -25,6 +25,8 @@ export class AskFormComponent implements OnInit
 	askForm: FormGroup;
   errors = new Object();
   alphabet = 'abcdefgh'.split('');
+  typeSelected;
+
 
    constructor(
      private formBuilder: FormBuilder, 
@@ -50,6 +52,11 @@ export class AskFormComponent implements OnInit
     });
   }
   
+  getSelect(a)
+  {
+    this.typeSelected = a.target.value;
+  }
+
   onSaveAsk() 
   {
     this.errors = new Object();
@@ -126,10 +133,5 @@ export class AskFormComponent implements OnInit
       {
         this.errors.dateBis = "La date du jour ne peut pas être supérieure à la période de votre service";
       }
-      else
-      {
-        console.log("ok");
-      }
-     
     }
 }
