@@ -48,6 +48,13 @@ ul{
 	background-color: #F7F3CF;
 	padding: 15px 20px;
 }
+.isSend{
+	background-color: #FFE4B7;
+}
+.send{
+	margin-left: 5px;
+	color: #5D5D5D;
+}
 h1{
 	font-size: 2.2em;
 }

@@ -80,24 +80,32 @@
 	              <label>
 	               &Eacute;quipe*: 
 	              </label>
-	              <select 
-	                class="form-control"
-	                formControlName="teamNb">
-	                <option value=""
-	                    hidden
-	                    >
-	                  -Choisir-
-	                </option>
-	                <option *ngFor="let a of array; let i = index"
-	                    value="{{i+1}}">
-	                  {{ i+1 }}
-	                </option>
-	                <option value="301">301</option>
-	                <option value="401">401</option>
-	                <option value="402">402</option>
-	                <option value="403">403</option>
-	                <option value="404">404</option>
-	              </select>
+	              <select class="form-control"
+		        			formControlName="teamNb">
+		        		<option value=""
+		        				hidden
+		        				>
+		        			-Choisir-
+		        		</option>
+		        		<optgroup label="Equipes">
+			        		<option *ngFor="let a of array; let i = index"
+			        				value="{{i+1}}">
+			        			{{ i+1 }}
+			        		</option>
+			        		<option value="301">301</option>
+			        		<option value="401">401</option>
+			        		<option value="402">402</option>
+			        		<option value="403">403</option>
+			        		<option value="404">404</option>
+			        	</optgroup>
+						<optgroup label="Réserves">
+					        <option
+					        *ngFor="let letter of alphabet; let j = index"
+					        >
+					        	{{letter|uppercase}}
+					        </option>
+					    </optgroup>
+		        	</select>
 	              <div class="error" disabled *ngIf="errors.team != undefined">
 						{{ errors.team }}
 					</div>

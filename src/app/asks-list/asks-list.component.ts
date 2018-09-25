@@ -91,6 +91,25 @@ export class AsksListComponent implements OnInit, OnDestroy
     }    
   }
 
+  IsMyOffers(ask, index)
+  { 
+    var is;
+    
+    for(var i = 0; i < this.myOffers.length; i++)
+    {
+      if(JSON.stringify(ask) == JSON.stringify(this.myOffers[i]))
+      {
+         is = true;
+         break;
+      }
+    }
+    
+    if(is)
+      return false;
+    else
+      return true;    
+  }
+
   onNewAsk()
   {
     this.router.navigate(['/demandes-en-cours', 'new']);

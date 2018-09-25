@@ -31,6 +31,7 @@ export class OfferComponent implements OnInit
 	array = Array(24);
 	rest = Array(6);
   errors = new Object();
+  alphabet = 'abcdefgh'.split('');
 
 
   constructor(
@@ -113,7 +114,7 @@ initForm()
     }, function(error) {
        console.log('FAILED...', error);
     });
-    this.router.navigate(['/']);    
+    this.router.navigate(['/demandes-en-cours']);    
       }
     );
   }
