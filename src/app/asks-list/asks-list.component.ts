@@ -39,15 +39,25 @@ export class AsksListComponent implements OnInit, OnDestroy
      )
 	{}
 
-	 async ngOnInit()
-	 {
-      this.user = new User('', '', '', '');
+	ngOnInit()
+  {
+    this.Init();   
+  }
+
+  ngAfterContentInit()
+  {
+    this.Init();
+  }
+
+  async Init()
+  {
+     this.user = new User('', '', '', '');
       this.authService.getAuthData(this);
-      
+
       this.asksSubscription = await this.asksService.askSubject.subscribe(
-        (asks: Ask[]) => {
+        async (asks: Ask[]) => {
           this.asks = asks;
-          this.offersSubscription =  this.offerService.offerSubject.subscribe(
+          this.offersSubscription =  await this.offerService.offerSubject.subscribe(
           (offers: Offer[]) => {
             this.offers = offers;
             this.Checked();
@@ -75,12 +85,10 @@ export class AsksListComponent implements OnInit, OnDestroy
           }
         }
       }
-
     }
     else{
         console.log('no match');
-    }
-    
+    }    
   }
 
   onNewAsk()
