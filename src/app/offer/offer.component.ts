@@ -81,13 +81,7 @@ initForm()
       console.log("all ok");
       this.getAsk(i, rest, type, teamNb, phone, message);
     }
-    /*else
-    {
-      console.log('error!');
-      var close = document.getElementById("close");
-      console.log(close);
-      close.click();
-    }*/
+    
   }
 
   getAsk(i, rest, type, teamNb, phone, message)

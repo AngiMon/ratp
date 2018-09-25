@@ -63,6 +63,7 @@ export class AskFormComponent implements OnInit
       start = startIni;
       const end = this.askForm.get('end').value;
       end = endIni;
+      this.VerifDate(start, end);
     }
     else
     {
@@ -88,22 +89,47 @@ export class AskFormComponent implements OnInit
     if(  this.errors.date == undefined 
       && this.errors.type == undefined 
       && this.errors.rest == undefined
-      && this.errors.team == undefined)
+      && this.errors.team == undefined
+      && this.errors.dateBis == undefined)
     {
       const user = this.user;
       const newAsk = new Ask(start, end, rest, teamNb, type, typeVs, user);
       this.asksService.createNewAsk(newAsk);
       this.router.navigate(['/demandes-en-cours']);
     }    
-    
-
-    
-
-    
   }
+   VerifDate(s, e)
+    {  
+      var day, month, year, dateStart, dateEnd, start, end, today;
 
-  Click(a)
-  {
-    console.log(a);
-  }
+      today = new Date();
+
+      function getDate(x)
+      {
+        day = x.substring(0, 2);
+        month = x.substring(3, 5);
+        year = x.substring(6, 10);
+        return month + "/" + day + "/" + year;
+      }
+      
+      dateStart = getDate(s);
+      dateEnd = getDate(e);
+      start = new Date(dateStart);
+      end = new Date(dateEnd);
+     
+      if(start >= end)
+      {
+        console.log("error");
+        this.errors.dateBis = "La date de début ne peut pas être supérieure ou égale à la date de fin";
+      }
+      else if( start < today || end < today )
+      {
+        this.errors.dateBis = "La date du jour ne peut pas être supérieure à la période de votre service";
+      }
+      else
+      {
+        console.log("ok");
+      }
+     
+    }
 }
