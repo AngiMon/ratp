@@ -120,7 +120,9 @@
 	    		</tr>
 	    	</thead>
 	    	<tbody *ngFor="let offer of offers; let y = index">
-	    		<tr *ngIf="offer.user.email == user.email">
+	    		<tr 
+	    		*ngIf="offer.user.email == user.email"
+	    		>
 			    	<td class="pl-4"> 
 			    		{{ offer.askRef.user.firstname }} {{offer.askRef.user.name}}
 			    	</td>

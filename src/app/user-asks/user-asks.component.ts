@@ -25,6 +25,7 @@ export class UserAsksComponent implements OnInit
 	myAsk: boolean;
 	myAnswer: boolean;
 	mySend : boolean;
+	today = new Date();
 
 	constructor(
 		private authService: AuthService,
@@ -54,7 +55,10 @@ export class UserAsksComponent implements OnInit
 		this.asksService.emitAsks();
 		this.offersSubscription = await this.offerService.offerSubject.subscribe(
         (offers: Offer[]) => {
-          	this.offers = offers;
+          		this.offers = offers;
+
+          		this.DateLimit(this.offers);
+
 	          	for(var i = 0; i < offers.length; i++)
 	      		{	
 	      			if(offers[i] != undefined)
@@ -75,13 +79,38 @@ export class UserAsksComponent implements OnInit
       	this.offerService.emitOffers();
 	}
 
+	DateLimit(offers)
+	{
+		var day, month, year, dateStart;
+
+		function getDate(x)
+		{
+			day = x.substring(0, 2);
+			month = x.substring(3, 5);
+			year = x.substring(6, 10);
+			return month + "/" + day + "/" + year;
+		}
+
+		for(var i = 0; i < offers.length; i++)
+		{
+			if(offers[i].response != undefined && offers[i].response == true)
+			{	console.log(offers[i]);
+				dateStart = new Date(getDate(offers[i].askRef.start));
+			
+				if( dateStart <= this.today)
+				{
+					this.offerService.removeOffer(offers[i]);
+				} 
+			}
+		}
+	}
+
 	onDeleteAsk(ask: Ask)
 	{
     	this.asksService.removeAsk(ask);
     	this.myAsk = false;
     	this.mySend = false;
     	this.myAnswer = false;
-
     	this.ngOnInit();
 	}
 
@@ -91,7 +120,6 @@ export class UserAsksComponent implements OnInit
     	this.mySend = false;
 		this.myAsk = false;
 		this.myAnswer = false;
-
     	this.ngOnInit();
 	}
 	onViewRequest(id: number)
