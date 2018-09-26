@@ -66,9 +66,7 @@ export class AsksListComponent implements OnInit, OnDestroy
             this.offers = offers;
             if(this.i == true && this.y == 1)
             {
-              console.log(this.asks);
-              this.DateLimit(this.asks);
-              
+              this.DateLimit(this.asks); 
             }
             
             this.Checked();
@@ -123,9 +121,6 @@ export class AsksListComponent implements OnInit, OnDestroy
         }
       }
     }
-    else{
-        console.log('no match');
-    }    
   }
 
   IsMyOffers(ask, index)

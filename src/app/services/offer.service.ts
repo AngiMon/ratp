@@ -58,7 +58,6 @@ export class OfferService
 	editOffer(Offer: Offer, id)
 	{
 		this.offers[id] = Offer;
-		console.log(this.offers[id]);
 		this.saveOffers();
 		this.emitOffers();
 	}

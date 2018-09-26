@@ -31,6 +31,14 @@ ul{
 #logo{
 	margin: 10px auto;
 }
+#user i{
+	vertical-align:middle;
+	font-size: 1.6em;
+	margin: -1px 5px 0 50px;
+}
+#user:hover{
+	color: #000;
+}
 #start, #end{
 	background-color: #fff;
 }
@@ -74,7 +82,8 @@ header nav{
 }
 header nav a{
  color: #fff ; 
- padding: 10px 22px;
+ padding: 12px 22px;
+ vertical-align: middle;
 }
 header nav a:active
 {
@@ -82,7 +91,7 @@ header nav a:active
 }
 a:hover{
 	text-decoration: none;
-	color: #fff;
+	color: blue;
     transition: 0.5s;
 }
 .navButton{

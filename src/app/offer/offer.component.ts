@@ -100,14 +100,14 @@ initForm()
           note: this.getNote(message)
         };
 
-    emailjs.init("user_Usc4NFXBOwanzq1ziU15b");
+    /*emailjs.init("user_Usc4NFXBOwanzq1ziU15b");
  
     emailjs.send('gmail', 'template_4qbcMMOk', templateParams)
     .then(function(response) {
        console.log('SUCCESS!', response.status, response.text);
     }, function(error) {
        console.log('FAILED...', error);
-    });
+    });*/
     this.router.navigate(['/demandes-en-cours']);    
       }
     );

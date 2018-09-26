@@ -1,53 +1,53 @@
 <header id="header">
 	<div class="container">
-		<!--<h1 class="text-center pt-4">
-			Plateforme de permutation de service
-		</h1>-->
 		<a routerLink='/' >
 			<img id="logo" src="assets/img/austerlitz.png" alt="logo Austerlitz">
 		</a>
-		<!--<h2 class="text-center mt-1">
-			Ligne 10 (Austerlitz)
-		</h2>-->
 	</div>
 		<nav class="col-md-12  nav">
 			<div class="container">
-				<a class=" navButton  mt-1"
+				<a class=" navButton  "
 					routerLink="/nouvelle-demande" 
 					routerLinkActive="link">
 					Nouvelle demande
 				</a>
-				<a class=" navButton  mt-1" 
+				<a class=" navButton  " 
 				   routerLink="/demandes-en-cours"
 				   routerLinkActive="link">
 					Demandes en cours
 				</a>
-				<a class=" navButton  mt-1" 
+				<a class=" navButton  " 
 				   routerLink="/"
 				   *ngIf="isAuth"
 				   routerLink="mes-requetes"
 				   routerLinkActive="link">
 					Mes requêtes
 				</a>
-				<a class=" navButton mt-1"
+				<a class=" navButton "
 				   routerLink="auth/signup"
 				   routerLinkActive="link"
 				   *ngIf="!isAuth">
 				   	M'inscrire
 			    </a>
-			    <a class=" navButton mt-1"
+			    <a class=" navButton "
 			       routerLink="auth/signin"
 			       routerLinkActive="link"
 			       *ngIf="!isAuth">
 			       	Me connecter
 			   	</a>
-			   	
-				   	<a class=" navButton  mt-1 "
-				   	   routerLink='/'
-				   	   *ngIf="isAuth"
-				   	   (click)="onSignOut()">
-				   		Déconnexion
-				   	</a>
+			   	<a class=" navButton   "
+			   	   routerLink='/'
+			   	   *ngIf="isAuth"
+			   	   (click)="onSignOut()">
+			   		Déconnexion
+			   	</a>
+			   	<a
+			   	id="user"
+			   	*ngIf="authdata != null"
+			   	routerLink='/'>
+			   		<i class="fas fa-user-circle"></i>
+			   		<span>{{ user.firstname + " " + user.name }}</span>
+			   	</a>
 			   	<!--{{ (authdata != null) ? user.firstname + " " + user.name : ''}}-->
 		   </div>
 		</nav>
