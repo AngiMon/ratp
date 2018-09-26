@@ -8,12 +8,36 @@ export class AskService
 {
 	asks: Ask[] = [];
 	askSubject = new Subject<Ask[]>();
+	today = new Date("09/01/2018");
 
 	constructor()
 	{
 		this.getAsks();
+		
 	}
 
+	DateLimit(asks)
+	{
+		var day, month, year, dateStart;
+
+	    function getDate(x)
+	    {
+	      day = x.substring(0, 2);
+	      month = x.substring(3, 5);
+	      year = x.substring(6, 10);
+	      return month + "/" + day + "/" + year;
+	    }
+
+	    for(var i = 0; i < asks.length; i++)
+	    {
+	      dateStart = new Date(getDate(asks[i].start));
+	    
+	      if( dateStart <= this.today)
+	      {console.log(asks[i]);
+	        this.removeAsk(asks[i]);
+	      } 
+	    }
+	}
 	emitAsks()
 	{
 		this.askSubject.next(this.asks.slice());
@@ -35,6 +59,7 @@ export class AskService
 		firebase.database().ref('/demandes-en-cours/')
 		.on('value', (data: DataSnapshot) => {
 				this.asks = data.val() ? data.val() : [];
+				//this.DateLimit(this.asks);
 				this.emitAsks();
 			})
 	}
@@ -109,7 +134,7 @@ export class AskService
 				}
 			);
 			console.log('askIndexToRemove' + askIndexToRemove);
-			this.asks.splice(askIndexToRemove, 1);
+				this.asks.splice(askIndexToRemove, 1);
 		}
 		
 		this.saveAsks();

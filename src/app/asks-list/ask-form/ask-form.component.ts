@@ -83,9 +83,14 @@ export class AskFormComponent implements OnInit
     const rest = this.askForm.get('rest').value;
     rest == '' ? this.errors.rest = 'Indiquez votre repos' : '';
 
-    const jour = this.askForm.get('Jour').value;
-    const mixte = this.askForm.get('Mixte').value;
-    const nuit = this.askForm.get('Nuit').value;
+    var jour = this.askForm.get('Jour').value;
+    var mixte = this.askForm.get('Mixte').value;
+    var nuit = this.askForm.get('Nuit').value;
+
+    type == 'Jour' ? jour = '' : '';
+    type == 'Mixte' ? mixte = '' : '';
+    type == 'Nuit' ? nuit = '' : '';
+
     const typeVs = {jour : jour, mixte : mixte, nuit : nuit};
     typeVs.jour | typeVs.mixte | typeVs.nuit ? '' : this.errors.choice = "Précisez le(s) service(s) souhaité(s) en échange du vôtre";
 

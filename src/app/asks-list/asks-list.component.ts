@@ -30,7 +30,9 @@ export class AsksListComponent implements OnInit, OnDestroy
   isAuth;
   user: User;
   myOffers = Array();
-
+  today = new Date();
+  i;
+  y = 0;
 	constructor(
     private asksService: AskService, 
     private router: Router,
@@ -41,12 +43,13 @@ export class AsksListComponent implements OnInit, OnDestroy
 
 	ngOnInit()
   {
-    this.Init();   
+    this.Init();
   }
 
   ngAfterContentInit()
   {
     this.Init();
+    
   }
 
   async Init()
@@ -57,9 +60,17 @@ export class AsksListComponent implements OnInit, OnDestroy
       this.asksSubscription = await this.asksService.askSubject.subscribe(
         async (asks: Ask[]) => {
           this.asks = asks;
+          //this.DateLimit(this.asks);
           this.offersSubscription =  await this.offerService.offerSubject.subscribe(
           (offers: Offer[]) => {
             this.offers = offers;
+            if(this.i == true && this.y == 1)
+            {
+              console.log(this.asks);
+              this.DateLimit(this.asks);
+              
+            }
+            
             this.Checked();
             }
           )  
@@ -70,11 +81,37 @@ export class AsksListComponent implements OnInit, OnDestroy
       this.asksService.emitAsks();
   }
 
+  DateLimit(asks)
+  {
+    var day, month, year, dateStart;
+
+    function getDate(x)
+    {
+      day = x.substring(0, 2);
+      month = x.substring(3, 5);
+      year = x.substring(6, 10);
+      return month + "/" + day + "/" + year;
+    }
+
+    for(var i = 0; i < asks.length; i++)
+    {
+      dateStart = new Date(getDate(asks[i].start));
+    
+      if( dateStart <= this.today)
+      {
+        this.asksService.removeAsk(asks[i]);
+      } 
+    }
+  }
+
   Checked()
   {
     this.myOffers = [];
+
     if(JSON.stringify(this.asks) !== JSON.stringify([]) )
     {
+      this.i = true;
+      this.y++;
       for(var i = 0; i < this.asks.length; i++)
       {
         for(var y = 0; y < this.offers.length; y++)

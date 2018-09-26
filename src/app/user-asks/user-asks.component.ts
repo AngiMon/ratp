@@ -93,15 +93,15 @@ export class UserAsksComponent implements OnInit
 
 		for(var i = 0; i < offers.length; i++)
 		{
-			if(offers[i].response != undefined && offers[i].response == true)
-			{	console.log(offers[i]);
+				
 				dateStart = new Date(getDate(offers[i].askRef.start));
 			
 				if( dateStart <= this.today)
 				{
+					console.log(offers[i]);
 					this.offerService.removeOffer(offers[i]);
 				} 
-			}
+			
 		}
 	}
 
