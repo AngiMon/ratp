@@ -22,7 +22,7 @@
     </thead>
     <tbody *ngFor="let ask of asks; let i = index">
         <tr
-        *ngIf="IsMyOffers(ask, i)"
+        *ngIf="IsMyOffers(ask, asks.length-1-i)"
         [ngStyle]="{ 'background-color' : getColor(ask) }">
           <td class="pl-4"> {{ ask.rest }} </td>
           <td class="pl-4"> {{ ask.user.registrationNumber }} </td>
@@ -38,7 +38,7 @@
           <td class="pl-4">
             <button
             class=" view"
-            (click)="onViewAsk(i)"
+            (click)="onViewAsk(asks.length-1-i)"
             title="Voir"> 
               <i class="fas fa-search"></i>
             </button>
@@ -46,7 +46,7 @@
             class="ok ml-1"
             *ngIf='ask.user.email !== user.email'
             data-toggle="modal"
-            [attr.data-target]="'#' + i"
+            [attr.data-target]="'#'+ (asks.length-1-i)"
             data-whatever="@mdo"
             title="Proposer un accord"
             > 
@@ -72,14 +72,14 @@
           <td class="pl-4">
             <button
             class=" view"
-            (click)="onViewAsk(i)"
+            (click)="onViewAsk(asks.length-1-i)"
             title="Voir"> 
               <i class="fas fa-search"></i>
             </button>
             <i class="fas send fa-paper-plane"></i>
           </td>
         </tr>
-      <app-offer [ask]="ask" [i]="i" [user]="user"></app-offer>
+      <app-offer [ask]="ask" [i]='asks.length-1-i' [user]="user"></app-offer>
       <script src='assets/modal.js'></script>
     </tbody>
   </table>

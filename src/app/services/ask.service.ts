@@ -59,7 +59,7 @@ export class AskService
 		firebase.database().ref('/demandes-en-cours/')
 		.on('value', (data: DataSnapshot) => {
 				this.asks = data.val() ? data.val() : [];
-				//this.DateLimit(this.asks);
+				this.asks.reverse();
 				this.emitAsks();
 			})
 	}
