@@ -16,28 +16,6 @@ export class AskService
 		
 	}
 
-	/*DateLimit(asks)
-	{
-		var day, month, year, dateStart;
-
-	    function getDate(x)
-	    {
-	      day = x.substring(0, 2);
-	      month = x.substring(3, 5);
-	      year = x.substring(6, 10);
-	      return month + "/" + day + "/" + year;
-	    }
-
-	    for(var i = 0; i < asks.length; i++)
-	    {
-	      dateStart = new Date(getDate(asks[i].start));
-	    
-	      if( dateStart <= this.today)
-	      {console.log(asks[i]);
-	        this.removeAsk(asks[i]);
-	      } 
-	    }
-	}*/
 	emitAsks()
 	{
 		this.askSubject.next(this.asks.slice());
@@ -63,7 +41,21 @@ export class AskService
 				this.emitAsks();
 			})
 	}
-
+	getId(ask : Ask, asks)
+	{
+		asks.reverse();
+		for(var i = 0; i < asks.length; i++)
+			{ 
+				if(JSON.stringify(asks[i]) == JSON.stringify(ask) )
+				{
+					return i;
+				}
+				else
+				{
+					//console.log("no match");
+				}
+			}
+	}
 	getSingleAsk(id : number = null, ask = null, request = null)
 	{
 		if(id !== null)
@@ -119,6 +111,7 @@ export class AskService
 
 	removeAsk(ask: Ask, id = null)
 	{
+		console.log("remove :");
 		console.log(ask);
 		if(id != null)
 		{

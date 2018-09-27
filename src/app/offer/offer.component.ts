@@ -21,6 +21,7 @@ import * as firebase from 'firebase';
 })
 export class OfferComponent implements OnInit
 {
+  @Input() asks;
 	@Input() ask;
 	@Input() asksSubscription: Subscription;
 	@Input() authdata = null;
@@ -59,7 +60,7 @@ initForm()
     });
   }
 
-  onSaveOffer(i)
+  onSaveOffer(ask : Ask)
   {
     this.errors = new Object();
 
@@ -73,13 +74,13 @@ initForm()
     type == '' ? this.errors.type = 'Indiquez votre type de service' : '';
     teamNb == '' ? this.errors.team = 'Indiquez votre numéro d\'équipe' : '';
 
-
+    var index = this.asksService.getId(ask, this.asks);
     if(this.errors.type == undefined 
       && this.errors.rest == undefined
       && this.errors.team == undefined)
     {
       console.log("all ok");
-      this.getAsk(i, rest, type, teamNb, phone, message);
+      this.getAsk(index, rest, type, teamNb, phone, message);
     }
     
   }

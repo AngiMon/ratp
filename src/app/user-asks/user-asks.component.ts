@@ -25,7 +25,7 @@ export class UserAsksComponent implements OnInit
 	myAsk: boolean;
 	myAnswer: boolean;
 	mySend : boolean;
-	today = new Date("10/24/2018").getTime();
+	today = new Date().getTime();
 
 	constructor(
 		private authService: AuthService,

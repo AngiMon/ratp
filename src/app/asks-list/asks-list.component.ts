@@ -30,9 +30,12 @@ export class AsksListComponent implements OnInit, OnDestroy
   isAuth;
   user: User;
   myOffers = Array();
-  today = new Date("10/24/2018").getTime();
+  today = new Date().getTime();
   i;
   y = 0;
+  pageIndex = 0;
+  mfRowsOnPage;
+
 	constructor(
     private asksService: AskService, 
     private router: Router,
@@ -44,13 +47,11 @@ export class AsksListComponent implements OnInit, OnDestroy
 	ngOnInit()
   {
     this.Init();
-    console.log(this.today);
   }
 
   ngAfterContentInit()
   {
     this.Init();
-    
   }
 
   async Init()
@@ -78,6 +79,18 @@ export class AsksListComponent implements OnInit, OnDestroy
 
       this.offerService.emitOffers();
       this.asksService.emitAsks();
+  }
+
+  onSort()
+  {
+
+  }
+
+  onChangePage(mf)
+  {
+    var index = document.getElementsByClassName("page-item active")[0].textContent;
+    this.pageIndex = (parseInt(index)-1)*-1;
+    this.ngAfterContentInit();
   }
 
   DateLimit(asks)
@@ -125,7 +138,7 @@ export class AsksListComponent implements OnInit, OnDestroy
     }
   }
 
-  IsMyOffers(ask, index)
+  IsMyOffers(ask)
   { 
     var is;
     
@@ -154,8 +167,9 @@ export class AsksListComponent implements OnInit, OnDestroy
     this.asksService.removeAsk(ask);
   }
 
-  onViewAsk(id: number)
+  onViewAsk(ask: Ask)
   {
+    var id = this.asksService.getId(ask, this.asks);
     this.router.navigate(['/demandes-en-cours', id]);
   }
   
