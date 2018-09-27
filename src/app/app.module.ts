@@ -26,6 +26,7 @@ import { ForgetComponent } from './forget/forget.component';
 import { OfferComponent } from './offer/offer.component';
 import { FooterComponent } from './footer/footer.component';
 import { RequestComponent } from './request/request.component';
+import { DataTableModule } from "angular-6-datatable";
 
 const appRoutes: Routes = [
   { path: 'auth/signup', component: SignupComponent},
@@ -59,6 +60,7 @@ const appRoutes: Routes = [
   ],
   imports: [
   	BrowserModule,
+    DataTableModule,
   	HttpModule,
   	HttpClientModule,
   	ReactiveFormsModule,

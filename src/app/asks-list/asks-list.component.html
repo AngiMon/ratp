@@ -7,22 +7,58 @@
   class="row col-12 btn-info disabled">
     Il n'y a pas encore de demandes de permutation
   </p>
-  <table class="mb-5 table table-hover">
+  <table 
+  [mfData]="data" #mf="mfDataTable"
+  [mfRowsOnPage]="100"
+  class="mb-5 table table-hover">
     <thead class="head">
       <tr>
-        <th class="pb-2 pl-4"> Repos </th>
-        <th class="pb-2 pl-4"> Matricule </th>
-        <th class="pb-2 pl-4"> Proposé </th>
-        <th class="pb-2 pl-4"> Souhaité </th>
-        <th class="pb-2 pl-4"> Equipe </th>
-        <th class="pb-2 pl-4"> Début </th>
-        <th class="pb-2 pl-4"> Fin </th>
-        <th class="pb-2 pl-4"> Action </th>
+        <th class="pb-2 pl-4">
+          <mfDefaultSorter by="rest">
+           Repos
+          </mfDefaultSorter> 
+        </th>
+        <th class="pb-2 pl-4"> 
+          <mfDefaultSorter by="user.registrationNumber">
+            Matricule
+          </mfDefaultSorter>
+        </th>
+        <th class="pb-2 pl-4"> 
+          <mfDefaultSorter by="type">
+            Proposé
+          </mfDefaultSorter>
+        </th>
+        <th class="pb-2 pl-4"> 
+          <mfDefaultSorter>
+            Souhaité
+          </mfDefaultSorter>
+        </th>
+        <th class="pb-2 pl-4"> 
+          <mfDefaultSorter by="team">
+            Equipe
+          </mfDefaultSorter>
+        </th>
+        <th class="pb-2 pl-4"> 
+          <mfDefaultSorter by="start">
+            Début
+          </mfDefaultSorter>
+        </th>
+        <th class="pb-2 pl-4"> 
+          <mfDefaultSorter by="end">
+            Fin
+          </mfDefaultSorter>
+        </th>
+        <th class="pb-2 pl-4"> 
+          <mfDefaultSorter>
+            Action
+          </mfDefaultSorter>
+        </th>
+        
       </tr>
     </thead>
-    <tbody *ngFor="let ask of asks; let i = index">
+    <tbody *ngFor="let ask of mf.data; let i = index">
         <tr
-        *ngIf="IsMyOffers(ask, asks.length-1-i)"
+        *ngIf="IsMyOffers(ask, mf.data.length-1-i)"
         [ngStyle]="{ 'background-color' : getColor(ask) }">
           <td class="pl-4"> {{ ask.rest }} </td>
           <td class="pl-4"> {{ ask.user.registrationNumber }} </td>
@@ -38,7 +74,7 @@
           <td class="pl-4">
             <button
             class=" view"
-            (click)="onViewAsk(asks.length-1-i)"
+            (click)="onViewAsk(mf.data.length-1-i)"
             title="Voir"> 
               <i class="fas fa-search"></i>
             </button>
@@ -46,7 +82,7 @@
             class="ok ml-1"
             *ngIf='ask.user.email !== user.email'
             data-toggle="modal"
-            [attr.data-target]="'#'+ (asks.length-1-i)"
+            [attr.data-target]="'#'+ (mf.data.length-1-i)"
             data-whatever="@mdo"
             title="Proposer un accord"
             > 
@@ -72,15 +108,22 @@
           <td class="pl-4">
             <button
             class=" view"
-            (click)="onViewAsk(asks.length-1-i)"
+            (click)="onViewAsk(mf.data.length-1-i)"
             title="Voir"> 
               <i class="fas fa-search"></i>
             </button>
             <i class="fas send fa-paper-plane"></i>
           </td>
         </tr>
-      <app-offer [ask]="ask" [i]='asks.length-1-i' [user]="user"></app-offer>
+      <app-offer [ask]="ask" [i]='mf.data.length-1-i' [user]="user"></app-offer>
       <script src='assets/modal.js'></script>
     </tbody>
+    <tfoot>
+      <tr>
+          <td colspan="4">
+            <mfBootstrapPaginator></mfBootstrapPaginator>
+          </td>
+      </tr>
+  </tfoot>
   </table>
 </div>

@@ -20,7 +20,7 @@ import * as firebase from 'firebase';
 
 export class AsksListComponent implements OnInit, OnDestroy
 {
-
+  public data: any;
   asks: Ask[];
   offers: Offer[];
   ask: Ask;
@@ -30,7 +30,7 @@ export class AsksListComponent implements OnInit, OnDestroy
   isAuth;
   user: User;
   myOffers = Array();
-  today = new Date();
+  today = new Date("10/24/2018").getTime();
   i;
   y = 0;
 	constructor(
@@ -44,6 +44,7 @@ export class AsksListComponent implements OnInit, OnDestroy
 	ngOnInit()
   {
     this.Init();
+    console.log(this.today);
   }
 
   ngAfterContentInit()
@@ -60,7 +61,7 @@ export class AsksListComponent implements OnInit, OnDestroy
       this.asksSubscription = await this.asksService.askSubject.subscribe(
         async (asks: Ask[]) => {
           this.asks = asks;
-          //this.DateLimit(this.asks);
+          this.data = this.asks;
           this.offersSubscription =  await this.offerService.offerSubject.subscribe(
           (offers: Offer[]) => {
             this.offers = offers;
@@ -94,7 +95,8 @@ export class AsksListComponent implements OnInit, OnDestroy
     for(var i = 0; i < asks.length; i++)
     {
       dateStart = new Date(getDate(asks[i].start));
-    
+      dateStart.getTime();
+
       if( dateStart <= this.today)
       {
         this.asksService.removeAsk(asks[i]);

@@ -25,7 +25,7 @@ export class UserAsksComponent implements OnInit
 	myAsk: boolean;
 	myAnswer: boolean;
 	mySend : boolean;
-	today = new Date();
+	today = new Date("10/24/2018").getTime();
 
 	constructor(
 		private authService: AuthService,
@@ -94,13 +94,14 @@ export class UserAsksComponent implements OnInit
 		for(var i = 0; i < offers.length; i++)
 		{
 				
-				dateStart = new Date(getDate(offers[i].askRef.start));
-			
-				if( dateStart <= this.today)
-				{
-					console.log(offers[i]);
-					this.offerService.removeOffer(offers[i]);
-				} 
+			dateStart = new Date(getDate(offers[i].askRef.start));
+			dateStart.getTime();
+
+			if( dateStart <= this.today)
+			{
+				console.log(offers[i]);
+				this.offerService.removeOffer(offers[i]);
+			} 
 			
 		}
 	}

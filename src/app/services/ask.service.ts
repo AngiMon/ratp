@@ -8,7 +8,7 @@ export class AskService
 {
 	asks: Ask[] = [];
 	askSubject = new Subject<Ask[]>();
-	today = new Date("09/01/2018");
+	//today = new Date("09/01/2018");
 
 	constructor()
 	{
@@ -16,7 +16,7 @@ export class AskService
 		
 	}
 
-	DateLimit(asks)
+	/*DateLimit(asks)
 	{
 		var day, month, year, dateStart;
 
@@ -37,7 +37,7 @@ export class AskService
 	        this.removeAsk(asks[i]);
 	      } 
 	    }
-	}
+	}*/
 	emitAsks()
 	{
 		this.askSubject.next(this.asks.slice());
@@ -119,6 +119,7 @@ export class AskService
 
 	removeAsk(ask: Ask, id = null)
 	{
+		console.log(ask);
 		if(id != null)
 		{
 			this.asks.splice(id, 1);
@@ -133,8 +134,8 @@ export class AskService
 					}
 				}
 			);
-			console.log('askIndexToRemove' + askIndexToRemove);
-				this.asks.splice(askIndexToRemove, 1);
+
+			this.asks.splice(askIndexToRemove, 1);
 		}
 		
 		this.saveAsks();
