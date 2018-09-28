@@ -14,42 +14,54 @@
     <thead class="head">
       <tr>
         <th class="pb-2 pl-4">
-          <mfDefaultSorter by="rest">
+          <mfDefaultSorter 
+          by="rest" 
+          onclick='Sort(this)'>
            Repos
+           <i class="fas fa-arrow-down down"></i>
+           <i class="fas fa-arrow-up up hide"></i>
           </mfDefaultSorter> 
         </th>
         <th class="pb-2 pl-4"> 
-          <mfDefaultSorter by="user.registrationNumber">
+          <mfDefaultSorter 
+          by="user.registrationNumber"
+          onclick='Sort(this)'>
             Matricule
+            <i class="fas fa-arrow-down down"></i>
+            <i class="fas fa-arrow-up hide up"></i>
           </mfDefaultSorter>
         </th>
         <th class="pb-2 pl-4"> 
-          <mfDefaultSorter by="type">
+          <mfDefaultSorter 
+          by="type"
+          onclick='Sort(this)'>
             Proposé
+            <i class="fas fa-arrow-down down"></i>
+            <i class="fas fa-arrow-up up hide"></i>
           </mfDefaultSorter>
         </th>
         <th class="pb-2 pl-4"> 
-          <mfDefaultSorter>
+          <mfDefaultSorter onclick='Sort(this)'>
             Souhaité
           </mfDefaultSorter>
         </th>
         <th class="pb-2 pl-4"> 
-          <mfDefaultSorter by="team">
+          <mfDefaultSorter onclick='Sort(this)'>
             Equipe
           </mfDefaultSorter>
         </th>
         <th class="pb-2 pl-4"> 
-          <mfDefaultSorter by="start">
+          <mfDefaultSorter onclick='Sort(this)'>
             Début
           </mfDefaultSorter>
         </th>
         <th class="pb-2 pl-4"> 
-          <mfDefaultSorter by="end">
+          <mfDefaultSorter onclick='Sort(this)'>
             Fin
           </mfDefaultSorter>
         </th>
         <th class="pb-2 pl-4"> 
-          <mfDefaultSorter>
+          <mfDefaultSorter onclick='Sort(this)'>
             Action
           </mfDefaultSorter>
         </th>
@@ -71,12 +83,12 @@
           <td class="pl-4"> {{ ask.start }} </td>
           <td class="pl-4"> {{ ask.end }} </td>
           <td class="pl-4">
-            <button
+            <!--<button
             class=" view"
             (click)="onViewAsk(ask)"
             title="Voir"> 
               <i class="fas fa-search"></i>
-            </button>
+            </button>-->
             <button 
             class="ok ml-1"
             *ngIf='ask.user.email !== user.email'
@@ -105,12 +117,12 @@
           <td class="pl-4"> {{ ask.start }} </td>
           <td class="pl-4"> {{ ask.end }} </td>
           <td class="pl-4">
-            <button
+            <!--<button
             class="view"
             (click)="onViewAsk(ask)"
             title="Voir">
               <i class="fas fa-search"></i>
-            </button>
+            </button>-->
             <i class="fas send fa-paper-plane"></i>
           </td>
         </tr>

@@ -256,3 +256,69 @@ footer .int:before, .ext:before{
 .sub:disabled {
     background: #9FD799;
 }
+
+@-webkit-keyframes anim {
+	from {
+        padding-bottom: 1px;
+    }
+    0% {
+        padding-bottom: 2px;
+    }
+
+    50% {
+        padding-bottom: 3px;
+    }
+
+    100% {
+        padding-bottom: 4px;
+    }
+    to{
+    	padding-bottom: 10px
+    }
+}
+
+@keyframes anim { /* Tous les autres navigateurs */
+    from {
+        color: blue;
+        font-weight: bolder;
+        /*text-decoration: underline;*/
+    }
+    /*0% {
+        color: #fff;
+    }*/
+
+    50% {
+        
+    }
+
+    /*100% {
+        top: 3px;
+    }*/
+    to{
+    	color: grey;
+    	
+    }
+}
+
+.hide{
+	display:none;
+}
+.show{
+	display: inline-block;
+}
+[by] i{
+	
+	font-size: 0.8em;
+  	animation: anim 1s linear alternate infinite;
+
+}
+
+[by]:after{
+	font-family: FontAwesome;
+	/*content: "\f063";*/
+}
+#div{
+	background-color: blue;
+	  width: 120px;
+    height: 100px; 
+}
