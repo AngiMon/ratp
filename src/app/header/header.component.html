@@ -23,8 +23,8 @@
 				   routerLinkActive="link">
 					Mes requêtes 
 					<span 
-					*ngIf="notif > 0"
-					class="notif">{{notif}}</span>
+					*ngIf="notif.offer > 0 || notif.ask > 0"
+					class="notif">{{notif.offer + notif.ask}}</span>
 				</a>
 				<a class=" navButton "
 				   routerLink="auth/signup"

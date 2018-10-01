@@ -16,8 +16,15 @@
 	    	href="#nav-ask"
 	    	role="tab"
 	    	aria-controls="nav-ask"
-	    	aria-selected="true">
+	    	aria-selected="true"
+	    	(click)="Notif('ask')"
+	    	>
 				Mes demandes de permutation 
+				<span
+		    	*ngIf="notif.ask > 0"
+		    	class="notif">
+		    		{{ notif.ask }}
+		    	</span>
 		    </a>
 		    <a 
 		    class=" navButton nav-item nav-link" 
@@ -26,12 +33,13 @@
 		    href="#nav-proposition" 
 		    role="tab" 
 		    aria-controls="nav-proposition" 
-		    aria-selected="false">
+		    aria-selected="false"
+		    (click)="Notif('offer')">
 		    	Mes envois
 		    	<span
-		    	*ngIf="notif > 0" 
+		    	*ngIf="notif.offer > 0"
 		    	class="notif">
-		    		{{ notif }}
+		    		{{ notif.offer }}
 		    	</span>
 		    </a>
 		    <a 

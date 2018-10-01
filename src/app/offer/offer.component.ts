@@ -30,7 +30,7 @@ export class OfferComponent implements OnInit
 	@Input() isAuth;
 	@Input() user;
 	@Input() i;
-  notif: number;
+  notif: Object = {ask : 0, offer : 0};
 	offerForm : FormGroup;
 	array = Array(24);
 	rest = Array(6);
@@ -114,8 +114,8 @@ initForm()
     }, function(error) {
        console.log('FAILED...', error);
     });*/
-    this.nodeService.notif = this.nodeService.notif  + 1;
-    console.log("notif: " + this.nodeService.notif);
+    this.nodeService.notif.offer = this.nodeService.notif.offer  + 1;
+    console.log("notif.offer: " + this.nodeService.notif.offer);
     this.router.navigate(['/demandes-en-cours']);    
       }
     );

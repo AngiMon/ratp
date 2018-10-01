@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Ask } from '../../models/Ask.model';
 import { AskService} from '../../services/ask.service';
 import { AuthService } from '../../services/auth.service';
+import { NodeService } from '../../services/node.service';
 
 @Component({
   selector: 'app-ask-form',
@@ -32,7 +33,8 @@ export class AskFormComponent implements OnInit
      private formBuilder: FormBuilder, 
      private asksService: AskService,
      private router: Router,
-     private authService: AuthService) { }
+     private authService: AuthService,
+     private nodeServices: NodeService) { }
               
   ngOnInit() {
     this.initForm();
@@ -107,6 +109,7 @@ export class AskFormComponent implements OnInit
       const user = this.user;
       const newAsk = new Ask(start, end, rest, teamNb, type, typeVs, user);
       this.asksService.createNewAsk(newAsk);
+      this.nodeServices.notif.ask += 1;
       this.router.navigate(['/demandes-en-cours']);
     }    
   }

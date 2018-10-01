@@ -26,7 +26,7 @@ export class UserAsksComponent implements OnInit
 	myAsk: boolean;
 	myAnswer: boolean;
 	mySend : boolean;
-	notif: number;
+  	notif: Object = {ask : 0, offer : 0};
 	today = new Date().getTime();
 
 
@@ -39,7 +39,8 @@ export class UserAsksComponent implements OnInit
 
 	async ngOnInit()
 	{
-		this.notif = this.nodeService.notif;
+		this.notif.ask = this.nodeService.notif.ask;
+		this.notif.offer = this.nodeService.notif.offer;
 		this.user = new User('', '', '', '');
 		this.authService.getAuthData(this);
 		this.asksSubscription = await this.asksService.askSubject.subscribe(
@@ -132,4 +133,18 @@ export class UserAsksComponent implements OnInit
   {
     this.router.navigate(['mes-requetes/requete', id ]);
   }
+  	Notif(check)
+  	{
+  		switch (check) {
+  			case "offer":
+				this.nodeService.notif.offer = 0;
+  				this.notif.offer = this.nodeService.notif.offer;
+  				break;
+  			case "ask":
+				this.nodeService.notif.ask = 0;
+  				this.notif.ask = this.nodeService.notif.ask;
+  				break;
+  		}
+  		
+  	}
 }
