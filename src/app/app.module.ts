@@ -13,6 +13,7 @@ import { AuthGuardService } from './services/authGuard.service';
 import { AskService } from './services/ask.service';
 import { UserService } from './services/user.service';
 import { OfferService } from './services/offer.service';
+import { NodeService } from './services/node.service'; 
 import { HttpClientModule } from '@angular/common/http';
 import { Http, HttpModule } from '@angular/http';
 import { SigninComponent } from './signin/signin.component';
@@ -27,6 +28,7 @@ import { OfferComponent } from './offer/offer.component';
 import { FooterComponent } from './footer/footer.component';
 import { RequestComponent } from './request/request.component';
 import { DataTableModule } from "angular-6-datatable";
+
 
 const appRoutes: Routes = [
   { path: 'auth/signup', component: SignupComponent},
@@ -71,7 +73,7 @@ const appRoutes: Routes = [
   ,
     BrowserModule
   ],
-  providers: [AuthService, AuthGuardService, UserService, AskService, OfferService],
+  providers: [NodeService, AuthService, AuthGuardService, UserService, AskService, OfferService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

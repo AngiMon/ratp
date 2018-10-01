@@ -28,6 +28,11 @@
 		    aria-controls="nav-proposition" 
 		    aria-selected="false">
 		    	Mes envois
+		    	<span
+		    	*ngIf="notif > 0" 
+		    	class="notif">
+		    		{{ notif }}
+		    	</span>
 		    </a>
 		    <a 
 	    	class=" navButton nav-item nav-link" 

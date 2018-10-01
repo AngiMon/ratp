@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { AskService } from '../services/ask.service';
 import { OfferService } from '../services/offer.service';
+import { NodeService } from '../services/node.service';
 import { User } from "../models/User.model";
 import { Ask } from "../models/Ask.model";
 import { Offer } from "../models/Offer.model";
@@ -25,16 +26,20 @@ export class UserAsksComponent implements OnInit
 	myAsk: boolean;
 	myAnswer: boolean;
 	mySend : boolean;
+	notif: number;
 	today = new Date().getTime();
+
 
 	constructor(
 		private authService: AuthService,
 		private asksService: AskService,
 		private offerService: OfferService,
-		private router: Router) { }
+		private router: Router,
+		private nodeService: NodeService) { }
 
 	async ngOnInit()
 	{
+		this.notif = this.nodeService.notif;
 		this.user = new User('', '', '', '');
 		this.authService.getAuthData(this);
 		this.asksSubscription = await this.asksService.askSubject.subscribe(

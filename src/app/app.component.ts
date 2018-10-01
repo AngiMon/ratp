@@ -1,4 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { AuthService } from './services/auth.service';
+import { UserService } from './services/user.service';
+import { NodeService } from './services/node.service';
+import { User } from "./models/User.model";
+
 import * as firebase from 'firebase';
 
 
@@ -8,9 +13,15 @@ import * as firebase from 'firebase';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent
+export class AppComponent implements OnInit
 {
-	constructor()
+  authdata = null;
+  isAuth:boolean;
+  user: User;
+  //notif: number = 12;
+	constructor(
+    private nodeService:NodeService,
+    private authService: AuthService,)
 	{
 		const config = {
     apiKey: "AIzaSyBtV9q3zDIUoBMHLIF_s96iI95aFzacjk0",
@@ -22,6 +33,13 @@ export class AppComponent
   };
   firebase.initializeApp(config);
 	
+  }
+  ngOnInit()
+  {
+    this.user = new User('', '', '');
+    this.authService.getAuthData(this);
+    //this.nodeService.notif = this.notif;
+    
   }
 
 	title = 'app';

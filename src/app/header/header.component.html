@@ -21,7 +21,10 @@
 				   *ngIf="isAuth"
 				   routerLink="mes-requetes"
 				   routerLinkActive="link">
-					Mes requêtes
+					Mes requêtes 
+					<span 
+					*ngIf="notif > 0"
+					class="notif">{{notif}}</span>
 				</a>
 				<a class=" navButton "
 				   routerLink="auth/signup"

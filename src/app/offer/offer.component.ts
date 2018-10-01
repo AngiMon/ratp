@@ -1,13 +1,15 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, Validators} from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 import { AskService } from '../services/ask.service';
 import { AuthService } from '../services/auth.service';
 import { OfferService } from '../services/offer.service';
+import { NodeService } from '../services/node.service';
 import { User } from '../models/User.model';
 import { Offer } from '../models/Offer.model';
-import { AsksListComponent } from '../asks-list/asks-list.component'
+import { AsksListComponent } from '../asks-list/asks-list.component';
+import { HeaderComponent } from '../header/header.component';
 import * as emailjs from 'emailjs-com';
 
 import { Ask } from '../models/Ask.model'; 
@@ -28,6 +30,7 @@ export class OfferComponent implements OnInit
 	@Input() isAuth;
 	@Input() user;
 	@Input() i;
+  notif: number;
 	offerForm : FormGroup;
 	array = Array(24);
 	rest = Array(6);
@@ -41,6 +44,7 @@ export class OfferComponent implements OnInit
     private authService: AuthService,
     private formBuilder: FormBuilder, 
     private offerService: OfferService,
+    private nodeService: NodeService
     ) { }
 
   ngOnInit()
@@ -101,6 +105,7 @@ initForm()
           note: this.getNote(message)
         };
 
+
     /*emailjs.init("user_Usc4NFXBOwanzq1ziU15b");
  
     emailjs.send('gmail', 'template_4qbcMMOk', templateParams)
@@ -109,6 +114,8 @@ initForm()
     }, function(error) {
        console.log('FAILED...', error);
     });*/
+    this.nodeService.notif = this.nodeService.notif  + 1;
+    console.log("notif: " + this.nodeService.notif);
     this.router.navigate(['/demandes-en-cours']);    
       }
     );
