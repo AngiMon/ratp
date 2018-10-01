@@ -111,7 +111,10 @@ h5{
 	font-size: 1.2em;
 }
 .notif{
-	color: #FC5353;
+	padding: 1px 6px;
+	border-radius: 100%;
+	background-color: #FC5353;
+	color: #F9CC6D;
 }
 .ok, .sub{
 	background-color: #34C436;
