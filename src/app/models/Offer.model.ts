@@ -8,6 +8,7 @@ export class Offer
 		public message: string,
 		public askRef: Object,
 		public user: Object,
-		public response: boolean)
+		public response: boolean,
+		public recent: boolean,)
 	{}
 }

@@ -30,7 +30,7 @@ export class OfferComponent implements OnInit
 	@Input() isAuth;
 	@Input() user;
 	@Input() i;
-  notif: Object = {ask : 0, offer : 0};
+  notif: Object = {ask : 0, offer : 0, answer: 0};
 	offerForm : FormGroup;
 	array = Array(24);
 	rest = Array(6);
@@ -83,7 +83,6 @@ initForm()
       && this.errors.rest == undefined
       && this.errors.team == undefined)
     {
-      console.log("all ok");
       this.getAsk(index, rest, type, teamNb, phone, message);
     }
     
@@ -94,7 +93,7 @@ initForm()
     this.asksService.getSingleAsk(i).then(
       (ask: Ask) => {
         this.ask = ask;
-        const offer = new Offer(rest, type, teamNb, phone, message, this.ask, this.user, null);
+        const offer = new Offer(rest, type, teamNb, phone, message, this.ask, this.user, null, true);
         this.offerService.createNewOffer(offer);
         var templateParams = 
         {
@@ -115,7 +114,6 @@ initForm()
        console.log('FAILED...', error);
     });*/
     this.nodeService.notif.offer = this.nodeService.notif.offer  + 1;
-    console.log("notif.offer: " + this.nodeService.notif.offer);
     this.router.navigate(['/demandes-en-cours']);    
       }
     );

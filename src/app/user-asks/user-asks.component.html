@@ -49,8 +49,14 @@
 	    	href="#nav-answer" 
 	    	role="tab" 
 	    	aria-controls="nav-answer"
-	    	aria-selected="false">
+	    	aria-selected="false"
+	    	(click)="Notif('answer')">
 		    	Réponses reçues 
+		    	<span
+		    	*ngIf="notif.answer > 0"
+		    	class="notif">
+		    		{{ notif.answer }}
+		    	</span>
 		    </a>	    
 		</div>
 	</nav>

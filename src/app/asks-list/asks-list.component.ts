@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { AskService } from '../services/ask.service';
 import { AuthService } from '../services/auth.service';
 import { OfferService } from '../services/offer.service';
+import { NodeService } from '../services/node.service';
 import { User } from '../models/User.model';
 import { Offer } from '../models/Offer.model';
 import * as emailjs from 'emailjs-com';
@@ -41,6 +42,7 @@ export class AsksListComponent implements OnInit, OnDestroy
     private router: Router,
     private authService: AuthService,
     private offerService: OfferService,
+    private nodeService: NodeService
      )
 	{}
 
@@ -66,9 +68,35 @@ export class AsksListComponent implements OnInit, OnDestroy
           this.offersSubscription =  await this.offerService.offerSubject.subscribe(
           (offers: Offer[]) => {
             this.offers = offers;
+
             if(this.i == true && this.y == 1)
-            {
-              this.DateLimit(this.asks); 
+            {console.log("toto");
+              this.DateLimit(this.asks);
+              if(this.user != undefined)
+              {
+                for(var i = 0; i < this.offers.length; i ++)
+                {
+                  if(JSON.stringify(this.offers[i].askRef.user) == JSON.stringify(this.user))
+                  {
+                    if(this.offers[i].recent == true)
+                    {
+                      this.nodeService.notif.answer += 1;
+                      console.log(this.nodeService.notif.answer);
+                      var offer = new Offer(
+                                  offers[i].rest,
+                                  offers[i].type,
+                                  offers[i].teamNb,
+                                  offers[i].phone,
+                                  offers[i].message,
+                                  offers[i].askRef,
+                                  offers[i].user,
+                                  null,
+                                  null);
+                      this.offerService.editOffer(offer, i);
+                    }
+                  }
+                }
+              }
             }
             
             this.Checked();
@@ -79,11 +107,6 @@ export class AsksListComponent implements OnInit, OnDestroy
 
       this.offerService.emitOffers();
       this.asksService.emitAsks();
-  }
-
-  onSort()
-  {
-
   }
 
   onChangePage(mf)

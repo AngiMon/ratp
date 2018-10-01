@@ -26,7 +26,7 @@ export class UserAsksComponent implements OnInit
 	myAsk: boolean;
 	myAnswer: boolean;
 	mySend : boolean;
-  	notif: Object = {ask : 0, offer : 0};
+  	notif: Object = {ask : 0, offer : 0, answer : 0};
 	today = new Date().getTime();
 
 
@@ -41,6 +41,7 @@ export class UserAsksComponent implements OnInit
 	{
 		this.notif.ask = this.nodeService.notif.ask;
 		this.notif.offer = this.nodeService.notif.offer;
+		this.notif.answer = this.nodeService.notif.answer;
 		this.user = new User('', '', '', '');
 		this.authService.getAuthData(this);
 		this.asksSubscription = await this.asksService.askSubject.subscribe(
@@ -143,6 +144,10 @@ export class UserAsksComponent implements OnInit
   			case "ask":
 				this.nodeService.notif.ask = 0;
   				this.notif.ask = this.nodeService.notif.ask;
+  				break;
+  			case "answer":
+				this.nodeService.notif.answer = 0;
+  				this.notif.answer = this.nodeService.notif.answer;
   				break;
   		}
   		

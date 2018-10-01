@@ -16,7 +16,7 @@ export class HeaderComponent implements OnInit
 	authdata = null;
 	isAuth:boolean;
 	user: User;
-  	notif: Object = {ask : 0, offer : 0};
+  	notif: Object = {ask : 0, offer : 0, answer : 0};
 
 	constructor(
 		private authService: AuthService,
@@ -33,6 +33,7 @@ export class HeaderComponent implements OnInit
 	ngDoCheck(){
 		this.notif.ask = this.nodeService.notif.ask;
 		this.notif.offer = this.nodeService.notif.offer;
+		this.notif.answer = this.nodeService.notif.answer;
 
 	}
 
