@@ -106,7 +106,7 @@ export class OfferComponent implements OnInit
        console.log('FAILED...', error);
     });*/
     this.nodeService.notif.offer = this.nodeService.notif.offer  + 1;
-    //this.router.navigate(['/demandes-en-cours']);
+    this.router.navigate(['/demandes-en-cours']);
   }
 
   getNote(m)

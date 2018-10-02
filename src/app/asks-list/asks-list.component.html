@@ -2,6 +2,14 @@
   <h2 class="mb-5">
     Toutes les dernières demandes de permutations
   </h2>
+  <div id="myAsks">
+    <label for="myAsks">Cacher mes demandes</label>
+    <input 
+    id="my"
+    type="checkbox" 
+    name="myAsks"
+    (click)="Hide($event.target.checked)">
+  </div>
   <p 
   *ngIf='asks === undefined'
   class="row col-12 btn-info disabled">
@@ -9,14 +17,15 @@
   </p>
   <table 
   [mfData]="data" #mf="mfDataTable"
-  [mfRowsOnPage]="10"
+  [mfRowsOnPage]="80"
   class="mb-5 table table-hover">
     <thead class="head">
-      <tr>
+      <tr (click)='Hide(is)'>
         <th class="pb-2 pl-4">
           <mfDefaultSorter 
           by="rest" 
-          onclick='Sort(this)'>
+          onclick='Sort(this)'
+          >
            Repos
            <i class="fas fa-arrow-down down"></i>
            <i class="fas fa-arrow-up up hide"></i>
@@ -70,6 +79,7 @@
     <tbody *ngFor="let ask of mf.data; let i = index">
         <tr
         *ngIf="IsMyOffers(ask)"
+        class="{{(ask.user.email == user.email) ? 'is' : 'not'}}"
         [ngStyle]="{ 'background-color' : getColor(ask) }">
           <td class="pl-4"> {{ ask.rest }} </td>
           <td class="pl-4"> {{ ask.user.registrationNumber }} </td>
@@ -83,12 +93,6 @@
           <td class="pl-4"> {{ ask.start }} </td>
           <td class="pl-4"> {{ ask.end }} </td>
           <td class="pl-4">
-            <!--<button
-            class=" view"
-            (click)="onViewAsk(ask)"
-            title="Voir"> 
-              <i class="fas fa-search"></i>
-            </button>-->
             <button 
             class="ok ml-1"
             *ngIf='ask.user.email !== user.email'
@@ -117,12 +121,6 @@
           <td class="pl-4"> {{ ask.start }} </td>
           <td class="pl-4"> {{ ask.end }} </td>
           <td class="pl-4">
-            <!--<button
-            class="view"
-            (click)="onViewAsk(ask)"
-            title="Voir">
-              <i class="fas fa-search"></i>
-            </button>-->
             <i class="fas send fa-paper-plane"></i>
           </td>
         </tr>
@@ -130,7 +128,7 @@
       <script src='assets/modal.js'></script>
     </tbody>
     <tfoot>
-      <tr>
+      <tr (click)="Hide(is)">
           <td id='pagination' colspan="4">
             <mfBootstrapPaginator (click)="onChangePage(mf)"></mfBootstrapPaginator>
           </td>

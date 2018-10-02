@@ -26,7 +26,7 @@ export class AsksListComponent implements OnInit, OnDestroy
   offers: Offer[];
   ask: Ask;
 	asksSubscription: Subscription;
-  offersSubscription: Subscription
+  offersSubscription: Subscription;
   authdata = null;
   isAuth;
   user: User;
@@ -36,6 +36,7 @@ export class AsksListComponent implements OnInit, OnDestroy
   y = 0;
   pageIndex = 0;
   mfRowsOnPage;
+  is: boolean;
 
 	constructor(
     private asksService: AskService, 
@@ -47,66 +48,62 @@ export class AsksListComponent implements OnInit, OnDestroy
 	{}
 
 	ngOnInit()
-  {
+  {console.log('ini');
     this.Init();
   }
 
   ngAfterContentInit()
-  {
+  {console.log('Afterini');
     this.Init();
+   
   }
 
   async Init()
   {
-     this.user = new User('', '', '', '');
-      this.authService.getAuthData(this);
-
-      this.asksSubscription = await this.asksService.askSubject.subscribe(
-        async (asks: Ask[]) => {
-          this.asks = asks;
-          this.data = this.asks;
-          this.offersSubscription =  await this.offerService.offerSubject.subscribe(
-          (offers: Offer[]) => {
-            this.offers = offers;
-
-            if(this.i == true && this.y == 1)
+    this.user = new User('', '', '', '');
+    this.authService.getAuthData(this);
+    this.asksSubscription = await this.asksService.askSubject.subscribe(
+      async (asks: Ask[]) => {
+        this.asks = asks;
+        this.data = this.asks;
+        this.offersSubscription =  await this.offerService.offerSubject.subscribe(
+        (offers: Offer[]) => {
+          this.offers = offers;
+          if(this.i == true && this.y == 1)
+          {
+            this.DateLimit(this.asks);
+            if(this.user != undefined)
             {
-              this.DateLimit(this.asks);
-              if(this.user != undefined)
+              for(var i = 0; i < this.offers.length; i ++)
               {
-                for(var i = 0; i < this.offers.length; i ++)
+                if(JSON.stringify(this.offers[i].askRef.user) == JSON.stringify(this.user))
                 {
-                  if(JSON.stringify(this.offers[i].askRef.user) == JSON.stringify(this.user))
+                  if(this.offers[i].recent == true)
                   {
-                    if(this.offers[i].recent == true)
-                    {
-                      this.nodeService.notif.answer += 1;
-                      console.log(this.nodeService.notif.answer);
-                      var offer = new Offer(
-                                  offers[i].rest,
-                                  offers[i].type,
-                                  offers[i].teamNb,
-                                  offers[i].phone,
-                                  offers[i].message,
-                                  offers[i].askRef,
-                                  offers[i].user,
-                                  null,
-                                  null);
-                      this.offerService.editOffer(offer, i);
-                    }
+                    this.nodeService.notif.answer += 1;
+                    var offer = new Offer(
+                                offers[i].rest,
+                                offers[i].type,
+                                offers[i].teamNb,
+                                offers[i].phone,
+                                offers[i].message,
+                                offers[i].askRef,
+                                offers[i].user,
+                                null,
+                                null);
+                    this.offerService.editOffer(offer, i);
                   }
                 }
               }
             }
-            
-            this.Checked();
-            }
-          )  
-        }
-      );
-
-      this.offerService.emitOffers();
-      this.asksService.emitAsks();
+          }
+          this.Checked();
+          }
+        )  
+      }
+    );
+    this.offerService.emitOffers();
+    this.asksService.emitAsks();
   }
 
   onChangePage(mf)
@@ -141,7 +138,7 @@ export class AsksListComponent implements OnInit, OnDestroy
   }
 
   Checked()
-  {
+  {console.log("check!")
     this.myOffers = [];
 
     if(JSON.stringify(this.asks) !== JSON.stringify([]) )
@@ -198,7 +195,9 @@ export class AsksListComponent implements OnInit, OnDestroy
   
   ngOnDestroy()
   {
+    console.log("dead");
     this.asksSubscription.unsubscribe();
+    this.offersSubscription.unsubscribe();
   }
 
   getColor(a)
@@ -206,6 +205,33 @@ export class AsksListComponent implements OnInit, OnDestroy
     if(a.user.email == this.user.email)
     {
       return '#FFF8CD';
+    }
+  }
+  Hide(is: boolean)
+  {
+    var toto = document.getElementById('my');
+    var my = document.getElementsByClassName('is');
+    var not = document.getElementsByClassName('not');
+    if(is == undefined)
+    {
+      is = toto.checked;
+      this.Hide(is);
+    }
+    if(is)
+    {
+      
+      for(var i = 0; i < my.length; i++)
+      {
+        my[i].parentNode.classList.add("hide");
+      }
+    }
+    else
+    {
+      for(var i = 0; i < my.length; i++)
+      {
+        my[i].parentNode.classList.remove("hide");
+        
+      }
     }
   }
 }
