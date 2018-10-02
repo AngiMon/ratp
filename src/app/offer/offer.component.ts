@@ -52,7 +52,7 @@ export class OfferComponent implements OnInit
       this.initForm();
   }
 
-initForm()
+  initForm()
   {
     this.offerForm = this.formBuilder.group({
       rest: ['', Validators.required],
@@ -67,43 +67,35 @@ initForm()
   onSaveOffer(ask : Ask)
   {
     this.errors = new Object();
-
     const rest = this.offerForm.get('rest').value;
     const type = this.offerForm.get('type').value;
     const teamNb = this.offerForm.get('teamNb').value;
     const phone = this.offerForm.get('phone').value;
     const message = this.offerForm.get('message').value;
-
     rest == '' ? this.errors.rest = 'Indiquez votre repos' : '';
     type == '' ? this.errors.type = 'Indiquez votre type de service' : '';
     teamNb == '' ? this.errors.team = 'Indiquez votre numéro d\'équipe' : '';
-
     var index = this.asksService.getId(ask, this.asks);
     if(this.errors.type == undefined 
       && this.errors.rest == undefined
       && this.errors.team == undefined)
     {
-      this.getAsk(index, rest, type, teamNb, phone, message);
+      this.createOffer(ask, rest, type, teamNb, phone, message);
     }
     
   }
-
-  getAsk(i, rest, type, teamNb, phone, message)
+  createOffer(ask, rest, type, teamNb, phone, message)
   {
-    this.asksService.getSingleAsk(i).then(
-      (ask: Ask) => {
-        this.ask = ask;
-        const offer = new Offer(rest, type, teamNb, phone, message, this.ask, this.user, null, true);
-        this.offerService.createNewOffer(offer);
-        var templateParams = 
-        {
-          user: this.user,
-          email: this.ask.user.email,
-          phone: this.getPhone(phone),
-          ask: this.ask,
-          note: this.getNote(message)
-        };
-
+    const offer = new Offer(rest, type, teamNb, phone, message, ask, this.user, null, true);
+    this.offerService.createNewOffer(offer);
+    var templateParams = 
+    {
+      user: this.user,
+      email: this.ask.user.email,
+      phone: this.getPhone(phone),
+      ask: this.ask,
+      note: this.getNote(message)
+    };
 
     /*emailjs.init("user_Usc4NFXBOwanzq1ziU15b");
  
@@ -114,9 +106,7 @@ initForm()
        console.log('FAILED...', error);
     });*/
     this.nodeService.notif.offer = this.nodeService.notif.offer  + 1;
-    //this.router.navigate(['/demandes-en-cours']);    
-      }
-    );
+    //this.router.navigate(['/demandes-en-cours']);
   }
 
   getNote(m)

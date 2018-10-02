@@ -70,7 +70,7 @@ export class AsksListComponent implements OnInit, OnDestroy
             this.offers = offers;
 
             if(this.i == true && this.y == 1)
-            {console.log("toto");
+            {
               this.DateLimit(this.asks);
               if(this.user != undefined)
               {
