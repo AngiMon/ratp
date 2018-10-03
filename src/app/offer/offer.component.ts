@@ -75,7 +75,7 @@ export class OfferComponent implements OnInit
     rest == '' ? this.errors.rest = 'Indiquez votre repos' : '';
     type == '' ? this.errors.type = 'Indiquez votre type de service' : '';
     teamNb == '' ? this.errors.team = 'Indiquez votre numéro d\'équipe' : '';
-    var index = this.asksService.getId(ask, this.asks);
+  
     if(this.errors.type == undefined 
       && this.errors.rest == undefined
       && this.errors.team == undefined)

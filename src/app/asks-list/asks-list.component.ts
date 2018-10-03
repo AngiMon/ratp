@@ -138,7 +138,7 @@ export class AsksListComponent implements OnInit, OnDestroy
   }
 
   Checked()
-  {console.log("check!")
+  {
     this.myOffers = [];
 
     if(JSON.stringify(this.asks) !== JSON.stringify([]) )
@@ -195,7 +195,6 @@ export class AsksListComponent implements OnInit, OnDestroy
   
   ngOnDestroy()
   {
-    console.log("dead");
     this.asksSubscription.unsubscribe();
     this.offersSubscription.unsubscribe();
   }
