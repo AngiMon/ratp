@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
+import { UserService } from '../services/user.service';
+import { NodeService } from '../services/node.service';
+
 
 @Component({
   selector: 'app-signin',
@@ -14,7 +17,9 @@ export class SigninComponent implements OnInit {
 	errorMessage: string;
 	constructor(private formBuilder: FormBuilder,
 				private authService: AuthService,
-				private router: Router)
+				private router: Router,
+				private userService: UserService,
+				private nodeService: NodeService)
 	{
 
 	}
@@ -40,6 +45,9 @@ export class SigninComponent implements OnInit {
 
 		this.authService.signInUser(email, password).then(
 			() => {
+				var user = this.userService.getUser(email);
+				console.log(user);
+				this.nodeService.Init(user);
 				this.router.navigate(['/']);
 			},
 			(error) => {

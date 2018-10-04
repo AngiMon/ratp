@@ -38,10 +38,10 @@
 			       *ngIf="!isAuth">
 			       	Me connecter
 			   	</a>
-			   	<a class=" navButton   "
-			   	   routerLink='/'
+			   	<a class=" navButton"
+			   		routerLink="/"
 			   	   *ngIf="isAuth"
-			   	   (click)="onSignOut()">
+			   	   (click)="onSignOut(user)">
 			   		Déconnexion
 			   	</a>
 			   	<a

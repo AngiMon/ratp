@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 import { UserService } from '../services/user.service';
 import { User } from '../models/User.model';
+import { Notifications } '../models/Notifications.model';
 
 
 import { Router } from '@angular/router';
@@ -47,7 +48,9 @@ export class SignupComponent implements OnInit
 		const firstname = this.signupForm.get('firstname').value;
 		const name = this.signupForm.get('name').value;
 		const registrationNumber = this.signupForm.get('registrationNumber').value;
-		const newUser = new User( email, firstname, name, registrationNumber );
+		const notifications = new Notifications(0, 0, 0);
+		console.log(notifications);
+		const newUser = new User( email, firstname, name, registrationNumber, notifications );
 
 		this.userService.createNewUser(newUser);
 		this.authService.createNewUser(email, password).then(

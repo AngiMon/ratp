@@ -73,7 +73,7 @@ const appRoutes: Routes = [
   ,
     BrowserModule
   ],
-  providers: [NodeService, AuthService, AuthGuardService, UserService, AskService, OfferService],
+  providers: [AuthService, AuthGuardService, UserService, AskService, OfferService, NodeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

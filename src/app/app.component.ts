@@ -19,9 +19,7 @@ export class AppComponent implements OnInit
   isAuth:boolean;
   user: User;
   //notif: number = 12;
-	constructor(
-    private nodeService:NodeService,
-    private authService: AuthService,)
+	constructor()
 	{
 		const config = {
     apiKey: "AIzaSyBtV9q3zDIUoBMHLIF_s96iI95aFzacjk0",
@@ -36,8 +34,8 @@ export class AppComponent implements OnInit
   }
   ngOnInit()
   {
-    this.user = new User('', '', '');
-    this.authService.getAuthData(this);
+    //this.user = new User('', '', '');
+    //this.authService.getAuthData(this);
     //this.nodeService.notif = this.notif;
     
   }

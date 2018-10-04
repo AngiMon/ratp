@@ -146,12 +146,15 @@ h5{
 }
 .page-item a {
 	color: #000;
+	border: none;
 }
+
 .page-link:hover{
 	color: #fff !important;
 }
 .page-item.active .page-link{
 	border-color: mediumspringgreen;
+
 }
 .page-link{
 	background-color: #35cd9d !important;

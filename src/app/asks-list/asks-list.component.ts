@@ -48,19 +48,18 @@ export class AsksListComponent implements OnInit, OnDestroy
 	{}
 
 	ngOnInit()
-  {console.log('ini');
+  {
     this.Init();
   }
 
   ngAfterContentInit()
-  {console.log('Afterini');
+  {
     this.Init();
-   
   }
 
   async Init()
   {
-    this.user = new User('', '', '', '');
+    this.user = new User('', '', '', '', '');
     this.authService.getAuthData(this);
     this.asksSubscription = await this.asksService.askSubject.subscribe(
       async (asks: Ask[]) => {

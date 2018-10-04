@@ -41,20 +41,20 @@ export class AskService
 				this.emitAsks();
 			})
 	}
-	getId(ask : Ask, asks)
+	getId(ask: Ask, asks)
 	{
 		asks.reverse();
 		for(var i = 0; i < asks.length; i++)
-			{ 
-				if(JSON.stringify(asks[i]) == JSON.stringify(ask) )
-				{
-					return i;
-				}
-				else
-				{
-					//console.log("no match");
-				}
+		{ 
+			if(JSON.stringify(asks[i]) == JSON.stringify(ask) )
+			{
+				return i;
 			}
+			else
+			{
+				//console.log("no match");
+			}
+		}
 	}
 	getSingleAsk(id : number = null, ask = null, request = null)
 	{

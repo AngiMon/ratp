@@ -1,6 +1,27 @@
+import { UserService } from './user.service';
 import { Injectable } from '@angular/core';
+import { User } from '../models/User.model';
+
 
 @Injectable() 
-export class NodeService {
+export class NodeService
+{
   	notif: Object = {ask : 0, offer : 0, answer : 0};
+  	
+
+  	constructor(private userService: UserService)
+  	{}
+
+  	Init(user: User)
+  	{
+  		this.notif.ask = user.notifications.ask;
+  		this.notif.offer = user.notifications.offer;
+  		this.notif.answer = user.notifications.answer;
+  	}
+
+  	Save(user: User)
+  	{
+  		const update = new User(user.email, user.firstname, user.name, user.registrationNumber, this.notif);
+  		this.userService.editUser(update);
+  	}
 }
