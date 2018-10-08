@@ -34,7 +34,7 @@ export class AskFormComponent implements OnInit
      private asksService: AskService,
      private router: Router,
      private authService: AuthService,
-     private nodeServices: NodeService) { }
+     private nodeService: NodeService) { }
               
   ngOnInit() {
     this.initForm();
@@ -109,7 +109,8 @@ export class AskFormComponent implements OnInit
       const user = this.user;
       const newAsk = new Ask(start, end, rest, teamNb, type, typeVs, user);
       this.asksService.createNewAsk(newAsk);
-      this.nodeServices.notif.ask += 1;
+      this.nodeService.notif.ask += 1;
+      this.nodeService.Save(this.user);
       this.router.navigate(['/demandes-en-cours']);
     }    
   }

@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, OnDestroy } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { UserService } from '../services/user.service';
 import { NodeService } from '../services/node.service';
@@ -26,22 +26,32 @@ export class HeaderComponent implements OnInit
 	{}
 
 	ngOnInit()
-	{	this.notif = new NodeService('', '', '', '');
-		this.user = new User('', '', '');
+	{	this.notif = new NodeService('');
+		this.user = new User('', '', '', '', '');
 		this.authService.getAuthData(this);
 	}
 
 	ngDoCheck()
 	{
-		this.notif.ask = this.nodeService.notif.ask;
-		this.notif.offer = this.nodeService.notif.offer;
-		this.notif.answer = this.nodeService.notif.answer;
+		if(this.user.email != "")
+		{
+			if(this.notif.ask != this.nodeService.notif.ask
+	   			|| this.notif.offer != this.nodeService.notif.offer
+	  		 	|| this.notif.answer != this.nodeService.notif.answer
+		 	  )
+			{
+				this.notif.ask = this.nodeService.notif.ask;
+				this.notif.offer = this.nodeService.notif.offer;
+				this.notif.answer = this.nodeService.notif.answer;
+			}
+		}
 	}
 
 	onSignOut(user: User)
 	{
 		this.nodeService.Save(user);
 		this.authService.signOutUser();
+		this.user = new User('', '', '', '', '');
 	}
 
 }

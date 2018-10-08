@@ -50,10 +50,6 @@ export class AskService
 			{
 				return i;
 			}
-			else
-			{
-				//console.log("no match");
-			}
 		}
 	}
 	getSingleAsk(id : number = null, ask = null, request = null)

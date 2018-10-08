@@ -46,7 +46,7 @@ export class SigninComponent implements OnInit {
 		this.authService.signInUser(email, password).then(
 			() => {
 				var user = this.userService.getUser(email);
-				console.log(user);
+				console.log('user init = ' + user.email);
 				this.nodeService.Init(user);
 				this.router.navigate(['/']);
 			},

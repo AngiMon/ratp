@@ -67,6 +67,7 @@ export class UserService
 		this.users[id] = user;
 		this.saveUsers();
 		this.emitUsers();
+		this.getUsers();
 	}
 
 	getUser(email)
@@ -75,7 +76,6 @@ export class UserService
 		{ 
 			if(JSON.stringify(this.users[i].email) == JSON.stringify(email) )
 			{
-				console.log(this.users[i]);
 				return this.users[i];
 			}
 		}

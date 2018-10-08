@@ -6,7 +6,7 @@ import { User } from '../models/User.model';
 @Injectable() 
 export class NodeService
 {
-  	notif: Object = {ask : 0, offer : 0, answer : 0};
+  	notif = {answer : 0, ask : 0, offer : 0};
   	
 
   	constructor(private userService: UserService)
@@ -24,4 +24,5 @@ export class NodeService
   		const update = new User(user.email, user.firstname, user.name, user.registrationNumber, this.notif);
   		this.userService.editUser(update);
   	}
+
 }

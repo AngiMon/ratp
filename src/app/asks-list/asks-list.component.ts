@@ -75,11 +75,13 @@ export class AsksListComponent implements OnInit, OnDestroy
             {
               for(var i = 0; i < this.offers.length; i ++)
               {
-                if(JSON.stringify(this.offers[i].askRef.user) == JSON.stringify(this.user))
+                if(JSON.stringify(this.offers[i].askRef.user.email) == JSON.stringify(this.user.email))
                 {
                   if(this.offers[i].recent == true)
                   {
                     this.nodeService.notif.answer += 1;
+                    //this.nodeService.SaveAnswer(this.offers[i].askRef.user);
+
                     var offer = new Offer(
                                 offers[i].rest,
                                 offers[i].type,
@@ -91,6 +93,7 @@ export class AsksListComponent implements OnInit, OnDestroy
                                 null,
                                 null);
                     this.offerService.editOffer(offer, i);
+                    
                   }
                 }
               }

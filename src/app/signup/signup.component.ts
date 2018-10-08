@@ -3,7 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 import { UserService } from '../services/user.service';
 import { User } from '../models/User.model';
-import { Notifications } '../models/Notifications.model';
+import { Notifications } from '../models/Notifications.model';
+
 
 
 import { Router } from '@angular/router';
