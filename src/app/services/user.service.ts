@@ -61,10 +61,18 @@ export class UserService
 			}
 		}
 	}
-	editUser(user: User)
+	editUser(user: User, answer:boolean = null)
 	{
 		var id = this.getId(user);
-		this.users[id] = user;
+		if(answer)
+		{
+			this.users[id].notifications.answer += 1;
+		}
+		else
+		{
+			this.users[id] = user;
+		}
+		
 		this.saveUsers();
 		this.emitUsers();
 		this.getUsers();

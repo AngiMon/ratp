@@ -3,12 +3,11 @@ import { Injectable } from '@angular/core';
 import { User } from '../models/User.model';
 
 
-@Injectable() 
+@Injectable()
 export class NodeService
 {
   	notif = {answer : 0, ask : 0, offer : 0};
   	
-
   	constructor(private userService: UserService)
   	{}
 
@@ -19,10 +18,21 @@ export class NodeService
   		this.notif.answer = user.notifications.answer;
   	}
 
-  	Save(user: User)
+  	Save(user: User, answer:boolean = null)
   	{
   		const update = new User(user.email, user.firstname, user.name, user.registrationNumber, this.notif);
-  		this.userService.editUser(update);
+  		if(answer)
+  		{
+  			this.userService.editUser(update, answer);
+  		}
+  		else
+  		{
+  			this.userService.editUser(update);
+  		}
   	}
 
+  	SaveAnswer(user: User)
+  	{
+
+  	}
 }

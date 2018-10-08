@@ -140,14 +140,17 @@ export class UserAsksComponent implements OnInit
   			case "offer":
 				this.nodeService.notif.offer = 0;
   				this.notif.offer = this.nodeService.notif.offer;
+  				this.nodeService.Save(this.user);
   				break;
   			case "ask":
 				this.nodeService.notif.ask = 0;
   				this.notif.ask = this.nodeService.notif.ask;
+  				this.nodeService.Save(this.user);
   				break;
   			case "answer":
 				this.nodeService.notif.answer = 0;
   				this.notif.answer = this.nodeService.notif.answer;
+  				this.nodeService.Save(this.user);
   				break;
   		}
   		

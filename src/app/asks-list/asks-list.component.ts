@@ -71,7 +71,7 @@ export class AsksListComponent implements OnInit, OnDestroy
           if(this.i == true && this.y == 1)
           {
             this.DateLimit(this.asks);
-            if(this.user != undefined)
+            /*if(this.user != undefined)
             {
               for(var i = 0; i < this.offers.length; i ++)
               {
@@ -97,7 +97,7 @@ export class AsksListComponent implements OnInit, OnDestroy
                   }
                 }
               }
-            }
+            }*/
           }
           this.Checked();
           }

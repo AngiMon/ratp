@@ -1,17 +1,16 @@
 import { Injectable } from '@angular/core';
 import * as firebase from 'firebase';
 import { DataSnapshot } from 'firebase/database';
+import { User } from '../models/User.model';
 
-@Injectable();
-
+@Injectable()
 export class AuthService
 {
-	user;
-	constructor(){}
-	ngOnInit()
-	{
-		
-	}
+	user: User;
+	
+	constructor()
+	{}
+	
 	createNewUser(email: string, password: string)
 	{
 		return new Promise(
@@ -82,7 +81,8 @@ export class AuthService
 					{
 						if(user.email == u.email)
 						{
-							a.user = user
+							a.user = user;
+							a.nodeService.Init(user);
 						}
 					}
 				)

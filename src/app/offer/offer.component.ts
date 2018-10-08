@@ -108,6 +108,7 @@ export class OfferComponent implements OnInit
 
     this.nodeService.notif.offer +=  1;
     this.nodeService.Save(this.user);
+    this.nodeService.Save(offer.askRef.user, true);
     this.router.navigate(['/demandes-en-cours']);
   }
 
