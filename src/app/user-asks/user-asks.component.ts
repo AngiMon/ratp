@@ -130,10 +130,10 @@ export class UserAsksComponent implements OnInit
 		this.myAnswer = false;
     	this.ngOnInit();
 	}
-	/*onViewRequest(id: number)
+	onViewRequest(id: number)
 	{
     	this.router.navigate(['mes-requetes/requete', id ]);
-  	}*/
+  	}
   	Notif(check)
   	{
   		switch (check) {

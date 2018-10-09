@@ -1,10 +1,19 @@
 <div class="row container ">
 	<section>
 		<h2 class="mb-2">
-	  		<strong>{{ offer.user.firstname }} {{ offer.user.name}} </strong> attend votre réponse pour échanger avec vous sur la période :
+	  		<strong>{{ offer.user.firstname }} {{ offer.user.name}} </strong> 
+	  		<span
+	  		*ngIf="offer.response === undefined">
+	  			attend
+  			</span>
+  			<span
+	  		*ngIf="offer.response !== undefined">
+	  			a reçu
+  			</span>
+  			votre réponse pour échanger avec vous sur la période :
 		</h2>
 
-		<h3>
+		<h3 id="period">
 			{{ offer.askRef.start }} - {{ offer.askRef.end }}
 		</h3>
 		<article class="bloc" *ngIf='offer.message !== "" '>
@@ -16,8 +25,13 @@
 			</p>
 		</article>
 		<article>
-			<h4>
-				Faite-lui savoir si son service vous convient
+			<h4
+			*ngIf="offer.response === undefined">
+				Faites-lui savoir si son service vous convient
+			</h4>
+			<h4
+			*ngIf="offer.response !== undefined">
+				Son service :
 			</h4>
 			<table class="table table-hover">
 			    <thead class="head">
@@ -35,6 +49,21 @@
 		    		</tr>
 				</tbody>
 			</table>
+			<h4
+			*ngIf="offer.response !== undefined">
+				Téléchargez dès maintenant la feuille de permutation de services :
+			</h4>
+			<div  
+			id="button"
+			*ngIf="offer.response == true">
+				<button 
+	           
+	        	class="doc"
+	        	title="Télécharger la feuille de permutation">
+	            	<i class="fas fa-file-alt"></i>
+	            </button>
+			</div>
+			
 		</article>
 
 		<div *ngIf="offer.response === undefined">
