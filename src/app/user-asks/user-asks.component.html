@@ -158,12 +158,12 @@
 				    <td 
 				    class="pl-4 accepted"
 				    *ngIf="offer.response">
-			    		Acceptée
+			    		Accepté
 				    </td>
 				     <td 
 				     class="pl-4 refused"
 				     *ngIf="offer.response == false">
-			    		Refusée
+			    		Refusé
 				    </td>
 				     <td 
 				     class="pl-4 wait"
@@ -183,11 +183,15 @@
 		        	<td
 				    *ngIf="offer.response == true" 
 				    class="pl-4">
-			            <button 
-			            	class="doc"
-			            	title="Télécharger la feuille de permutation">
-			            	<i class="fas fa-file-alt"></i>
-			            </button>
+			            <a 
+			            *ngIf="offer.response == true"
+		            	title="Télécharger la feuille de permutation"
+		            	href="../../assets/upload/pdf/cds-permutation.pdf"
+		            	download="cds-permutation">
+			            	<button class="doc">
+				            	<i class="fas fa-file-alt"></i>
+				            </button>
+			            </a>
 		        	</td>
 	    		</tr>
 	    	</tbody>
@@ -234,17 +238,17 @@
 				    <td 
 				    class="pl-4 accepted"
 				    *ngIf="offer.response">
-			    		Acceptée
+			    		Accepté
 				    </td>
 				     <td 
 				     class="pl-4 refused"
 				     *ngIf="offer.response == false">
-			    		Refusée
+			    		Refusé
 				    </td>
 				     <td 
 				     class="pl-4 wait"
 				     *ngIf="offer.response === undefined">
-			    		Non-traitée
+			    		Non-traité
 				    </td>
 				    <td class="pl-4">
 						<button
@@ -269,13 +273,15 @@
 		            	title="Supprimer">
 			            	<i class="fas fa-times"></i>
 			            </button>
-			            <button 
+			            <a 
 			            *ngIf="offer.response == true"
-		            	class="doc"
-		            	title="Télécharger la feuille de permutation">
-			            	<i class="fas fa-file-alt"></i>
-			            </button>
-		        	
+		            	title="Télécharger la feuille de permutation"
+		            	href="../../assets/upload/pdf/cds-permutation.pdf"
+		            	download="cds-permutation">
+			            	<button class="doc">
+				            	<i class="fas fa-file-alt"></i>
+				            </button>
+			            </a>
 		        	</td>
 	    		</tr>
 	    		<div 

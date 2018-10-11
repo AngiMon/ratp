@@ -171,6 +171,9 @@ h5{
 	 transform: scale(1.5);
 	 transition: 0.5s;
 }
+.doc:hover{
+	color: #fff;
+}
 .space{
 	margin: 5px;
 }

@@ -56,12 +56,15 @@
 			<div  
 			id="button"
 			*ngIf="offer.response == true">
-				<button 
-	           
-	        	class="doc"
-	        	title="Télécharger la feuille de permutation">
-	            	<i class="fas fa-file-alt"></i>
-	            </button>
+				<a 
+	            *ngIf="offer.response == true"
+            	title="Télécharger la feuille de permutation"
+            	href="../../assets/upload/pdf/cds-permutation.pdf"
+            	download="cds-permutation">
+	            	<button class="doc">
+		            	<i class="fas fa-file-alt"></i>
+		            </button>
+	            </a>
 			</div>
 			
 		</article>
