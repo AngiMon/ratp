@@ -86,7 +86,7 @@ export class OfferComponent implements OnInit
   }
   createOffer(ask, rest, type, teamNb, phone, message)
   {
-    const offer = new Offer(rest, type, teamNb, phone, message, ask, this.user, null);
+    const offer = new Offer(rest, type, teamNb, phone, message, ask, this.user, null, null);
     this.offerService.createNewOffer(offer);
     var templateParams = 
     {

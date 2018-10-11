@@ -130,6 +130,22 @@ export class UserAsksComponent implements OnInit
 		this.myAnswer = false;
     	this.ngOnInit();
 	}
+	onDeleteAnswer(offer: Offer)
+	{
+		const id = this.offerService.getId(offer, this.offers);
+		
+		var noOffer = new Offer(
+			offer.rest, 
+			offer.type,
+			offer.teamNb,
+			offer.phone,
+			offer.message,
+			offer.askRef,
+			offer.user,
+			false,
+			true);
+		this.offerService.editOffer(noOffer, id);
+	}
 	onViewRequest(id: number)
 	{
     	this.router.navigate(['mes-requetes/requete', id ]);

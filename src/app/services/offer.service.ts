@@ -13,6 +13,17 @@ export class OfferService
 	{
 		this.getOffers();
 	}
+	getId(offer: Offer, offers)
+	{
+		
+		for(var i = 0; i < offers.length; i++)
+		{ 
+			if(JSON.stringify(offers[i]) == JSON.stringify(offer) )
+			{
+				return i;
+			}
+		}
+	}
 	emitOffers()
 	{	
 		this.offerSubject.next(this.offers.slice());

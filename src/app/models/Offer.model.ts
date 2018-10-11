@@ -9,6 +9,6 @@ export class Offer
 		public askRef: Object,
 		public user: Object,
 		public response: boolean,
-		/*public recent: boolean,*/)
+		public del: boolean)
 	{}
 }

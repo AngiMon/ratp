@@ -95,22 +95,43 @@
 			    <td class="pl-4"> {{ ask.start }} </td>
 			    <td class="pl-4"> {{ ask.end }} </td>
 			    <td class="pl-4"> 
-		            <button
+		           <!-- <button
 		            	title="Voir"
 		            	class="view mr-1"
 		            	routerLink="/demandes-en-cours/{{asks.length-1-i}}"> 
 		              <i class="fas fa-search"></i>
-		            </button>
+		            </button>-->
 		            <button 
-		            	class="del"
-		            	(click)="onDeleteAsk(ask)"
-		            	title="Supprimer">
+	            	class="del"
+	            	(confirm)="onDeleteAsk(ask)"
+	            	title="Supprimer"
+	            	[swal]="deleteSwal">
 		            	<i class="fas fa-times"></i>
+		            	<swal
+						#deleteSwal
+						title="Etes-vous sûr de vouloir supprimer votre demande du {{ ask.start }} au {{ ask.end }} ?"
+						text="En cas de suppression, toutes les offres et réponses associées seront supprimées."
+						type="warning"
+						confirmButtonColor="#3085d6"
+						cancelButtonColor="#d33"
+						cancelButtonText="Annuler"
+						[showCancelButton]="true"
+						[focusCancel]="true"
+						(confirm)="confirmSwal.show()"
+						  >
+						</swal>
+						<swal
+						#confirmSwal
+						title="Succès !"
+						text="La demande a bien été supprimée !"
+						type="success"
+						></swal>
 		            </button>
 		        </td>     
 	        </tr>
 	      </tbody>
 	    </table>
+	    
 	    <p 
 	    class="empty" 
 	    *ngIf="!myAsk">
@@ -174,10 +195,30 @@
 				    *ngIf="offer.response != true" 
 				    class="pl-4">
 			            <button 
-			            	class="del"
-			            	(click)="onDeleteOffer(offer)"
-			            	title="Supprimer">
+		            	class="del"
+		            	(confirm)="onDeleteOffer(offer)"
+		            	title="Supprimer"
+		            	[swal]="deleteOffer">
 			            	<i class="fas fa-times"></i>
+			            	<swal
+							#deleteOffer
+							title="Etes-vous sûr de vouloir annuler l'envoi pour le service du {{ offer.askRef.start }} au {{ offer.askRef.end }} ?"
+							text="En cas de suppression, votre offre n'apparaîtra plus dans les réponses de {{offer.askRef.user.firstname}} {{offer.askRef.user.name}}."
+							type="warning"
+							confirmButtonColor="#3085d6"
+							cancelButtonColor="#d33"
+							cancelButtonText="Annuler"
+							[showCancelButton]="true"
+							[focusCancel]="true"
+							(confirm)="confirmDelOfferSwal.show()"
+							  >
+							</swal>
+							<swal
+							#confirmDelOfferSwal
+							title="Succès !"
+							text="L'envoi a bien été annulé !"
+							type="success"
+							></swal>
 			            </button>
 		        	</td>
 		        	<td
@@ -224,7 +265,7 @@
 	    		</tr>
 	    	</thead>
 	    	<tbody *ngFor="let offer of offers; let y = index">
-	    		<tr *ngIf="offer.askRef.user.email == user.email">
+	    		<tr *ngIf="offer.askRef.user.email == user.email && offer.del != true">
 			    	<td class="pl-4"> 
 			    		{{ offer.user.firstname }} {{offer.user.name}}
 			    	</td>
@@ -266,12 +307,32 @@
 	            			data-whatever="@mdo">
 				    		<i class="fas fa-user-tag"></i>
 				    	</button>
-			            <button
-			            *ngIf="offer.response != true" 
+			            <button 
+			            *ngIf="offer.response == false" 
 		            	class="del"
-		            	(click)="onDeleteOffer(offer)"
-		            	title="Supprimer">
+		            	(confirm)="onDeleteAnswer(offer)"
+		            	title="Supprimer"
+		            	[swal]="deleteAnswer">
 			            	<i class="fas fa-times"></i>
+			            	<swal
+							#deleteAnswer
+							title="Etes-vous sûr de vouloir supprimer la réponse pour le service du {{ offer.askRef.start }} au {{ offer.askRef.end }} ?"
+							text="En cas de suppression, elle n'apparaîtra plus dans votre historique."
+							type="warning"
+							confirmButtonColor="#3085d6"
+							cancelButtonColor="#d33"
+							cancelButtonText="Annuler"
+							[showCancelButton]="true"
+							[focusCancel]="true"
+							(confirm)="confirmDelOfferSwal.show()"
+							  >
+							</swal>
+							<swal
+							#confirmDelOfferSwal
+							title="Succès !"
+							text="La réponse a bien été supprimée !"
+							type="success"
+							></swal>
 			            </button>
 			            <a 
 			            *ngIf="offer.response == true"

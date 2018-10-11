@@ -28,6 +28,7 @@ import { OfferComponent } from './offer/offer.component';
 import { FooterComponent } from './footer/footer.component';
 import { RequestComponent } from './request/request.component';
 import { DataTableModule } from "angular-6-datatable";
+import { SweetAlert2Module } from '@toverux/ngx-sweetalert2';
 
 
 const appRoutes: Routes = [
@@ -61,6 +62,12 @@ const appRoutes: Routes = [
     RequestComponent,
   ],
   imports: [
+    SweetAlert2Module.forRoot({
+            buttonsStyling: false,
+            customClass: 'modal-content',
+            confirmButtonClass: 'btn btn-primary',
+            cancelButtonClass: 'btn'
+        }),
   	BrowserModule,
     DataTableModule,
   	HttpModule,
@@ -74,7 +81,8 @@ const appRoutes: Routes = [
     BrowserModule
   ],
   providers: [AuthService, AuthGuardService, UserService, AskService, OfferService, NodeService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+
 })
 export class AppModule { }
 

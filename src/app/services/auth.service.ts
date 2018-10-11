@@ -57,7 +57,7 @@ export class AuthService
 	{
 		firebase.auth().onAuthStateChanged(
 			(user) => {
-				if(user)
+				if(user != undefined && user.email != '')
 				{
 					a.authdata = user;
 					a.isAuth = true;

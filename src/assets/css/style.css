@@ -335,3 +335,27 @@ footer .int:before, .ext:before{
 	  width: 120px;
     height: 100px; 
 }
+.swal2-popup{
+	width: 500px !important;
+	padding: 30px 15px !important;
+}
+#swal2-content{
+	font-size: 1.4em;
+	padding: 20px 0;
+}
+#swal2-title{
+	display:block !important;
+	font-size: 2.2em;
+	text-align: center;
+}
+.swal2-confirm{
+	font-size: 1.6em;
+	background-color: #6BCE7A;
+	border: none !important;
+}
+.swal2-cancel{
+	font-size: 1.6em;
+	margin-left: 10px;
+	background-color: #FF9393;
+	color: #fff;
+}
