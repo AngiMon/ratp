@@ -224,11 +224,27 @@
 		        	<td
 				    *ngIf="offer.response == true" 
 				    class="pl-4">
+			            <!--<a 
+			            *ngIf="offer.response == true"
+		            	title="Télécharger la feuille de permutation"
+		            	href="../../assets/upload/pdf/permutation.pdf"
+		            	download="permutation">
+			            	<button class="doc">
+				            	<i class="fas fa-file-alt"></i>
+				            </button>
+			            </a>-->
+			            <!--<a 
+			            *ngIf="offer.response == true"
+		            	title="Télécharger la feuille de permutation"
+		            	routerLink="/feuille-de-permutation-de-service">
+			            	<button class="doc">
+				            	<i class="fas fa-file-alt"></i>
+				            </button>
+			            </a>-->
 			            <a 
 			            *ngIf="offer.response == true"
 		            	title="Télécharger la feuille de permutation"
-		            	href="../../assets/upload/pdf/cds-permutation.pdf"
-		            	download="cds-permutation">
+		            	routerLink="/feuille-de-permutation-de-service">
 			            	<button class="doc">
 				            	<i class="fas fa-file-alt"></i>
 				            </button>
@@ -337,8 +353,8 @@
 			            <a 
 			            *ngIf="offer.response == true"
 		            	title="Télécharger la feuille de permutation"
-		            	href="../../assets/upload/pdf/cds-permutation.pdf"
-		            	download="cds-permutation">
+		            	href="../../assets/upload/pdf/permutation.pdf"
+		            	download="permutation">
 			            	<button class="doc">
 				            	<i class="fas fa-file-alt"></i>
 				            </button>

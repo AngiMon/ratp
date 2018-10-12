@@ -71,33 +71,6 @@ export class AsksListComponent implements OnInit, OnDestroy
           if(this.i == true && this.y == 1)
           {
             this.DateLimit(this.asks);
-            /*if(this.user != undefined)
-            {
-              for(var i = 0; i < this.offers.length; i ++)
-              {
-                if(JSON.stringify(this.offers[i].askRef.user.email) == JSON.stringify(this.user.email))
-                {
-                  if(this.offers[i].recent == true)
-                  {
-                    this.nodeService.notif.answer += 1;
-                    //this.nodeService.SaveAnswer(this.offers[i].askRef.user);
-
-                    var offer = new Offer(
-                                offers[i].rest,
-                                offers[i].type,
-                                offers[i].teamNb,
-                                offers[i].phone,
-                                offers[i].message,
-                                offers[i].askRef,
-                                offers[i].user,
-                                null,
-                                null);
-                    this.offerService.editOffer(offer, i);
-                    
-                  }
-                }
-              }
-            }*/
           }
           this.Checked();
           }

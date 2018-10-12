@@ -8,7 +8,9 @@ import { Ask } from "../models/Ask.model";
 import { Offer } from "../models/Offer.model";
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
-
+import html2canvas from 'html2canvas';
+import * as jsPDF from 'jspdf';
+import 'jspdf-autotable';
 @Component({
   selector: 'app-user-asks',
   templateUrl: './user-asks.component.html',
@@ -170,5 +172,24 @@ export class UserAsksComponent implements OnInit
   				break;
   		}
   		
+  	}
+  	GeneratePdf(offer: Offer)
+  	{
+  		console.log("toto");
+  		/*var columns = ["", "1er agent", "2ème agent"]; 
+		var rows = [ 
+			["Nom", offer.user.name, offer.askRef.user.name],
+			["Matricule", offer.user.registrationNumber,offer.askRef.user.registrationNumber],
+			["Repos", offer.rest, offer.askRef.rest],
+			["Service prévu", offer.teamNb, offer.askRef.teamNb],
+			["Signature", '', '']
+			];
+		var pdf = new jsPDF();
+
+		pdf.autoTable(columns, rows);
+		pdf.save('table.pdf');*/
+
+	
+		
   	}
 }

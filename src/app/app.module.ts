@@ -29,6 +29,7 @@ import { FooterComponent } from './footer/footer.component';
 import { RequestComponent } from './request/request.component';
 import { DataTableModule } from "angular-6-datatable";
 import { SweetAlert2Module } from '@toverux/ngx-sweetalert2';
+import { DocumentComponent } from './document/document.component';
 
 
 const appRoutes: Routes = [
@@ -39,7 +40,8 @@ const appRoutes: Routes = [
   { path: 'demandes-en-cours/:id', component: SingleAskComponent},
   { path: 'mes-requetes', component: UserAsksComponent},
   { path: 'auth/reset', component: ForgetComponent},
-  { path: 'mes-requetes/requete/:id', component: RequestComponent}
+  { path: 'mes-requetes/requete/:id', component: RequestComponent},
+  { path: 'feuille-de-permutation-de-service', component: DocumentComponent}
 
 ];
 
@@ -60,6 +62,7 @@ const appRoutes: Routes = [
     OfferComponent,
     FooterComponent,
     RequestComponent,
+    DocumentComponent,
   ],
   imports: [
     SweetAlert2Module.forRoot({
