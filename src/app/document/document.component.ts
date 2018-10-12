@@ -3,11 +3,11 @@ import { AuthService } from '../services/auth.service';
 import { AskService } from '../services/ask.service';
 import { OfferService } from '../services/offer.service';
 import { NodeService } from '../services/node.service';
-import { User } from "../models/User.model";
 import { Ask } from "../models/Ask.model";
 import { Offer } from "../models/Offer.model";
+import { User } from '../models/User.model';
 import { Subscription } from 'rxjs';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import html2canvas from 'html2canvas';
 import * as jsPDF from 'jspdf';
 import 'jspdf-autotable';
@@ -18,11 +18,26 @@ import 'jspdf-autotable';
   styleUrls: ['./document.component.scss']
 })
 export class DocumentComponent implements OnInit {
-	@Input() y;
-	@Input() offer;
-  constructor() { }
+	
+	offer: Offer;
+	auth;
+	user;
 
-  ngOnInit() {
+  constructor( 
+  			private route: ActivatedRoute,
+  			private offerService: OfferService,
+  			private authService: AuthService) { }
+
+  async ngOnInit() {
+  	this.user = new User('', '', '',' ');
+    this.offer = new Offer('', '', '', '', '', '', '');
+    this.authService.getAuthData(this);
+  	const id = this.route.snapshot.params['id'];
+  	await this.offerService.getSingleOffer(id).then(
+      (offer: Offer) => {
+        this.offer = offer;
+      }
+    );
   }
 
   GeneratePdf(offer: Offer)
