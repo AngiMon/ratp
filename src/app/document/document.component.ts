@@ -20,20 +20,22 @@ import 'jspdf-autotable';
 export class DocumentComponent implements OnInit {
 	
 	offer: Offer;
-	auth;
-	user;
+  user: User;
+
 
   constructor( 
   			private route: ActivatedRoute,
   			private offerService: OfferService,
-  			private authService: AuthService) { }
+  			private authService: AuthService,
+  			private nodeService: NodeService) {}
 
-  async ngOnInit() {
-  	this.user = new User('', '', '',' ');
-    this.offer = new Offer('', '', '', '', '', '', '');
+  ngOnInit() 
+  {
+  	this.user = new User("", "", "", "", "");
+    this.offer = new Offer("", "", "", "", "", "", "", "", "");
     this.authService.getAuthData(this);
   	const id = this.route.snapshot.params['id'];
-  	await this.offerService.getSingleOffer(id).then(
+  	this.offerService.getSingleOffer(+id).then(
       (offer: Offer) => {
         this.offer = offer;
       }
@@ -41,18 +43,13 @@ export class DocumentComponent implements OnInit {
   }
 
   GeneratePdf(offer: Offer)
-  	{
-  		console.log("toto");
-  		var data = document.getElementById('pdf');
-
-  		html2canvas(data).then(canvas => {  
-  
-		const contentDataURL = canvas.toDataURL('image/png')  
-		let pdf = new jsPDF('p', 'mm', 'a4'); // A4 size page of PDF  
-		var position = 0;  
-		pdf.addImage(contentDataURL, 'PNG', 0, position, 210, 297)  
-		pdf.save('permutation.pdf'); // Generated PDF   
-	
-		
-  	}
+  {
+    var data = document.getElementById('pdf');
+    html2canvas(data).then(canvas => {  
+    const contentDataURL = canvas.toDataURL('image/png')  
+    let pdf = new jsPDF('p', 'mm', 'a4'); // A4 size page of PDF  
+    var position = 0;  
+    pdf.addImage(contentDataURL, 'PNG', 0, position, 210, 297)  
+    pdf.save('permutation_' + this.offer.askRef.start + '.pdf'); // Generated PDF
+  }
 }

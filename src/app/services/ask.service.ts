@@ -89,10 +89,6 @@ export class AskService
 						}
 					);
 				}
-				else
-				{
-					console.log("no match");
-				}
 			}
 			
 		}

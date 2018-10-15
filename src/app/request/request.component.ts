@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs';
 import { OfferService } from '../services/offer.service';
 import { AskService } from '../services/ask.service';
 import { AuthService } from '../services/auth.service';
+import { NodeService } from '../services/node.service';
 import { Offer } from '../models/Offer.model';
 import { User } from '../models/User.model';
 import { Ask } from '../models/Ask.model';
@@ -28,12 +29,13 @@ export class RequestComponent implements OnInit
 		private route: ActivatedRoute,
 		private authService: AuthService,
 		private offerService: OfferService,
-		private askService: AskService) {}
+		private askService: AskService,
+		private nodeService: NodeService) {}
 
 	ngOnInit()
 	{
-		this.user = new User(" "," ", " ", " ");
-		this.offer = new Offer(" ", " ", " ", " ", " ", " ", " ", " ")
+		this.user = new User(" "," ", " ", " ", "");
+		this.offer = new Offer(" ", " ", " ", " ", " ", " ", " ", " ", " ")
 		this.authService.getAuthData(this);
 		this.id = this.route.snapshot.params['id'];
 		this.offerService.getSingleOffer(+this.id).then(
@@ -45,7 +47,7 @@ export class RequestComponent implements OnInit
 
 	Accepted(offer)
 	{
-		this.offer = new Offer( offer.rest, offer.type, offer.teamNb, offer.phone, offer.message, offer.askRef, offer.user, true);
+		this.offer = new Offer( offer.rest, offer.type, offer.teamNb, offer.phone, offer.message, offer.askRef, offer.user, true, null);
 		this.offerService.editOffer(this.offer, this.id);
 
 		this.askService.getSingleAsk(null, this.offer.askRef, this).then(
@@ -60,7 +62,7 @@ export class RequestComponent implements OnInit
 
 	Refused(offer)
 	{
-		this.offer = new Offer( offer.rest, offer.type, offer.teamNb, offer.phone, offer.message, offer.askRef, offer.user, false);
+		this.offer = new Offer( offer.rest, offer.type, offer.teamNb, offer.phone, offer.message, offer.askRef, offer.user, false, null);
 		this.offerService.editOffer(this.offer, this.id);
 		this.router.navigate(['mes-requetes']);
 	}

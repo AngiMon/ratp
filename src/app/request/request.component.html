@@ -56,15 +56,15 @@
 			<div  
 			id="button"
 			*ngIf="offer.response == true">
-				<a 
-	            *ngIf="offer.response == true"
-            	title="Télécharger la feuille de permutation"
-            	href="../../assets/upload/pdf/permutation.pdf"
-            	download="permutation">
+				
+	            <a 
+	        	title="Télécharger la feuille de permutation"
+	        	routerLink="/feuille-de-permutation-de-service/{{id}}">
 	            	<button class="doc">
 		            	<i class="fas fa-file-alt"></i>
 		            </button>
 	            </a>
+
 			</div>
 			
 		</article>

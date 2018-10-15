@@ -82,7 +82,7 @@ export class UserService
 	{
 		for(var i = 0; i < this.users.length; i++)
 		{ 
-			if(JSON.stringify(this.users[i].email) == JSON.stringify(email) )
+			if(JSON.stringify(this.users[i].email) == JSON.stringify(email))
 			{
 				return this.users[i];
 			}
