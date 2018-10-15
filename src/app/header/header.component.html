@@ -6,17 +6,19 @@
 	</div>
 		<nav class="col-md-12  nav">
 			<div class="container">
-				<a class=" navButton  "
+				<i id="menuMin"
+				class="fas fa-bars"></i>
+				<a class="navButton items"
 					routerLink="/nouvelle-demande" 
 					routerLinkActive="link">
 					Nouvelle demande
 				</a>
-				<a class=" navButton  " 
+				<a class=" navButton items" 
 				   routerLink="/demandes-en-cours"
 				   routerLinkActive="link">
 					Demandes en cours
 				</a>
-				<a class=" navButton  " 
+				<a class=" navButton items" 
 				   routerLink="/"
 				   *ngIf="isAuth"
 				   routerLink="mes-requetes"
@@ -26,19 +28,19 @@
 					*ngIf="notif.offer > 0 || notif.ask > 0 || notif.answer > 0"
 					class="notif">{{notif.offer + notif.ask + notif.answer}}</span>
 				</a>
-				<a class=" navButton "
+				<a class="navButton items"
 				   routerLink="auth/signup"
 				   routerLinkActive="link"
 				   *ngIf="!isAuth">
 				   	M'inscrire
 			    </a>
-			    <a class=" navButton "
+			    <a class="navButton items"
 			       routerLink="auth/signin"
 			       routerLinkActive="link"
 			       *ngIf="!isAuth">
 			       	Me connecter
 			   	</a>
-			   	<a class=" navButton"
+			   	<a class=" navButton items"
 			   		routerLink="/"
 			   	   *ngIf="isAuth"
 			   	   (click)="onSignOut(user)">

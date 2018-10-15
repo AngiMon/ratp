@@ -1,8 +1,4 @@
-// datepicker
-var off = document.getElementById('off');
-
-$.fn.datepicker.defaults.format = "dd/mm/yyyy";
-$.fn.datepicker.defaults.todayHighlight = true;
+'use strict';
 
 //position of the footer
 var heightWin, height, header, footer, main;
@@ -60,4 +56,9 @@ function Sort(e)
 		}
 	}
 }
+// datepicker
+var off = document.getElementById('off');
+
+$.fn.datepicker.defaults.format = "dd/mm/yyyy";
+$.fn.datepicker.defaults.todayHighlight = true;
 
