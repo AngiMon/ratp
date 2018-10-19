@@ -5,20 +5,20 @@
 		</a>
 	</div>
 		<nav class="col-md-12  nav">
-			<div class="container">
+			<div class="container" id="blocNav">
 				<i id="menuMin"
 				class="fas fa-bars"></i>
-				<a class="navButton items"
+				<a class=" navButton items"
 					routerLink="/nouvelle-demande" 
 					routerLinkActive="link">
 					Nouvelle demande
 				</a>
-				<a class=" navButton items" 
+				<a class="navButton items" 
 				   routerLink="/demandes-en-cours"
 				   routerLinkActive="link">
 					Demandes en cours
 				</a>
-				<a class=" navButton items" 
+				<a class="navButton items" 
 				   routerLink="/"
 				   *ngIf="isAuth"
 				   routerLink="mes-requetes"
@@ -40,20 +40,22 @@
 			       *ngIf="!isAuth">
 			       	Me connecter
 			   	</a>
-			   	<a class=" navButton items"
+			   	<a class="navButton items"
 			   		routerLink="/"
 			   	   *ngIf="isAuth"
 			   	   (click)="onSignOut(user)">
 			   		Déconnexion
 			   	</a>
-			   	<a
-			   	id="user"
-			   	*ngIf="authdata != null"
-			   	routerLink='/'>
-			   		<i class="fas fa-user-circle"></i>
-			   		<span>{{ user.firstname + " " + user.name }}</span>
-			   	</a>
+			   	</div><div id="blocUser">
+				   	<a
+				   	id="user"
+				   	*ngIf="authdata != null"
+				   	routerLink='/'>
+				   		<i class="fas fa-user-circle"></i>
+				   		<span>{{ user.firstname + " " + user.name }}</span>
+				   	</a>
+			   </div>
 			   	<!--{{ (authdata != null) ? user.firstname + " " + user.name : ''}}-->
-		   </div>
+		   
 		</nav>
 </header>

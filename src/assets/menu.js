@@ -5,11 +5,11 @@ function Loaded()
 	
 	menuMin = document.getElementById('menuMin');
 	items = document.getElementsByClassName('items');
+	Resize();
 	menuMin.addEventListener('click', onClickMenu);
 	window.addEventListener('resize', Resize);
 	y = 0;	
 }
-
 function onClickMenu()
 {
 	y += 1;
@@ -20,42 +20,58 @@ function onClickMenu()
 		return;
 
 	}
-	for(var i = 0; i < items.length; i++)
+	
+
+	if(y == 3)
 	{
-		if(y == 3)
+		for(var i = 0; i < items.length; i++)
 		{
-			items[i].style = "display: inline-block";
+			items[i].classList.remove('none');
+			if(!items[i].classList.contains('inline'))
+			{
+				items[i].classList.add('inline');
+				items[i].classList.remove('block');
+			}
+			y=0;
 		}
-		else
+			
+	}
+	else
+	{
+		for(var i = 0; i < items.length; i++)
 		{
-			items[i].style = "display: block";
+			if(!items[i].classList.contains('block'))
+			{
+				items[i].classList.remove('inline');
+				items[i].classList.add('block');
+			}
 			items[i].addEventListener('click', onClickItem);
 		}
 	}
 	
 }
 function onClickItem()
-{console.log(size);
+{
 	if(size < 995)
 	{
 		for(var i = 0; i < items.length; i++)
 		{
-			items[i].style = "display: none";
+			items[i].classList.add('none');
+			items[i].classList.remove('block');
 		}
 	}
-	
 }
 function Resize()
 {
 	y = 0;
 	size = window.innerWidth;
-	console.log(size);
-	if(size >= 995)
+
+	if(size > 995)
 	{
 		y = 2;
 		onClickMenu();
 	}
-	else if(size < 995)
+	else if(size <= 995)
 	{
 		onClickItem();
 	}

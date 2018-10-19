@@ -3,6 +3,7 @@ import { AuthService } from '../services/auth.service';
 import { UserService } from '../services/user.service';
 import { NodeService } from '../services/node.service';
 import { User } from "../models/User.model";
+import { Notifications } from '../models/Notifications.model';
 import * as firebase from 'firebase';
 
 
@@ -26,7 +27,8 @@ export class HeaderComponent implements OnInit
 	{}
 
 	ngOnInit()
-	{	this.notif = new NodeService('');
+	{	
+		this.notif = new NodeService(new Notifications('', '', ''));
 		this.user = new User('', '', '', '', '');
 		this.authService.getAuthData(this);
 	}

@@ -17,7 +17,8 @@ import 'jspdf-autotable';
   templateUrl: './document.component.html',
   styleUrls: ['./document.component.scss']
 })
-export class DocumentComponent implements OnInit {
+export class DocumentComponent implements OnInit
+{
 	
 	offer: Offer;
   user: User;
@@ -46,10 +47,12 @@ export class DocumentComponent implements OnInit {
   {
     var data = document.getElementById('pdf');
     html2canvas(data).then(canvas => {  
-    const contentDataURL = canvas.toDataURL('image/png')  
-    let pdf = new jsPDF('p', 'mm', 'a4'); // A4 size page of PDF  
-    var position = 0;  
-    pdf.addImage(contentDataURL, 'PNG', 0, position, 210, 297)  
-    pdf.save('permutation_' + this.offer.askRef.start + '.pdf'); // Generated PDF
+          const contentDataURL = canvas.toDataURL('image/png');
+          let pdf = new jsPDF('p', 'mm', 'a4'); // A4 size page of PDF  
+          var position = 0;  
+          pdf.addImage(contentDataURL, 'PNG', 0, position, 210, 297); 
+          pdf.save('permutation_' + this.offer.askRef.start + '.pdf'); // Generated PDF
+        }
+      );
   }
 }

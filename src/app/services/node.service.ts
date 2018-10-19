@@ -30,9 +30,4 @@ export class NodeService
   			this.userService.editUser(update);
   		}
   	}
-
-  	SaveAnswer(user: User)
-  	{
-
-  	}
 }

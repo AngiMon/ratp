@@ -64,7 +64,7 @@ export class AsksListComponent implements OnInit, OnDestroy
     this.asksSubscription = await this.asksService.askSubject.subscribe(
       async (asks: Ask[]) => {
         this.asks = asks;
-        this.data = this.asks;
+        this.data = asks;
         this.offersSubscription =  await this.offerService.offerSubject.subscribe(
         (offers: Offer[]) => {
           this.offers = offers;

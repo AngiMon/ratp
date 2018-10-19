@@ -21,7 +21,7 @@
   class="mb-5 table table-hover">
     <thead class="head">
       <tr (click)='Hide(is)'>
-        <th class="pb-2 pl-4">
+        <th class="pb-2 ">
           <mfDefaultSorter 
           by="rest" 
           onclick='Sort(this)'
@@ -31,7 +31,7 @@
            <i class="fas fa-arrow-up up hide"></i>
           </mfDefaultSorter> 
         </th>
-        <th class="pb-2 pl-4"> 
+        <th class="pb-2"> 
           <mfDefaultSorter 
           by="user.registrationNumber"
           onclick='Sort(this)'>
@@ -40,7 +40,7 @@
             <i class="fas fa-arrow-up hide up"></i>
           </mfDefaultSorter>
         </th>
-        <th class="pb-2 pl-4"> 
+        <th class="pb-2 "> 
           <mfDefaultSorter 
           by="type"
           onclick='Sort(this)'>
@@ -49,27 +49,27 @@
             <i class="fas fa-arrow-up up hide"></i>
           </mfDefaultSorter>
         </th>
-        <th class="pb-2 pl-4"> 
+        <th class="pb-2 " > 
           <mfDefaultSorter onclick='Sort(this)'>
             Souhaité
           </mfDefaultSorter>
         </th>
-        <th class="pb-2 pl-4"> 
+        <th class="pb-2 "> 
           <mfDefaultSorter onclick='Sort(this)'>
             Equipe
           </mfDefaultSorter>
         </th>
-        <th class="pb-2 pl-4"> 
+        <th class="pb-2 "> 
           <mfDefaultSorter onclick='Sort(this)'>
             Début
           </mfDefaultSorter>
         </th>
-        <th class="pb-2 pl-4"> 
+        <th class="pb-2 "> 
           <mfDefaultSorter onclick='Sort(this)'>
             Fin
           </mfDefaultSorter>
         </th>
-        <th class="pb-2 pl-4"> 
+        <th class="pb-2 "> 
           <mfDefaultSorter onclick='Sort(this)'>
             Action
           </mfDefaultSorter>
@@ -81,18 +81,19 @@
         *ngIf="IsMyOffers(ask)"
         class="{{(ask.user.email == user.email) ? 'is' : 'not'}}"
         [ngStyle]="{ 'background-color' : getColor(ask) }">
-          <td class="pl-4"> {{ ask.rest }} </td>
-          <td class="pl-4"> {{ ask.user.registrationNumber }} </td>
-          <td class="pl-4"> {{ ask.type }} </td>
-          <td class="pl-4"> 
+          <td data-label="Repos"> {{ ask.rest }} </td>
+          <td data-label="Matricule"> {{ ask.user.registrationNumber }} </td>
+          <td data-label="Proposé"> {{ ask.type }} </td>
+          <td data-label="Souhaité"> 
             {{ ask.typeVs.nuit == true ? "Nuit" : '' }} 
             {{ ask.typeVs.jour == true ? "Jour" : '' }}   
             {{ ask.typeVs.mixte == true ? "Mixte" : '' }}   
           </td>
-          <td class="pl-4"> {{ ask.teamNb }} </td>
-          <td class="pl-4"> {{ ask.start }} </td>
-          <td class="pl-4"> {{ ask.end }} </td>
-          <td class="pl-4">
+          <td data-label="Equipe"> {{ ask.teamNb }} </td>
+          <td data-label="Début"> {{ ask.start }} </td>
+          <td data-label="Fin"> {{ ask.end }} </td>
+          <td 
+          data-label="Action">
             <button 
             class="ok ml-1"
             *ngIf='ask.user.email !== user.email'
@@ -109,18 +110,18 @@
         title="Vous avez proposé un accord pour cette demande" 
         *ngIf="!IsMyOffers(ask)"
         class="isSend">
-          <td class="pl-4"> {{ ask.rest }} </td>
-          <td class="pl-4"> {{ ask.user.registrationNumber }} </td>
-          <td class="pl-4"> {{ ask.type }} </td>
-          <td class="pl-4"> 
+          <td data-label="Repos"> {{ ask.rest }} </td>
+          <td data-label="Matricule"> {{ ask.user.registrationNumber }} </td>
+          <td data-label="Proposé"> {{ ask.type }} </td>
+          <td data-label="Souhaité"> 
             {{ ask.typeVs.nuit == true ? "Nuit" : '' }} 
             {{ ask.typeVs.jour == true ? "Jour" : '' }}   
             {{ ask.typeVs.mixte == true ? "Mixte" : '' }}   
           </td>
-          <td class="pl-4"> {{ ask.teamNb }} </td>
-          <td class="pl-4"> {{ ask.start }} </td>
-          <td class="pl-4"> {{ ask.end }} </td>
-          <td class="pl-4">
+          <td data-label="Equipe"> {{ ask.teamNb }} </td>
+          <td data-label="Début"> {{ ask.start }} </td>
+          <td data-label="Fin"> {{ ask.end }} </td>
+          <td data-label="Action">
             <i class="fas send fa-paper-plane"></i>
           </td>
         </tr>

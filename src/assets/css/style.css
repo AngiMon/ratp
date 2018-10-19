@@ -35,6 +35,12 @@ ul{
 #menuMin{
 	display: none;
 }
+
+#blocUser{
+	position: absolute;
+	right:100px;
+	top: 10px;
+}
 #user i{
 	vertical-align:middle;
 	font-size: 1.6em;
@@ -81,9 +87,11 @@ header h1, header h2{
 	color: #fff;
 }
 header nav{
-	padding:10px 0;
-	background-color: #35CD9D
+	padding:0px 0;
+	background-color: #35CD9D;
+	position: relative;
 }
+
 header nav a{
  color: #fff ; 
  padding: 12px 22px;
@@ -113,6 +121,16 @@ h2{
 }
 h5{
 	font-size: 1.2em;
+}
+.inline{
+	display: inline-block;
+	margin: 0;
+}
+.none{
+	display: none;
+}
+.block{
+	display: block;
 }
 .notif{
 	padding: 1px 6px;
@@ -370,8 +388,54 @@ footer .int:before, .ext:before{
 		text-align: center;
 	}
 	#menuMin{
+		color: #fff;
 		display: block;
 		font-size: 1.6em;
 		text-align: center;
+		padding: 10px 0;
+	}
+	table, tbody, tr, td{
+		display: block
+	}
+
+	thead{
+		display: none;
+	}
+	td{
+		padding-left: 150px !important;
+		position: relative;
+		height: 50px; 
+	}
+	#pagination::before{
+		background-color: #f7f7f7 !important;
+	}
+	td::before{
+		padding: 10px;
+		content: attr(data-label);
+		position: absolute;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		width: 130px;
+		display: flex;
+		align-items: center;
+		background-color: #E2E2E2
+	}
+
+	tr{
+		margin-top: 10px; 
+	}
+	h1, h2, h3{
+		text-align: center;
+	}
+	footer ul{
+		flex-direction: column;
+		text-align: center;
+	}
+	footer .int::before, footer .ext::before{
+		content: ''
+	}
+	footer ul li:nth-child(3){
+		margin-bottom: 10px;
 	}
 } 
