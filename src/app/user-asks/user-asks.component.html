@@ -84,23 +84,17 @@
 	      </thead>
 	      <tbody *ngFor="let ask of asks; let i = index">
 	        <tr *ngIf="ask.user.email == user.email">
-			    <td class="pl-4"> {{ ask.rest }} </td>
-			    <td class="pl-4"> {{ ask.type }} </td>
-				<td class="pl-4"> 
+			    <td data-label="Repos"> {{ ask.rest }} </td>
+			    <td data-label="Proposé"> {{ ask.type }} </td>
+				<td data-label="Souhaité"> 
 			    	{{ ask.typeVs.nuit == true ? "Nuit" : '' }} 
 			    	{{ ask.typeVs.jour == true ? "Jour" : '' }}   
 			    	{{ ask.typeVs.mixte == true ? "Mixte" : '' }}   
 			    </td>
-			    <td class="pl-4"> {{ ask.teamNb }} </td>
-			    <td class="pl-4"> {{ ask.start }} </td>
-			    <td class="pl-4"> {{ ask.end }} </td>
-			    <td class="pl-4"> 
-		           <!-- <button
-		            	title="Voir"
-		            	class="view mr-1"
-		            	routerLink="/demandes-en-cours/{{asks.length-1-i}}"> 
-		              <i class="fas fa-search"></i>
-		            </button>-->
+			    <td data-label="Equipe"> {{ ask.teamNb }} </td>
+			    <td data-label="Début"> {{ ask.start }} </td>
+			    <td data-label="Fin"> {{ ask.end }} </td>
+			    <td data-label="Action"> 
 		            <button 
 	            	class="del"
 	            	(confirm)="onDeleteAsk(ask)"
@@ -163,37 +157,41 @@
 	    		<tr 
 	    		*ngIf="offer.user.email == user.email"
 	    		>
-			    	<td class="pl-4"> 
+			    	<td data-label="Envoyée à"> 
 			    		{{ offer.askRef.user.firstname }} {{offer.askRef.user.name}}
 			    	</td>
-			    	<td class="pl-4">
+			    	<td data-label="Matricule">
 			    		{{ offer.askRef.user.registrationNumber }}
 			    	</td>
-				    <td class="pl-4">
+				    <td data-label="Pour le service">
 				    	{{ offer.askRef.type }} 
 				    	
 				    </td>
-				    <td class="pl-4"> {{offer.askRef.start}} </td>
-				    <td class="pl-4"> {{offer.askRef.end}} </td>
+				    <td data-label="Début"> {{offer.askRef.start}} </td>
+				    <td data-label="Fin"> {{offer.askRef.end}} </td>
 				    
 				    <td 
-				    class="pl-4 accepted"
+				    data-label="Statut"
+				    class="accepted"
 				    *ngIf="offer.response">
 			    		Accepté
 				    </td>
 				     <td 
-				     class="pl-4 refused"
+				     data-label="Statut"
+				     class="refused"
 				     *ngIf="offer.response == false">
 			    		Refusé
 				    </td>
 				     <td 
-				     class="pl-4 wait"
+				     data-label="Statut"
+				     class="wait"
 				     *ngIf="offer.response === undefined">
 			    		En attente...
 				    </td>
 				    <td
+				    data-label="Actions"
 				    *ngIf="offer.response != true" 
-				    class="pl-4">
+				    data-label="Repos">
 			            <button 
 		            	class="del"
 		            	(confirm)="onDeleteOffer(offer)"
@@ -265,32 +263,35 @@
 	    	</thead>
 	    	<tbody *ngFor="let offer of offers; let y = index">
 	    		<tr *ngIf="offer.askRef.user.email == user.email && offer.del != true">
-			    	<td class="pl-4"> 
+			    	<td data-label="Acceptée par"> 
 			    		{{ offer.user.firstname }} {{offer.user.name}}
 			    	</td>
-			    	<td class="pl-4">{{offer.user.registrationNumber}}</td>
-				    <td class="pl-4">
+			    	<td data-label="Matricule">{{offer.user.registrationNumber}}</td>
+				    <td data-label="Pour le service">
 				    	{{ offer.askRef.type }} 
 				    	
 				    </td>
-				    <td class="pl-4"> {{offer.askRef.start}} </td>
-				    <td class="pl-4"> {{offer.askRef.end}} </td>
+				    <td data-label="Début"> {{offer.askRef.start}} </td>
+				    <td data-label="Fin"> {{offer.askRef.end}} </td>
 				    <td 
-				    class="pl-4 accepted"
+				    data-label="Statut"
+				    class="accepted"
 				    *ngIf="offer.response">
 			    		Accepté
 				    </td>
-				     <td 
-				     class="pl-4 refused"
+				     <td
+				     data-label="Statut"
+				     class="refused"
 				     *ngIf="offer.response == false">
 			    		Refusé
 				    </td>
 				     <td 
-				     class="pl-4 wait"
+				     data-label="Statut"
+				     class="wait"
 				     *ngIf="offer.response === undefined">
 			    		Non-traité
 				    </td>
-				    <td class="pl-4">
+				    <td data-label="Actions">
 						<button
 							title="Voir"
 							class="view mr-1"

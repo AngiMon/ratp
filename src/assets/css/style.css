@@ -254,6 +254,9 @@ h5{
 main{
 	padding-bottom: 20px;
 }
+td{
+	padding-left: 16px !important;
+}
 input[type=text], input[type=password], .form-control{
 	font-size: 1em;
 }
@@ -404,7 +407,8 @@ footer .int:before, .ext:before{
 	td{
 		padding-left: 150px !important;
 		position: relative;
-		height: 50px; 
+		height: 50px;
+		font-size: 1em !important;
 	}
 	#pagination::before{
 		background-color: #f7f7f7 !important;
@@ -419,7 +423,11 @@ footer .int:before, .ext:before{
 		width: 130px;
 		display: flex;
 		align-items: center;
-		background-color: #E2E2E2
+		background-color: #E2E2E2;
+		
+	}
+	.wait::before, .accepted::before, .refused::before{
+		color: #212529;
 	}
 
 	tr{
