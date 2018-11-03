@@ -1,0 +1,15 @@
+h2{
+	text-align: center;
+	padding: 25px 0;
+}
+h3{
+	color: #fff;
+	cursor: pointer;
+}
+#menu{
+	padding-left: 20px;
+}
+
+#menu .link{
+	background-color: #5172df;
+}

@@ -42,7 +42,8 @@ const appRoutes: Routes = [
   { path: 'mes-requetes', component: UserAsksComponent},
   { path: 'auth/reset', component: ForgetComponent},
   { path: 'mes-requetes/requete/:id', component: RequestComponent},
-  { path: 'feuille-de-permutation-de-service/:id', component: DocumentComponent}
+  { path: 'feuille-de-permutation-de-service/:id', component: DocumentComponent},
+  { path: '', component: HomeComponent},
 
 ];
 
