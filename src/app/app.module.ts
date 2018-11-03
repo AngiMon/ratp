@@ -30,6 +30,7 @@ import { RequestComponent } from './request/request.component';
 import { DataTableModule } from "angular-6-datatable";
 import { SweetAlert2Module } from '@toverux/ngx-sweetalert2';
 import { DocumentComponent } from './document/document.component';
+import { HomeComponent } from './home/home.component';
 
 
 const appRoutes: Routes = [
@@ -63,6 +64,7 @@ const appRoutes: Routes = [
     FooterComponent,
     RequestComponent,
     DocumentComponent,
+    HomeComponent,
   ],
   imports: [
     SweetAlert2Module.forRoot({

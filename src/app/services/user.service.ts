@@ -68,6 +68,10 @@ export class UserService
 		{
 			this.users[id].notifications.answer += 1;
 		}
+		else if(answer === false)
+		{
+			this.users[id].notifications.status += 1;
+		}
 		else
 		{
 			this.users[id] = user;

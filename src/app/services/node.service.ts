@@ -6,7 +6,7 @@ import { User } from '../models/User.model';
 @Injectable()
 export class NodeService
 {
-  	notif = {answer : 0, ask : 0, offer : 0};
+  	notif = {answer : 0, ask : 0, offer : 0, status: 0};
   	
   	constructor(private userService: UserService)
   	{}
@@ -16,12 +16,13 @@ export class NodeService
   		this.notif.ask = user.notifications.ask;
   		this.notif.offer = user.notifications.offer;
   		this.notif.answer = user.notifications.answer;
+      this.notif.status = user.notifications.status;
   	}
 
   	Save(user: User, answer:boolean = null)
   	{
   		const update = new User(user.email, user.firstname, user.name, user.registrationNumber, this.notif);
-  		if(answer)
+  		if(answer || answer === false)
   		{
   			this.userService.editUser(update, answer);
   		}

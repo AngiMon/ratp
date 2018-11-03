@@ -37,9 +37,9 @@
 		    (click)="Notif('offer')">
 		    	Mes envois
 		    	<span
-		    	*ngIf="notif.offer > 0"
+		    	*ngIf="notif.offer > 0 || notif.status > 0"
 		    	class="notif">
-		    		{{ notif.offer }}
+		    		{{ notif.offer + notif. status}}
 		    	</span>
 		    </a>
 		    <a 

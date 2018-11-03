@@ -28,7 +28,7 @@ export class HeaderComponent implements OnInit
 
 	ngOnInit()
 	{	
-		this.notif = new NodeService(new Notifications('', '', ''));
+		this.notif = new NodeService(new Notifications('', '', '', ''));
 		this.user = new User('', '', '', '', '');
 		this.authService.getAuthData(this);
 	}
@@ -40,11 +40,13 @@ export class HeaderComponent implements OnInit
 			if(this.notif.ask != this.nodeService.notif.ask
 	   			|| this.notif.offer != this.nodeService.notif.offer
 	  		 	|| this.notif.answer != this.nodeService.notif.answer
+	  		 	|| this.notif.status != this.nodeService.notif.status
 		 	  )
 			{
 				this.notif.ask = this.nodeService.notif.ask;
 				this.notif.offer = this.nodeService.notif.offer;
 				this.notif.answer = this.nodeService.notif.answer;
+				this.notif.status = this.nodeService.notif.status;
 			}
 		}
 	}

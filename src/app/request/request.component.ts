@@ -56,12 +56,15 @@ export class RequestComponent implements OnInit
 
 	        this.askService.removeAsk(ask, this.askId);
 	      });
+
+		this.nodeService.Save(offer.user, false); 
       	
       	this.router.navigate(['mes-requetes']);
 	}
 
 	Refused(offer)
 	{
+		this.nodeService.Save(offer.user, false); 
 		this.offer = new Offer( offer.rest, offer.type, offer.teamNb, offer.phone, offer.message, offer.askRef, offer.user, false, null);
 		this.offerService.editOffer(this.offer, this.id);
 		this.router.navigate(['mes-requetes']);
