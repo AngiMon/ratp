@@ -153,9 +153,10 @@ export class UserAsksComponent implements OnInit
   	Notif(check)
   	{
   		switch (check) {
-  			case "offer":
+  			case "send":
 				this.nodeService.notif.offer = 0;
 				this.nodeService.notif.status = 0;
+				this.notif.status = this.nodeService.notif.status;
   				this.notif.offer = this.nodeService.notif.offer;
   				this.nodeService.Save(this.user);
   				break;
