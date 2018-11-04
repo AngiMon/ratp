@@ -87,7 +87,23 @@ export class UserAsksComponent implements OnInit
       	);
       	this.offerService.emitOffers();
 	}
-
+	ngDoCheck()
+	{
+		if(this.user.email != "")
+		{
+			if(this.notif.ask != this.nodeService.notif.ask
+	   			|| this.notif.offer != this.nodeService.notif.offer
+	  		 	|| this.notif.answer != this.nodeService.notif.answer
+	  		 	|| this.notif.status != this.nodeService.notif.status
+		 	  )
+			{
+				this.notif.ask = this.nodeService.notif.ask;
+				this.notif.offer = this.nodeService.notif.offer;
+				this.notif.answer = this.nodeService.notif.answer;
+				this.notif.status = this.nodeService.notif.status;
+			}
+		}
+	}
 	DateLimit(offers)
 	{
 		var day, month, year, dateStart;
