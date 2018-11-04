@@ -31,6 +31,8 @@ import { DataTableModule } from "angular-6-datatable";
 import { SweetAlert2Module } from '@toverux/ngx-sweetalert2';
 import { DocumentComponent } from './document/document.component';
 import { HomeComponent } from './home/home.component';
+import { AboutComponent } from './about/about.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
 
 
 const appRoutes: Routes = [
@@ -44,6 +46,8 @@ const appRoutes: Routes = [
   { path: 'mes-requetes/requete/:id', component: RequestComponent},
   { path: 'feuille-de-permutation-de-service/:id', component: DocumentComponent},
   { path: '', component: HomeComponent},
+  { path: 'a-propos', component: AboutComponent},
+  { path: 'contactez-nous', component: ContactUsComponent}
 
 ];
 
@@ -66,6 +70,8 @@ const appRoutes: Routes = [
     RequestComponent,
     DocumentComponent,
     HomeComponent,
+    AboutComponent,
+    ContactUsComponent,
   ],
   imports: [
     SweetAlert2Module.forRoot({
