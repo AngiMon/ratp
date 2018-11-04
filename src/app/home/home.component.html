@@ -11,6 +11,7 @@
 		aria-expanded="true"
 		aria-controls="intro">
 			Introduction
+			<i class="fas fa-sort-down"></i>
 		</h3>
 		<p
 		class="collapse"
@@ -27,6 +28,7 @@
 		aria-expanded="true"
 		aria-controls="menu">
 			Guide du menu
+			<i class="fas fa-sort-down"></i>
 		</h3>
 		<div
 		class="collapse"
@@ -39,11 +41,12 @@
 			aria-expanded="true"
 			aria-controls="ask">
 				Nouvelle demande
+				<i class="fas fa-sort-down"></i>
 			</h3>
 			<p
 			class="collapse"
 			id="ask">
-				
+				Dans l'onglet "nouvelle demande", vous trouverez un formulaire vous permettant de renseigner votre service ainsi que le ou les types de services qui vous intéresseraient en échange. La demande sera alors visible par tous les conducteurs de votre terminus enregistrés qui pourront alors vous proposer un échange.
 			</p>
 			<h3 
 			class="link"
@@ -53,11 +56,15 @@
 			aria-expanded="true"
 			aria-controls="asks">
 				Demandes en cours
+				<i class="fas fa-sort-down"></i>
 			</h3>
 			<p
 			class="collapse"
 			id="asks">
-				
+				Dans l'onglet "demandes en cours", vous pouvez voir tous les services de vos collègues et proposer le vôtre en échange en cliquant sur l'icône
+				<button class="ok">
+              		<i class="fas fa-handshake"></i>
+				</button>.
 			</p>
 			<h3 
 			class="link"
@@ -67,30 +74,85 @@
 			aria-expanded="true"
 			aria-controls="dashboard">
 				Tableau de bord
+				<i class="fas fa-sort-down"></i>
 			</h3>
-			<p
+			<div
 			class="collapse"
 			id="dashboard">
-				
-			</p>
-			
+				<p>
+					Le tableau de bord vous permet de gérer vos demandes de permutations et les réponses que vous avez reçues. Vous pouvez aussi suivre l'évolution de vos offres lorque vous postulez à des demandes. Surveillez le statut de vos envois pour savoir si la permutation a été acceptée ou refusée.
+				</p>
+				<div class="request">
+					<article>
+						<h3 
+						class="link"
+						type="button"
+						data-toggle="collapse"
+						data-target="#MyAsk"
+						aria-expanded="true"
+						aria-controls="MyAsk">
+							Mes demandes
+							<i class="fas fa-sort-down"></i>
+						</h3>
+						<p
+						class="collapse"
+						id="MyAsk">
+							Dans "mes demandes", vous trouverez les services que vous avez partagés en attente de permutation.<br>
+							Lorsque vous concluez une permutation avec un autre conducteur, la demande de référence est automatiquement retirée de la liste des "demandes en cours" et de "mes demandes". 
+						</p>
+					</article>
+					<article>
+						<h3 
+						class="link"
+						type="button"
+						data-toggle="collapse"
+						data-target="#MyOffer"
+						aria-expanded="true"
+						aria-controls="MyOffer">
+							Mes envois
+							<i class="fas fa-sort-down"></i>
+						</h3>
+						<p
+						class="collapse"
+						id="MyOffer">
+							Dans l'onglet "mes envois", vous trouverez tous les échanges que vous avez proposés à vos collègues. Grâce à la colonne "statut", vous saurez si votre échange a été accepté, refusé ou est encore en cours de traitement. Une notification vous sera envoyée à chaque changement de statut.<br>
+							Si l'échange est accepté, vous pourrez télécharger la feuille de permutation déjà préremplie en cliquant sur le bouton 
+							<button class="doc">
+				            	<i class="fas fa-file-alt"></i>
+				            </button>.
+						</p>
+					</article>
+					<article>
+						<h3 
+						class="link"
+						type="button"
+						data-toggle="collapse"
+						data-target="#MyAnswer"
+						aria-expanded="true"
+						aria-controls="MyAnswer">
+							Mes réponses
+							<i class="fas fa-sort-down"></i>
+						</h3>
+						<p
+						class="collapse"
+						id="MyAnswer">
+							Dans l'onglet "mes réponses", vous trouverez toutes les réponses à vos demandes de permutation. En cliquant sur le bouton 
+							<button
+							class="view"
+							> 
+								<i class="fas fa-search"></i>
+							</button>, vous pourrez voir en détail le service qui vous est proposé en échange du vôtre (identité de l'agent, message laissé, services échangés, dates). Vous pourrez ensuite choisir de l'accepter ou de le refuser.
+							<br>
+							En cas d'acceptation de votre part, l'agent concerné recevra une notification pour le prévenir et la feuille de permutation lui sera accessible. De votre côté, le bouton 
+							<button class="doc">
+				            	<i class="fas fa-file-alt"></i>
+				            </button> 
+				            apparaîtra ce qui vous donnera également accès à la feuille de permutation déjà préremplie de la période, du nom des agents concernés, de leur matricule et de leur numéro d'équipe.
+						</p>
+					</article>
+				</div>
+			</div>
 		</div>
-	</article>
-	<article>
-		<h3 
-		class="link"
-		type="button"
-		data-toggle="collapse"
-		data-target="#howToAsk"
-		aria-expanded="true"
-		aria-controls="howToAsk">
-			Comment proposer mon service aux autres ?
-		</h3>
-		<p
-		class="collapse"
-		id="howToAsk">
-			Pour poster une demande qui sera visible par tous vos collègues conducteurs enregistrés sur la plateforme, il vous suffit de cliquer sur l'onglet "nouvelle demande" dans le menu et de renseigner le formulaire. Vérifiez que les informations que vous avez entrées sont exactes car vous ne pourrez plus les modifier. Cliquez ensuite sur "Valider". Votre demande apparaîtra en orange dans la liste des "demandes en cours" accessible via le menu. 
-		</p>
 	</article>
 	<article>
 		<h3 
@@ -101,6 +163,7 @@
 		aria-expanded="true"
 		aria-controls="notif">
 			A quoi servent les notifications ?
+			<i class="fas fa-sort-down"></i>
 		</h3>
 		<div class="collapse" id="notif">
 			<p>
@@ -117,15 +180,89 @@
 					Lorsque vous postulez à une demande en cours.
 				</li>
 				<li>
-					Lorsque le service pour lequel vous avez postulé a été valider ou refusé par le demandeur. 
+					Lorsque le service pour lequel vous avez postulé a été validé ou refusé par le demandeur. 
 				</li>
 			</ol>
 		</div>
-		
 	</article>
-
-
-
-
+	<article>
+		<h3 
+		class="link"
+		type="button"
+		data-toggle="collapse"
+		data-target="#howToAsk"
+		aria-expanded="true"
+		aria-controls="howToAsk">
+			Comment proposer mon service aux autres ?
+			<i class="fas fa-sort-down"></i>
+		</h3>
+		<p
+		class="collapse"
+		id="howToAsk">
+			Pour poster une demande qui sera visible par tous vos collègues conducteurs enregistrés sur la plateforme, il vous suffit de cliquer sur l'onglet "nouvelle demande" dans le menu et de renseigner le formulaire. Vérifiez que les informations que vous avez entrées sont exactes car vous ne pourrez plus les modifier. Cliquez ensuite sur "Valider". Votre demande apparaîtra en jaune dans la liste des "demandes en cours" accessible via le menu. 
+		</p>
+	</article>
+	<article>
+		<h3 
+		class="link"
+		type="button"
+		data-toggle="collapse"
+		data-target="#howToOffer"
+		aria-expanded="true"
+		aria-controls="howToOffer">
+			Comment postuler à une demande de permutation ?
+			<i class="fas fa-sort-down"></i>
+		</h3>
+		<p
+		class="collapse"
+		id="howToOffer">
+			Pour postuler à une demande de permutation, rendez-vous dans la rubrique "demandes en cours". Si une annonce vous intéresse, il vous suffit de cliquer sur le boutton 
+			<button class="ok">
+            	<i class="fas fa-handshake"></i>
+			</button> et de remplir le formulaire qui s'affichera en fonction de la demande de votre collègue.
+			Après validation, votre offre apparaîtra dans votre tableau de bord dans l'onglet "mes envois" où vous pourrez suivre l'évolution de son statut. Il vous suffit de suivre les notifications.
+			Les demandes auxquelles vous postulez apparaissent en orange suivies de l'icône 
+			<i class="fas send fa-paper-plane"></i>.
+		</p>
+	</article>
+	<article>
+		<h3 
+		class="link"
+		type="button"
+		data-toggle="collapse"
+		data-target="#howToKnow"
+		aria-expanded="true"
+		aria-controls="howToKnow">
+			Comment savoir si j'ai reçu une demande de permutation ?
+			<i class="fas fa-sort-down"></i>
+		</h3>
+		<p
+		class="collapse"
+		id="howToKnow">
+			Lorque quelqu'un postule à une de vos demandes de permuatation après avoir cliqué sur le bouton 
+			<button class="ok">
+              		<i class="fas fa-handshake"></i>
+			</button>, 
+			un mail vous est automatiquement envoyé pour vous prévenir avec toutes les informations concernant l'échange.<br>
+			En vous connectant à la plateforme, vous serez également averti grâce à une notification qui s'affichera sur votre tableau de bord. 
+		</p>
+	</article>
+	<article>
+		<h3 
+		class="link"
+		type="button"
+		data-toggle="collapse"
+		data-target="#admin"
+		aria-expanded="true"
+		aria-controls="admin">
+			Administrativement
+			<i class="fas fa-sort-down"></i>
+		</h3>
+		<p
+		class="collapse"
+		id="admin">
+			Cette plateforme est indépendante de la RATP et n'est donc pas liée à l'administration en charge des échanges de services entre agents. Il est donc obligatoire de fournir, au sous chef de terminus, une feuille de permutation dûment remplie et signée par les deux agents arrangeants.
+		</p>
+	</article>
 </section>
 

@@ -5,11 +5,25 @@ h2{
 h3{
 	color: #fff;
 	cursor: pointer;
+    padding: 5px 10px;
 }
 #menu{
-	padding-left: 20px;
+	padding: 0 10px;
+}
+.request{
+	padding: 0 20px;
+}
+.request h3{
+	background-color: #3350b2cc !important;
 }
 
 #menu .link{
-	background-color: #5172df;
+	background-color: #3350b2f2;
+}
+#notif p{
+	margin: 0;
+}
+.fa-sort-down{
+	margin-left: 5px;
+	vertical-align: text-top;
 }
