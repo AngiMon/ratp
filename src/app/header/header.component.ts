@@ -6,7 +6,6 @@ import { User } from "../models/User.model";
 import { Notifications } from '../models/Notifications.model';
 import * as firebase from 'firebase';
 
-
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -27,8 +26,8 @@ export class HeaderComponent implements OnInit
 	{}
 
 	ngOnInit()
-	{	
-		this.notif = new NodeService(new Notifications('', '', '', ''));
+	{
+		this.notif = new NodeService(new UserService());
 		this.user = new User('', '', '', '', '');
 		this.authService.getAuthData(this);
 	}
@@ -37,16 +36,16 @@ export class HeaderComponent implements OnInit
 	{
 		if(this.user.email != "")
 		{
-			if(this.notif.ask != this.nodeService.notif.ask
-	   			|| this.notif.offer != this.nodeService.notif.offer
-	  		 	|| this.notif.answer != this.nodeService.notif.answer
-	  		 	|| this.notif.status != this.nodeService.notif.status
+			if(this.notif['ask'] != this.nodeService.notif.ask
+	   			|| this.notif['offer'] != this.nodeService.notif.offer
+	  		 	|| this.notif['answer'] != this.nodeService.notif.answer
+	  		 	|| this.notif['status'] != this.nodeService.notif.status
 		 	  )
 			{
-				this.notif.ask = this.nodeService.notif.ask;
-				this.notif.offer = this.nodeService.notif.offer;
-				this.notif.answer = this.nodeService.notif.answer;
-				this.notif.status = this.nodeService.notif.status;
+				this.notif['ask'] = this.nodeService.notif.ask;
+				this.notif['offer'] = this.nodeService.notif.offer;
+				this.notif['answer'] = this.nodeService.notif.answer;
+				this.notif['status'] = this.nodeService.notif.status;
 			}
 		}
 	}
@@ -57,5 +56,4 @@ export class HeaderComponent implements OnInit
 		this.authService.signOutUser();
 		this.user = new User('', '', '', '', '');
 	}
-
 }

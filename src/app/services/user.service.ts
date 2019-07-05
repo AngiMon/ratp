@@ -66,11 +66,11 @@ export class UserService
 		var id = this.getId(user);
 		if(answer)
 		{
-			this.users[id].notifications.answer += 1;
+			this.users[id].notifications['answer'] += 1;
 		}
 		else if(answer === false)
 		{
-			this.users[id].notifications.status += 1;
+			this.users[id].notifications['status'] += 1;
 		}
 		else
 		{

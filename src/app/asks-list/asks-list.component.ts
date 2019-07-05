@@ -19,6 +19,7 @@ import * as firebase from 'firebase';
   styleUrls: ['./asks-list.component.scss']
 })
 
+//DEMANDE EN COURS /demandes-en-cours
 export class AsksListComponent implements OnInit, OnDestroy
 {
   public data: any;
@@ -124,7 +125,7 @@ export class AsksListComponent implements OnInit, OnDestroy
       {
         for(var y = 0; y < this.offers.length; y++)
         {
-          if(JSON.stringify(this.asks[i]) == JSON.stringify(this.offers[y].askRef) && JSON.stringify(this.user.email) == JSON.stringify(this.offers[y].user.email))
+          if(JSON.stringify(this.asks[i]) == JSON.stringify(this.offers[y].askRef) && JSON.stringify(this.user.email) == JSON.stringify(this.offers[y].user['email']))
           {
             this.myOffers.push(this.asks[i]);
           }
@@ -188,7 +189,7 @@ export class AsksListComponent implements OnInit, OnDestroy
     var not = document.getElementsByClassName('not');
     if(is == undefined)
     {
-      is = toto.checked;
+      is = toto['checked'];
       this.Hide(is);
     }
     if(is)
@@ -196,14 +197,14 @@ export class AsksListComponent implements OnInit, OnDestroy
       
       for(var i = 0; i < my.length; i++)
       {
-        my[i].parentNode.classList.add("hide");
+        my[i].parentNode['classList'].add("hide");
       }
     }
     else
     {
       for(var i = 0; i < my.length; i++)
       {
-        my[i].parentNode.classList.remove("hide");
+        my[i].parentNode['classList'].remove("hide");
         
       }
     }

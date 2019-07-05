@@ -13,10 +13,10 @@ export class NodeService
 
   	Init(user: User)
   	{
-  		this.notif.ask = user.notifications.ask;
-  		this.notif.offer = user.notifications.offer;
-  		this.notif.answer = user.notifications.answer;
-      this.notif.status = user.notifications.status;
+  		this.notif.ask = user.notifications['ask'];
+  		this.notif.offer = user.notifications['offer'];
+  		this.notif.answer = user.notifications['answer'];
+      this.notif.status = user.notifications['status'];
   	}
 
   	Save(user: User, answer:boolean = null)

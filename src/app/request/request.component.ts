@@ -35,7 +35,7 @@ export class RequestComponent implements OnInit
 	ngOnInit()
 	{
 		this.user = new User(" "," ", " ", " ", "");
-		this.offer = new Offer(" ", " ", " ", " ", " ", " ", " ", " ", " ")
+		this.offer = new Offer(0, "", 0, "", "", "", "", null, null);
 		this.authService.getAuthData(this);
 		this.id = this.route.snapshot.params['id'];
 		this.offerService.getSingleOffer(+this.id).then(

@@ -64,26 +64,27 @@ export class AskFormComponent implements OnInit
     this.errors = new Object();
 
 //CONTRAINSTS OF VALIDATION
-    var startIni = document.getElementById('start').value;
-    var endIni = document.getElementById('end').value;
+    var startIni = document.getElementById('start')['value'];
+    var endIni = document.getElementById('end')['value'];
+
     if(startIni != "" && endIni != "")
     {
-      const start = this.askForm.get('start').value;
+      var start = this.askForm.get('start').value;
       start = startIni;
-      const end = this.askForm.get('end').value;
+      var end = this.askForm.get('end').value;
       end = endIni;
       this.VerifDate(start, end);
     }
     else
     {
-      this.errors.date = "Indiquez la date de début et de fin de votre service"
+      this.errors['date'] = "Indiquez la date de début et de fin de votre service"
     }
 
     const type = this.askForm.get('type').value;
-    type == '' ? this.errors.type = 'le type est requis' : '';
+    type == '' ? this.errors['type'] = 'le type est requis' : '';
 
     const rest = this.askForm.get('rest').value;
-    rest == '' ? this.errors.rest = 'Indiquez votre repos' : '';
+    rest == '' ? this.errors['rest'] = 'Indiquez votre repos' : '';
 
     var jour = this.askForm.get('Jour').value;
     var mixte = this.askForm.get('Mixte').value;
@@ -94,17 +95,17 @@ export class AskFormComponent implements OnInit
     type == 'Nuit' ? nuit = '' : '';
 
     const typeVs = {jour : jour, mixte : mixte, nuit : nuit};
-    typeVs.jour | typeVs.mixte | typeVs.nuit ? '' : this.errors.choice = "Précisez le(s) service(s) souhaité(s) en échange du vôtre";
+    typeVs.jour | typeVs.mixte | typeVs.nuit ? '' : this.errors['choice'] = "Précisez le(s) service(s) souhaité(s) en échange du vôtre";
 
     const teamNb = this.askForm.get('teamNb').value;
-    teamNb == '' ? this.errors.team = "Indiquez votre numéro d'équipe" : '';
+    teamNb == '' ? this.errors['team'] = "Indiquez votre numéro d'équipe" : '';
 
 //VALIDATION OF THE FORM
-    if(  this.errors.date == undefined 
-      && this.errors.type == undefined 
-      && this.errors.rest == undefined
-      && this.errors.team == undefined
-      && this.errors.dateBis == undefined)
+    if(  this.errors['date'] == undefined 
+      && this.errors['type'] == undefined 
+      && this.errors['rest'] == undefined
+      && this.errors['team'] == undefined
+      && this.errors['dateBis'] == undefined)
     {
       const user = this.user;
       const newAsk = new Ask(start, end, rest, teamNb, type, typeVs, user);
@@ -136,11 +137,11 @@ export class AskFormComponent implements OnInit
       if(start >= end)
       {
         console.log("error");
-        this.errors.dateBis = "La date de début ne peut pas être supérieure ou égale à la date de fin";
+        this.errors['dateBis'] = "La date de début ne peut pas être supérieure ou égale à la date de fin";
       }
       else if( start < today || end < today )
       {
-        this.errors.dateBis = "La date du jour ne peut pas être supérieure à la période de votre service";
+        this.errors['dateBis'] = "La date du jour ne peut pas être supérieure à la période de votre service";
       }
     }
 }

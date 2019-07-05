@@ -72,13 +72,13 @@ export class OfferComponent implements OnInit
     const teamNb = this.offerForm.get('teamNb').value;
     const phone = this.offerForm.get('phone').value;
     const message = this.offerForm.get('message').value;
-    rest == '' ? this.errors.rest = 'Indiquez votre repos' : '';
-    type == '' ? this.errors.type = 'Indiquez votre type de service' : '';
-    teamNb == '' ? this.errors.team = 'Indiquez votre numéro d\'équipe' : '';
+    rest == '' ? this.errors['rest'] = 'Indiquez votre repos' : '';
+    type == '' ? this.errors['type'] = 'Indiquez votre type de service' : '';
+    teamNb == '' ? this.errors['team'] = 'Indiquez votre numéro d\'équipe' : '';
   
-    if(this.errors.type == undefined 
-      && this.errors.rest == undefined
-      && this.errors.team == undefined)
+    if(this.errors['type'] == undefined 
+      && this.errors['rest'] == undefined
+      && this.errors['team'] == undefined)
     {
       this.createOffer(ask, rest, type, teamNb, phone, message);
     }
@@ -108,7 +108,7 @@ export class OfferComponent implements OnInit
 
     this.nodeService.notif.offer +=  1;
     this.nodeService.Save(this.user);
-    this.nodeService.Save(offer.askRef.user, true);
+    this.nodeService.Save(offer.askRef['user'], true);
     this.router.navigate(['/demandes-en-cours']);
   }
 

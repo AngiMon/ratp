@@ -49,7 +49,7 @@ export class SignupComponent implements OnInit
 		const firstname = this.signupForm.get('firstname').value;
 		const name = this.signupForm.get('name').value;
 		const registrationNumber = this.signupForm.get('registrationNumber').value;
-		const notifications = new Notifications(0, 0, 0);
+		const notifications = new Notifications(0, 0, 0, 0);
 		console.log(notifications);
 		const newUser = new User( email, firstname, name, registrationNumber, notifications );
 

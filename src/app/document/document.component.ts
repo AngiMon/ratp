@@ -33,7 +33,7 @@ export class DocumentComponent implements OnInit
   ngOnInit() 
   {
   	this.user = new User("", "", "", "", "");
-    this.offer = new Offer("", "", "", "", "", "", "", "", "");
+    this.offer = new Offer(0, "", 0, "", "", "", "", null, null);
     this.authService.getAuthData(this);
   	const id = this.route.snapshot.params['id'];
   	this.offerService.getSingleOffer(+id).then(
@@ -51,7 +51,7 @@ export class DocumentComponent implements OnInit
           let pdf = new jsPDF('p', 'mm', 'a4'); // A4 size page of PDF  
           var position = 0;  
           pdf.addImage(contentDataURL, 'PNG', 0, position, 210, 297); 
-          pdf.save('permutation_' + this.offer.askRef.start + '.pdf'); // Generated PDF
+          pdf.save('permutation_' + this.offer.askRef['start'] + '.pdf'); // Generated PDF
         }
       );
   }

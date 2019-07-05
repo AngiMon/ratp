@@ -16,6 +16,8 @@ import 'jspdf-autotable';
   templateUrl: './user-asks.component.html',
   styleUrls: ['./user-asks.component.scss']
 })
+
+//TABLEAU DE BORD /mes-requetes
 export class UserAsksComponent implements OnInit
 {
 	asksSubscription: Subscription;
@@ -30,6 +32,7 @@ export class UserAsksComponent implements OnInit
 	mySend : boolean;
   	notif: Object = {ask : 0, offer : 0, answer : 0, status : 0};
 	today = new Date().getTime();
+	notifNode: any;
 
 
 	constructor(
@@ -41,11 +44,12 @@ export class UserAsksComponent implements OnInit
 
 	async ngOnInit()
 	{
-		this.notif.ask = this.nodeService.notif.ask;
-		this.notif.offer = this.nodeService.notif.offer;
-		this.notif.answer = this.nodeService.notif.answer;
-		this.notif.status = this.nodeService.notif.status;
-		this.user = new User('', '', '', '');
+		this.notifNode = this.nodeService.notif;
+		this.notif['ask'] = this.notifNode.ask;
+		this.notif['offer'] = this.notifNode.offer;
+		this.notif['answer'] = this.notifNode.answer;
+		this.notif['status'] = this.notifNode.status;
+		this.user = new User('', '', '', '', '');
 		this.authService.getAuthData(this);
 		this.asksSubscription = await this.asksService.askSubject.subscribe(
         (asks: Ask[]) => {
@@ -54,7 +58,7 @@ export class UserAsksComponent implements OnInit
 	      		{	
 	      			if(asks[i] != undefined)
 	      			{
-	      				if(asks[i].user.email == this.user.email)
+	      				if(asks[i].user['email'] == this.user.email)
 	      				{
 	      					this.myAsk = true;
 	      				}
@@ -72,11 +76,11 @@ export class UserAsksComponent implements OnInit
 	      		{	
 	      			if(offers[i] != undefined)
 	      			{
-	      				if(offers[i].user.email == this.user.email)
+	      				if(offers[i].user['email'] == this.user.email)
 	      				{
 	      					this.mySend = true;
 	      				}
-	      				if(offers[i].askRef.user.email == this.user.email)
+	      				if(offers[i].askRef['user']['email'] == this.user.email)
 		      			{
 		      				this.myAnswer = true;
 		      			}
@@ -91,16 +95,16 @@ export class UserAsksComponent implements OnInit
 	{
 		if(this.user.email != "")
 		{
-			if(this.notif.ask != this.nodeService.notif.ask
-	   			|| this.notif.offer != this.nodeService.notif.offer
-	  		 	|| this.notif.answer != this.nodeService.notif.answer
-	  		 	|| this.notif.status != this.nodeService.notif.status
+			if(this.notif['ask'] != this.nodeService.notif.ask
+	   			|| this.notif['offer'] != this.nodeService.notif.offer
+	  		 	|| this.notif['answer'] != this.nodeService.notif.answer
+	  		 	|| this.notif['status'] != this.nodeService.notif.status
 		 	  )
 			{
-				this.notif.ask = this.nodeService.notif.ask;
-				this.notif.offer = this.nodeService.notif.offer;
-				this.notif.answer = this.nodeService.notif.answer;
-				this.notif.status = this.nodeService.notif.status;
+				this.notif['ask'] = this.nodeService.notif.ask;
+				this.notif['offer'] = this.nodeService.notif.offer;
+				this.notif['answer'] = this.nodeService.notif.answer;
+				this.notif['status'] = this.nodeService.notif.status;
 			}
 		}
 	}
@@ -172,18 +176,18 @@ export class UserAsksComponent implements OnInit
   			case "send":
 				this.nodeService.notif.offer = 0;
 				this.nodeService.notif.status = 0;
-				this.notif.status = this.nodeService.notif.status;
-  				this.notif.offer = this.nodeService.notif.offer;
+				this.notif['status'] = this.nodeService.notif.status;
+  				this.notif['offer'] = this.nodeService.notif.offer;
   				this.nodeService.Save(this.user);
   				break;
   			case "ask":
 				this.nodeService.notif.ask = 0;
-  				this.notif.ask = this.nodeService.notif.ask;
+  				this.notif['ask'] = this.nodeService.notif.ask;
   				this.nodeService.Save(this.user);
   				break;
   			case "answer":
 				this.nodeService.notif.answer = 0;
-  				this.notif.answer = this.nodeService.notif.answer;
+  				this.notif['answer'] = this.nodeService.notif.answer;
   				this.nodeService.Save(this.user);
   				break;
   		}
