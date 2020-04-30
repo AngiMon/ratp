@@ -24,7 +24,7 @@
     "emailjs-com": "^2.2.4",
     "firebase": "^5.4.0",
     "firebase-tools": "^4.2.1",
-    "jquery": "^3.3.1",
+    "jquery": "^3.5.0",
     "nodemailer": "^4.6.8",
     "rxjs": "^6.2.2",
     "zone.js": "^0.8.26"
