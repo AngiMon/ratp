@@ -25,7 +25,7 @@
     "firebase": "^5.4.0",
     "firebase-tools": "^4.2.1",
     "jquery": "^3.3.1",
-    "nodemailer": "^4.6.8",
+    "nodemailer": "^6.4.16",
     "rxjs": "^6.2.2",
     "zone.js": "^0.8.26"
   },
